@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		34E1C5471C5A03A200E4A270 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C5461C5A03A200E4A270 /* main.m */; };
 		34E1C54A1C5A03A200E4A270 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C5491C5A03A200E4A270 /* AppDelegate.m */; };
-		34E1C54D1C5A03A200E4A270 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C54C1C5A03A200E4A270 /* ViewController.m */; };
+		34E1C54D1C5A03A200E4A270 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C54C1C5A03A200E4A270 /* RootViewController.m */; };
 		34E1C5501C5A03A200E4A270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E1C54E1C5A03A200E4A270 /* Main.storyboard */; };
 		34E1C5531C5A03A200E4A270 /* DanMuPlayer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C5511C5A03A200E4A270 /* DanMuPlayer.xcdatamodeld */; };
 		34E1C5551C5A03A200E4A270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34E1C5541C5A03A200E4A270 /* Assets.xcassets */; };
@@ -38,10 +38,10 @@
 /* Begin PBXFileReference section */
 		34E1C5421C5A03A200E4A270 /* DanMuPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanMuPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E1C5461C5A03A200E4A270 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		34E1C5481C5A03A200E4A270 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		34E1C5491C5A03A200E4A270 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		34E1C54B1C5A03A200E4A270 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		34E1C54C1C5A03A200E4A270 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		34E1C5481C5A03A200E4A270 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = DanMuPlayer/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		34E1C5491C5A03A200E4A270 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = DanMuPlayer/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		34E1C54B1C5A03A200E4A270 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ../../RootViewController.h; sourceTree = "<group>"; };
+		34E1C54C1C5A03A200E4A270 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ../../RootViewController.m; sourceTree = "<group>"; };
 		34E1C54F1C5A03A200E4A270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34E1C5521C5A03A200E4A270 /* DanMuPlayer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DanMuPlayer.xcdatamodel; sourceTree = "<group>"; };
 		34E1C5541C5A03A200E4A270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +53,7 @@
 		34E1C5691C5A03A200E4A270 /* DanMuPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DanMuPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E1C56D1C5A03A200E4A270 /* DanMuPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DanMuPlayerUITests.m; sourceTree = "<group>"; };
 		34E1C56F1C5A03A200E4A270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34E1C58F1C5A069600E4A270 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +104,14 @@
 		34E1C5441C5A03A200E4A270 /* DanMuPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				34E1C5481C5A03A200E4A270 /* AppDelegate.h */,
-				34E1C5491C5A03A200E4A270 /* AppDelegate.m */,
-				34E1C54B1C5A03A200E4A270 /* ViewController.h */,
-				34E1C54C1C5A03A200E4A270 /* ViewController.m */,
+				34E1C57B1C5A05E600E4A270 /* AppDelegate */,
+				34E1C57C1C5A05E600E4A270 /* General */,
+				34E1C57D1C5A05E600E4A270 /* Guide */,
+				34E1C57E1C5A05E600E4A270 /* Helpers */,
+				34E1C57F1C5A05E600E4A270 /* Macro */,
+				34E1C5801C5A05E600E4A270 /* Resources */,
+				34E1C5811C5A05E600E4A270 /* Sections */,
+				34E1C58D1C5A05E600E4A270 /* Vendors */,
 				34E1C54E1C5A03A200E4A270 /* Main.storyboard */,
 				34E1C5541C5A03A200E4A270 /* Assets.xcassets */,
 				34E1C5561C5A03A200E4A270 /* LaunchScreen.storyboard */,
@@ -141,6 +146,155 @@
 				34E1C56F1C5A03A200E4A270 /* Info.plist */,
 			);
 			path = DanMuPlayerUITests;
+			sourceTree = "<group>";
+		};
+		34E1C57B1C5A05E600E4A270 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				34E1C5481C5A03A200E4A270 /* AppDelegate.h */,
+				34E1C5491C5A03A200E4A270 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		34E1C57C1C5A05E600E4A270 /* General */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		34E1C57D1C5A05E600E4A270 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
+		34E1C57E1C5A05E600E4A270 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		34E1C57F1C5A05E600E4A270 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				34E1C58F1C5A069600E4A270 /* PrefixHeader.pch */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		34E1C5801C5A05E600E4A270 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		34E1C5811C5A05E600E4A270 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				34E1C58B1C5A05E600E4A270 /* Root */,
+				34E1C5821C5A05E600E4A270 /* Main */,
+				34E1C58C1C5A05E600E4A270 /* SideBar */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		34E1C5821C5A05E600E4A270 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				34E1C5871C5A05E600E4A270 /* Follow */,
+				34E1C5891C5A05E600E4A270 /* Recommend */,
+				34E1C5851C5A05E600E4A270 /* Comic */,
+				34E1C5861C5A05E600E4A270 /* Entertainment */,
+				34E1C5831C5A05E600E4A270 /* Article */,
+				34E1C5841C5A05E600E4A270 /* Channel */,
+				34E1C58A1C5A05E600E4A270 /* View */,
+				34E1C5881C5A05E600E4A270 /* Model */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		34E1C5831C5A05E600E4A270 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
+		34E1C5841C5A05E600E4A270 /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		34E1C5851C5A05E600E4A270 /* Comic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Comic;
+			sourceTree = "<group>";
+		};
+		34E1C5861C5A05E600E4A270 /* Entertainment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entertainment;
+			sourceTree = "<group>";
+		};
+		34E1C5871C5A05E600E4A270 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
+		34E1C5881C5A05E600E4A270 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		34E1C5891C5A05E600E4A270 /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Recommend;
+			sourceTree = "<group>";
+		};
+		34E1C58A1C5A05E600E4A270 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		34E1C58B1C5A05E600E4A270 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				34E1C54B1C5A03A200E4A270 /* RootViewController.h */,
+				34E1C54C1C5A03A200E4A270 /* RootViewController.m */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		34E1C58C1C5A05E600E4A270 /* SideBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SideBar;
+			sourceTree = "<group>";
+		};
+		34E1C58D1C5A05E600E4A270 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vendors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34E1C54D1C5A03A200E4A270 /* ViewController.m in Sources */,
+				34E1C54D1C5A03A200E4A270 /* RootViewController.m in Sources */,
 				34E1C54A1C5A03A200E4A270 /* AppDelegate.m in Sources */,
 				34E1C5531C5A03A200E4A270 /* DanMuPlayer.xcdatamodeld in Sources */,
 				34E1C5471C5A03A200E4A270 /* main.m in Sources */,
@@ -501,6 +655,7 @@
 				34E1C5741C5A03A200E4A270 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		34E1C5751C5A03A200E4A270 /* Build configuration list for PBXNativeTarget "DanMuPlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +664,7 @@
 				34E1C5771C5A03A200E4A270 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		34E1C5781C5A03A200E4A270 /* Build configuration list for PBXNativeTarget "DanMuPlayerUITests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +673,7 @@
 				34E1C57A1C5A03A200E4A270 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
