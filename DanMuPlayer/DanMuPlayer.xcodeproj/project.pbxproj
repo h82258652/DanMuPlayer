@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		34E1C5471C5A03A200E4A270 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C5461C5A03A200E4A270 /* main.m */; };
+		34E1C54A1C5A03A200E4A270 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C5491C5A03A200E4A270 /* AppDelegate.m */; };
+		34E1C54D1C5A03A200E4A270 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C54C1C5A03A200E4A270 /* ViewController.m */; };
+		34E1C5501C5A03A200E4A270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E1C54E1C5A03A200E4A270 /* Main.storyboard */; };
+		34E1C5531C5A03A200E4A270 /* DanMuPlayer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C5511C5A03A200E4A270 /* DanMuPlayer.xcdatamodeld */; };
+		34E1C5551C5A03A200E4A270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34E1C5541C5A03A200E4A270 /* Assets.xcassets */; };
+		34E1C5581C5A03A200E4A270 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E1C5561C5A03A200E4A270 /* LaunchScreen.storyboard */; };
+		34E1C5631C5A03A200E4A270 /* DanMuPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C5621C5A03A200E4A270 /* DanMuPlayerTests.m */; };
+		34E1C56E1C5A03A200E4A270 /* DanMuPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C56D1C5A03A200E4A270 /* DanMuPlayerUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		34E1C55F1C5A03A200E4A270 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34E1C53A1C5A03A200E4A270 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34E1C5411C5A03A200E4A270;
+			remoteInfo = DanMuPlayer;
+		};
+		34E1C56A1C5A03A200E4A270 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34E1C53A1C5A03A200E4A270 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34E1C5411C5A03A200E4A270;
+			remoteInfo = DanMuPlayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		34E1C5421C5A03A200E4A270 /* DanMuPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanMuPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34E1C5461C5A03A200E4A270 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		34E1C5481C5A03A200E4A270 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		34E1C5491C5A03A200E4A270 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		34E1C54B1C5A03A200E4A270 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		34E1C54C1C5A03A200E4A270 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		34E1C54F1C5A03A200E4A270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		34E1C5521C5A03A200E4A270 /* DanMuPlayer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DanMuPlayer.xcdatamodel; sourceTree = "<group>"; };
+		34E1C5541C5A03A200E4A270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		34E1C5571C5A03A200E4A270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		34E1C5591C5A03A200E4A270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34E1C55E1C5A03A200E4A270 /* DanMuPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DanMuPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34E1C5621C5A03A200E4A270 /* DanMuPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DanMuPlayerTests.m; sourceTree = "<group>"; };
+		34E1C5641C5A03A200E4A270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34E1C5691C5A03A200E4A270 /* DanMuPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DanMuPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34E1C56D1C5A03A200E4A270 /* DanMuPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DanMuPlayerUITests.m; sourceTree = "<group>"; };
+		34E1C56F1C5A03A200E4A270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		34E1C53F1C5A03A200E4A270 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34E1C55B1C5A03A200E4A270 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34E1C5661C5A03A200E4A270 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		34E1C5391C5A03A200E4A270 = {
+			isa = PBXGroup;
+			children = (
+				34E1C5441C5A03A200E4A270 /* DanMuPlayer */,
+				34E1C5611C5A03A200E4A270 /* DanMuPlayerTests */,
+				34E1C56C1C5A03A200E4A270 /* DanMuPlayerUITests */,
+				34E1C5431C5A03A200E4A270 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		34E1C5431C5A03A200E4A270 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				34E1C5421C5A03A200E4A270 /* DanMuPlayer.app */,
+				34E1C55E1C5A03A200E4A270 /* DanMuPlayerTests.xctest */,
+				34E1C5691C5A03A200E4A270 /* DanMuPlayerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		34E1C5441C5A03A200E4A270 /* DanMuPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				34E1C5481C5A03A200E4A270 /* AppDelegate.h */,
+				34E1C5491C5A03A200E4A270 /* AppDelegate.m */,
+				34E1C54B1C5A03A200E4A270 /* ViewController.h */,
+				34E1C54C1C5A03A200E4A270 /* ViewController.m */,
+				34E1C54E1C5A03A200E4A270 /* Main.storyboard */,
+				34E1C5541C5A03A200E4A270 /* Assets.xcassets */,
+				34E1C5561C5A03A200E4A270 /* LaunchScreen.storyboard */,
+				34E1C5591C5A03A200E4A270 /* Info.plist */,
+				34E1C5511C5A03A200E4A270 /* DanMuPlayer.xcdatamodeld */,
+				34E1C5451C5A03A200E4A270 /* Supporting Files */,
+			);
+			path = DanMuPlayer;
+			sourceTree = "<group>";
+		};
+		34E1C5451C5A03A200E4A270 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				34E1C5461C5A03A200E4A270 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		34E1C5611C5A03A200E4A270 /* DanMuPlayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				34E1C5621C5A03A200E4A270 /* DanMuPlayerTests.m */,
+				34E1C5641C5A03A200E4A270 /* Info.plist */,
+			);
+			path = DanMuPlayerTests;
+			sourceTree = "<group>";
+		};
+		34E1C56C1C5A03A200E4A270 /* DanMuPlayerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				34E1C56D1C5A03A200E4A270 /* DanMuPlayerUITests.m */,
+				34E1C56F1C5A03A200E4A270 /* Info.plist */,
+			);
+			path = DanMuPlayerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		34E1C5411C5A03A200E4A270 /* DanMuPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34E1C5721C5A03A200E4A270 /* Build configuration list for PBXNativeTarget "DanMuPlayer" */;
+			buildPhases = (
+				34E1C53E1C5A03A200E4A270 /* Sources */,
+				34E1C53F1C5A03A200E4A270 /* Frameworks */,
+				34E1C5401C5A03A200E4A270 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DanMuPlayer;
+			productName = DanMuPlayer;
+			productReference = 34E1C5421C5A03A200E4A270 /* DanMuPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		34E1C55D1C5A03A200E4A270 /* DanMuPlayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34E1C5751C5A03A200E4A270 /* Build configuration list for PBXNativeTarget "DanMuPlayerTests" */;
+			buildPhases = (
+				34E1C55A1C5A03A200E4A270 /* Sources */,
+				34E1C55B1C5A03A200E4A270 /* Frameworks */,
+				34E1C55C1C5A03A200E4A270 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				34E1C5601C5A03A200E4A270 /* PBXTargetDependency */,
+			);
+			name = DanMuPlayerTests;
+			productName = DanMuPlayerTests;
+			productReference = 34E1C55E1C5A03A200E4A270 /* DanMuPlayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		34E1C5681C5A03A200E4A270 /* DanMuPlayerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34E1C5781C5A03A200E4A270 /* Build configuration list for PBXNativeTarget "DanMuPlayerUITests" */;
+			buildPhases = (
+				34E1C5651C5A03A200E4A270 /* Sources */,
+				34E1C5661C5A03A200E4A270 /* Frameworks */,
+				34E1C5671C5A03A200E4A270 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				34E1C56B1C5A03A200E4A270 /* PBXTargetDependency */,
+			);
+			name = DanMuPlayerUITests;
+			productName = DanMuPlayerUITests;
+			productReference = 34E1C5691C5A03A200E4A270 /* DanMuPlayerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		34E1C53A1C5A03A200E4A270 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = HAN;
+				TargetAttributes = {
+					34E1C5411C5A03A200E4A270 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = GYDYW6GVEA;
+					};
+					34E1C55D1C5A03A200E4A270 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = GYDYW6GVEA;
+						TestTargetID = 34E1C5411C5A03A200E4A270;
+					};
+					34E1C5681C5A03A200E4A270 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = GYDYW6GVEA;
+						TestTargetID = 34E1C5411C5A03A200E4A270;
+					};
+				};
+			};
+			buildConfigurationList = 34E1C53D1C5A03A200E4A270 /* Build configuration list for PBXProject "DanMuPlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 34E1C5391C5A03A200E4A270;
+			productRefGroup = 34E1C5431C5A03A200E4A270 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				34E1C5411C5A03A200E4A270 /* DanMuPlayer */,
+				34E1C55D1C5A03A200E4A270 /* DanMuPlayerTests */,
+				34E1C5681C5A03A200E4A270 /* DanMuPlayerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		34E1C5401C5A03A200E4A270 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34E1C5581C5A03A200E4A270 /* LaunchScreen.storyboard in Resources */,
+				34E1C5551C5A03A200E4A270 /* Assets.xcassets in Resources */,
+				34E1C5501C5A03A200E4A270 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34E1C55C1C5A03A200E4A270 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34E1C5671C5A03A200E4A270 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		34E1C53E1C5A03A200E4A270 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34E1C54D1C5A03A200E4A270 /* ViewController.m in Sources */,
+				34E1C54A1C5A03A200E4A270 /* AppDelegate.m in Sources */,
+				34E1C5531C5A03A200E4A270 /* DanMuPlayer.xcdatamodeld in Sources */,
+				34E1C5471C5A03A200E4A270 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34E1C55A1C5A03A200E4A270 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34E1C5631C5A03A200E4A270 /* DanMuPlayerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34E1C5651C5A03A200E4A270 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34E1C56E1C5A03A200E4A270 /* DanMuPlayerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		34E1C5601C5A03A200E4A270 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34E1C5411C5A03A200E4A270 /* DanMuPlayer */;
+			targetProxy = 34E1C55F1C5A03A200E4A270 /* PBXContainerItemProxy */;
+		};
+		34E1C56B1C5A03A200E4A270 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34E1C5411C5A03A200E4A270 /* DanMuPlayer */;
+			targetProxy = 34E1C56A1C5A03A200E4A270 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		34E1C54E1C5A03A200E4A270 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34E1C54F1C5A03A200E4A270 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		34E1C5561C5A03A200E4A270 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34E1C5571C5A03A200E4A270 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		34E1C5701C5A03A200E4A270 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		34E1C5711C5A03A200E4A270 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		34E1C5731C5A03A200E4A270 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DanMuPlayer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HSHSH.DanMuPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		34E1C5741C5A03A200E4A270 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DanMuPlayer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HSHSH.DanMuPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		34E1C5761C5A03A200E4A270 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DanMuPlayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HSHSH.DanMuPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DanMuPlayer.app/DanMuPlayer";
+			};
+			name = Debug;
+		};
+		34E1C5771C5A03A200E4A270 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DanMuPlayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HSHSH.DanMuPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DanMuPlayer.app/DanMuPlayer";
+			};
+			name = Release;
+		};
+		34E1C5791C5A03A200E4A270 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DanMuPlayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HSHSH.DanMuPlayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DanMuPlayer;
+			};
+			name = Debug;
+		};
+		34E1C57A1C5A03A200E4A270 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DanMuPlayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HSHSH.DanMuPlayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DanMuPlayer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		34E1C53D1C5A03A200E4A270 /* Build configuration list for PBXProject "DanMuPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34E1C5701C5A03A200E4A270 /* Debug */,
+				34E1C5711C5A03A200E4A270 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34E1C5721C5A03A200E4A270 /* Build configuration list for PBXNativeTarget "DanMuPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34E1C5731C5A03A200E4A270 /* Debug */,
+				34E1C5741C5A03A200E4A270 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		34E1C5751C5A03A200E4A270 /* Build configuration list for PBXNativeTarget "DanMuPlayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34E1C5761C5A03A200E4A270 /* Debug */,
+				34E1C5771C5A03A200E4A270 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		34E1C5781C5A03A200E4A270 /* Build configuration list for PBXNativeTarget "DanMuPlayerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34E1C5791C5A03A200E4A270 /* Debug */,
+				34E1C57A1C5A03A200E4A270 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		34E1C5511C5A03A200E4A270 /* DanMuPlayer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				34E1C5521C5A03A200E4A270 /* DanMuPlayer.xcdatamodel */,
+			);
+			currentVersion = 34E1C5521C5A03A200E4A270 /* DanMuPlayer.xcdatamodel */;
+			path = DanMuPlayer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 34E1C53A1C5A03A200E4A270 /* Project object */;
+}
