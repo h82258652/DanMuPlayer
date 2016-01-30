@@ -1,0 +1,130 @@
+// 推荐里面的分区内容（即cell的内容）
+
+{
+    "code": 200,
+    "data": {
+        "belong": 0,
+        "channelId": 63,
+        "contentCount": 3,
+        "contents": [
+                     {
+                     "actionId": 10,
+                     "channelId": 110,
+                     "hide": 0,
+                     "id": 15794,
+                     "image": "http://cdn.aixifan.com/dotnet/20120923/style/image/cover-night.png",
+                     "intro": "本文来源http://toutiao.com/a6244747617915093250/",
+                     "owner": {
+                     "avatar": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201506/12095434n5k7.jpg",
+                     "id": 890010,
+                     "name": "比赛可以输我不能死"
+                     },
+                     "regionId": 21,
+                     "releaseDate": 1453978240000,
+                     "releasedAt": 1454038561000,
+                     "status": 2,
+                     "subTitle": "",
+                     "title": "这是世界上最缺男人的国家，而且居然还盛产美女",
+                     "url": "2496609",
+                     "visit": {
+                     "comments": 106,
+                     "danmakuSize": 0,
+                     "goldBanana": 1,
+                     "score": 0,
+                     "stows": 23,
+                     "ups": 0,
+                     "views": 18465
+                     }
+                     },
+                     {
+                     "actionId": 10,
+                     "channelId": 74,
+                     "hide": 0,
+                     "id": 15793,
+                     "image": "http://cdn.aixifan.com/dotnet/20120923/style/image/cover-night.png",
+                     "intro": "读者泪流满面！《柯南》收回19年前的伏笔",
+                     "owner": {
+                     "avatar": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201512/141907402i6eisps.jpg",
+                     "id": 613827,
+                     "name": "九折坂二人"
+                     },
+                     "regionId": 21,
+                     "releaseDate": 1453984467000,
+                     "releasedAt": 1454038509000,
+                     "status": 2,
+                     "subTitle": "",
+                     "title": "读者泪流满面！《柯南》收回19年前的伏笔",
+                     "url": "2496847",
+                     "visit": {
+                     "comments": 64,
+                     "danmakuSize": 0,
+                     "goldBanana": 0,
+                     "score": 0,
+                     "stows": 5,
+                     "ups": 0,
+                     "views": 2398
+                     }
+                     },
+                     {
+                     "actionId": 10,
+                     "channelId": 110,
+                     "hide": 0,
+                     "id": 15792,
+                     "image": "http://cdn.aixifan.com/dotnet/20120923/style/image/cover-night.png",
+                     "intro": "经济学家王福重：号贩子帮了所有人，感谢号贩子",
+                     "owner": {
+                     "avatar": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/11082014iiqna4ts.jpg",
+                     "id": 744722,
+                     "name": "不爱说话yb"
+                     },
+                     "regionId": 21,
+                     "releaseDate": 1453976572000,
+                     "releasedAt": 1454038432000,
+                     "status": 2,
+                     "subTitle": "",
+                     "title": "经济学家王福重：号贩子帮了所有人，感谢号贩子",
+                     "url": "2496542",
+                     "visit": {
+                     "comments": 605,
+                     "danmakuSize": 0,
+                     "goldBanana": 0,
+                     "score": 0,
+                     "stows": 16,
+                     "ups": 0,
+                     "views": 18859
+                     }
+                     }
+                     ],
+        "goText": "",
+        "hide": 0,
+        "id": 21,
+        "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201511/2516122144lps9v0.png",
+        "menuCount": 1,
+        "menus": [
+                  {
+                  "actionId": 6,
+                  "channelId": 63,
+                  "hide": 0,
+                  "id": 15,
+                  "image": "",
+                  "name": "更多文章内容",
+                  "regionId": 21,
+                  "sort": 0,
+                  "url": ""
+                  }
+                  ],
+        "name": "文章",
+        "platformId": 1,
+        "showLine": 1,
+        "showMore": 1,
+        "showName": 1,
+        "sort": 52,
+        "type": {
+            "id": 2,
+            "name": "文章",
+            "value": "articles"
+        },
+        "url": ""
+    },
+    "message": "OK"
+}

@@ -40,10 +40,16 @@
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(sidebarPan:)];
     [self.ContainerView addGestureRecognizer:pan];
     
-    NSLog(@"%@",self.view.gestureRecognizers);
-    NSLog(@"%@",self.subView.gestureRecognizers);
-    NSLog(@"%@",self.ContainerView.gestureRecognizers);
+//    NSLog(@"%@",self.view.gestureRecognizers);
+//    NSLog(@"%@",self.subView.gestureRecognizers);
+//    NSLog(@"%@",self.ContainerView.gestureRecognizers);
     
+    
+//    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+//    self.navigationController.navigationBar;
+//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navibar_iamge"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)displaySideBar:(UIScreenEdgePanGestureRecognizer *)gesture {

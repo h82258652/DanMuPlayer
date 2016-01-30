@@ -13,12 +13,17 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 /** 主题色 */
-#define kThemeColor [UIColor colorWithRed:255 / 255.0 green:76 / 255.0 blue:95 / 255.0 alpha:1]
+#define kThemeColor [UIColor colorWithRed:240 / 255.0 green:50 / 255.0 blue:74 / 255.0 alpha:1]
 /** 屏幕宽度 */
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 /** 屏幕高度 */
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
+// 启动页
+#define kFlashScreenURLStr @"http://api.aixifan.com/flashScreens/getFlashScreen"
+
+// 推荐
+#define kRegionsURLStr @"http://api.aixifan.com/regions"
 
 
 

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3477596B1C5B5CEB00EF42E5 /* line_img_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3477596A1C5B5CEB00EF42E5 /* line_img_gray@2x.png */; };
+		3477596F1C5B646100EF42E5 /* navibar_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 3477596E1C5B646100EF42E5 /* navibar_image.png */; };
+		34DA83361C5B89F200CF3A9D /* RecommendCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DA83341C5B89F200CF3A9D /* RecommendCollectionViewController.m */; };
+		34DA836D1C5BB01800CF3A9D /* RollPlayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DA836B1C5BB01800CF3A9D /* RollPlayCollectionViewCell.m */; };
+		34DA836E1C5BB01800CF3A9D /* RollPlayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34DA836C1C5BB01800CF3A9D /* RollPlayCollectionViewCell.xib */; };
 		34E1C5471C5A03A200E4A270 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C5461C5A03A200E4A270 /* main.m */; };
 		34E1C54A1C5A03A200E4A270 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C5491C5A03A200E4A270 /* AppDelegate.m */; };
 		34E1C54D1C5A03A200E4A270 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1C54C1C5A03A200E4A270 /* RootViewController.m */; };
@@ -36,6 +41,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		347759671C5B476100EF42E5 /* 001.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = 001.geojson; sourceTree = "<group>"; };
+		347759681C5B47A500EF42E5 /* 002.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = 002.geojson; sourceTree = "<group>"; };
+		347759691C5B4A5200EF42E5 /* 003.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = 003.geojson; sourceTree = "<group>"; };
+		3477596A1C5B5CEB00EF42E5 /* line_img_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line_img_gray@2x.png"; sourceTree = "<group>"; };
+		3477596E1C5B646100EF42E5 /* navibar_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navibar_image.png; sourceTree = "<group>"; };
+		34DA83331C5B89F200CF3A9D /* RecommendCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendCollectionViewController.h; sourceTree = "<group>"; };
+		34DA83341C5B89F200CF3A9D /* RecommendCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendCollectionViewController.m; sourceTree = "<group>"; };
+		34DA836A1C5BB01800CF3A9D /* RollPlayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollPlayCollectionViewCell.h; sourceTree = "<group>"; };
+		34DA836B1C5BB01800CF3A9D /* RollPlayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RollPlayCollectionViewCell.m; sourceTree = "<group>"; };
+		34DA836C1C5BB01800CF3A9D /* RollPlayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RollPlayCollectionViewCell.xib; sourceTree = "<group>"; };
 		34E1C5421C5A03A200E4A270 /* DanMuPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanMuPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E1C5461C5A03A200E4A270 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		34E1C5481C5A03A200E4A270 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = DanMuPlayer/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -117,6 +132,9 @@
 				34E1C5561C5A03A200E4A270 /* LaunchScreen.storyboard */,
 				34E1C5591C5A03A200E4A270 /* Info.plist */,
 				34E1C5511C5A03A200E4A270 /* DanMuPlayer.xcdatamodeld */,
+				347759671C5B476100EF42E5 /* 001.geojson */,
+				347759681C5B47A500EF42E5 /* 002.geojson */,
+				347759691C5B4A5200EF42E5 /* 003.geojson */,
 				34E1C5451C5A03A200E4A270 /* Supporting Files */,
 			);
 			path = DanMuPlayer;
@@ -189,6 +207,8 @@
 		34E1C5801C5A05E600E4A270 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3477596A1C5B5CEB00EF42E5 /* line_img_gray@2x.png */,
+				3477596E1C5B646100EF42E5 /* navibar_image.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -263,6 +283,11 @@
 		34E1C5891C5A05E600E4A270 /* Recommend */ = {
 			isa = PBXGroup;
 			children = (
+				34DA83331C5B89F200CF3A9D /* RecommendCollectionViewController.h */,
+				34DA83341C5B89F200CF3A9D /* RecommendCollectionViewController.m */,
+				34DA836A1C5BB01800CF3A9D /* RollPlayCollectionViewCell.h */,
+				34DA836B1C5BB01800CF3A9D /* RollPlayCollectionViewCell.m */,
+				34DA836C1C5BB01800CF3A9D /* RollPlayCollectionViewCell.xib */,
 			);
 			path = Recommend;
 			sourceTree = "<group>";
@@ -403,9 +428,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3477596F1C5B646100EF42E5 /* navibar_image.png in Resources */,
 				34E1C5581C5A03A200E4A270 /* LaunchScreen.storyboard in Resources */,
 				34E1C5551C5A03A200E4A270 /* Assets.xcassets in Resources */,
 				34E1C5501C5A03A200E4A270 /* Main.storyboard in Resources */,
+				3477596B1C5B5CEB00EF42E5 /* line_img_gray@2x.png in Resources */,
+				34DA836E1C5BB01800CF3A9D /* RollPlayCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,10 +458,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34DA83361C5B89F200CF3A9D /* RecommendCollectionViewController.m in Sources */,
 				34E1C54D1C5A03A200E4A270 /* RootViewController.m in Sources */,
 				34E1C54A1C5A03A200E4A270 /* AppDelegate.m in Sources */,
 				34E1C5531C5A03A200E4A270 /* DanMuPlayer.xcdatamodeld in Sources */,
 				34E1C5471C5A03A200E4A270 /* main.m in Sources */,
+				34DA836D1C5BB01800CF3A9D /* RollPlayCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

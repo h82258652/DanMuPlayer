@@ -1,0 +1,517 @@
+// 番剧的内容
+
+{
+    "code": 200,
+    "data": [
+             {
+             "belong": 11,
+             "channelId": 155,
+             "contentCount": 1,
+             "contents": [
+                          {
+                          "actionId": 8,
+                          "hide": 0,
+                          "id": 583,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201512/22174318rxxpkdts.jpg",
+                          "regionId": 123,
+                          "releasedAt": 1442390940000,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "新番时间表（左）",
+                          "url": ""
+                          }
+                          ],
+             "hide": 0,
+             "id": 123,
+             "image": "",
+             "menuCount": 1,
+             "menus": [
+                       {
+                       "actionId": 6,
+                       "channelId": 155,
+                       "hide": 0,
+                       "id": 22,
+                       "image": "",
+                       "name": "更多精彩内容",
+                       "regionId": 123,
+                       "sort": 0,
+                       "url": ""
+                       }
+                       ],
+             "name": "双Banner",
+             "platformId": 1,
+             "showLine": 0,
+             "showMore": 0,
+             "showName": 0,
+             "sort": 200,
+             "type": {
+             "id": 6,
+             "name": "横幅",
+             "value": "banners"
+             },
+             "url": ""
+             },
+             {
+             "belong": 11,
+             "channelId": 155,
+             "contentCount": 4,
+             "contents": [
+                          {
+                          "actionId": 6,
+                          "hide": 0,
+                          "id": 575,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/121045160ht7rj6f.png",
+                          "regionId": 121,
+                          "releasedAt": 1441943217000,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "新番连载",
+                          "url": "156"
+                          },
+                          {
+                          "actionId": 6,
+                          "hide": 0,
+                          "id": 577,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/12104526x9h9qljy.png",
+                          "regionId": 121,
+                          "releasedAt": 1441943208000,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "旧番补档",
+                          "url": "109"
+                          },
+                          {
+                          "actionId": 6,
+                          "hide": 0,
+                          "id": 579,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/12104538mv7hlcvs.png",
+                          "regionId": 121,
+                          "releasedAt": 1441943196000,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "国产动画",
+                          "url": "120"
+                          },
+                          {
+                          "actionId": 6,
+                          "hide": 0,
+                          "id": 581,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/12104548dg0fgvh1.png",
+                          "regionId": 121,
+                          "releasedAt": 1441943189000,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "动画资讯",
+                          "url": "159"
+                          }
+                          ],
+             "hide": 0,
+             "id": 121,
+             "image": "",
+             "menuCount": 1,
+             "menus": [
+                       {
+                       "actionId": 6,
+                       "channelId": 155,
+                       "hide": 0,
+                       "id": 30,
+                       "image": "",
+                       "name": "更多精彩内容",
+                       "regionId": 121,
+                       "sort": 0,
+                       "url": ""
+                       }
+                       ],
+             "name": "【勿动】子分区频道入口",
+             "platformId": 1,
+             "showLine": 0,
+             "showMore": 0,
+             "showName": 0,
+             "sort": 190,
+             "type": {
+             "id": 7,
+             "name": "频道",
+             "value": "channels"
+             },
+             "url": ""
+             },
+             {
+             "belong": 11,
+             "channelId": 155,
+             "contentCount": 6,
+             "contents": [
+                          {
+                          "actionId": 2,
+                          "channelId": 155,
+                          "hide": 0,
+                          "id": 12698,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201510/101234075vrg4s4w.jpg",
+                          "intro": "国际刑警的钱形幸一警部收到了鲁邦三世从圣马力诺共和国发来的婚礼邀请函，不过结婚对象不是峰不二子，而是一位叫瑞贝卡·罗塞里尼的圣马力诺女财阀，身兼时尚模特、女演员等多个职务，她还以“八卦女王”的身份与许多名人有过艳闻。身世背景和不二子一样是个谜.......",
+                          "latestBangumiVideo": {
+                          "bangumiId": 1470427,
+                          "sort": 170,
+                          "title": "第17话",
+                          "updateTime": 1454005192000,
+                          "videoId": 3135956
+                          },
+                          "regionId": 125,
+                          "releasedAt": 1454005255000,
+                          "status": 1,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "【1月】鲁邦三世S4",
+                          "url": "1470427",
+                          "visit": {
+                          "comments": 90,
+                          "goldBanana": 0,
+                          "goldBananaVoters": 0,
+                          "score": 0,
+                          "stows": 4290,
+                          "ups": 0,
+                          "views": 266666
+                          }
+                          },
+                          {
+                          "actionId": 2,
+                          "channelId": 155,
+                          "hide": 0,
+                          "id": 12696,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/0319414037ay0c4z.jpg",
+                          "intro": "本片故事描述穗村千夏在国中时代虽然是排球队，但上了”清水南高中“后决定参加管弦乐社，好让自己更淑女一点。上条春太是他的青梅竹马，也在管弦乐社，却暗恋著社团的男老师草壁信二郎……结果，千夏也深深喜欢上草壁老师，并且发现春太是她的情敌，于是变成尴尬的三角关系。因为这一对青梅竹马+情敌都迫切希望能和老师一同迈进管弦乐的圣殿“普门馆”表演，偏偏遇到“社团人手严重不足”大问题，所以他们必须先把校园中的各路音乐奇葩一一挖角过来！只不过，想要“捕获”这群天才其实有难度：春夏两人必须一边提升好感度、一边化解每人的心结才行…
+                          ",
+                          "latestBangumiVideo": {
+                          "bangumiId": 1470416,
+                          "sort": 40,
+                          "title": "第4话",
+                          "updateTime": 1453941650000,
+                          "videoId": 3132464
+                          },
+                          "regionId": 125,
+                          "releasedAt": 1453941793000,
+                          "status": 1,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "【1月】春与夏推理事件簿",
+                          "url": "1470416",
+                          "visit": {
+                          "comments": 306,
+                          "goldBanana": 0,
+                          "goldBananaVoters": 0,
+                          "score": 0,
+                          "stows": 8058,
+                          "ups": 0,
+                          "views": 403699
+                          }
+                          },
+                          {
+                          "actionId": 2,
+                          "channelId": 155,
+                          "hide": 0,
+                          "id": 12249,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/03193036t3kto1wq.jpg",
+                          "intro": "本作以虚构的极限运动”疾走（Stride/ストライド）“为主题，以六人一组的队伍，其中一位作为指挥，其馀五人担任跑者，是以都市街道为比赛舞台的街头田径接力赛。起初因为“方南学园疾走社”比赛影片而对此项运动非常著迷的少女“樱井奈奈”，高中进入方南学园高中就读後，为了重振即将废社的疾走社，与疾走社的少年们相遇，跨越障碍以高中疾走竞赛的顶点——东日本大会“EndofSummer”为目标迈进。",
+                          "latestBangumiVideo": {
+                          "bangumiId": 1470413,
+                          "sort": 40,
+                          "title": "第4话",
+                          "updateTime": 1453878603000,
+                          "videoId": 3128601
+                          },
+                          "regionId": 125,
+                          "releasedAt": 1453882224000,
+                          "status": 1,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "【1月】疾走王子",
+                          "url": "1470413",
+                          "visit": {
+                          "comments": 365,
+                          "goldBanana": 0,
+                          "goldBananaVoters": 0,
+                          "score": 0,
+                          "stows": 10617,
+                          "ups": 0,
+                          "views": 537917
+                          }
+                          },
+                          {
+                          "actionId": 2,
+                          "channelId": 155,
+                          "hide": 0,
+                          "id": 5197,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201510/05161417e7dsy8bk.jpg",
+                          "intro": "2015年4月，ANIMAX开设了《我们这一家》新作动画的官方网站，并公布放送时间为2015年10月。",
+                          "latestBangumiVideo": {
+                          "bangumiId": 1470377,
+                          "sort": 160,
+                          "title": "第16话",
+                          "updateTime": 1453804372000,
+                          "videoId": 3130400
+                          },
+                          "regionId": 125,
+                          "releasedAt": 1453882161000,
+                          "status": 1,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "【10月】新 我们这一家",
+                          "url": "1470377",
+                          "visit": {
+                          "comments": 99,
+                          "goldBanana": 0,
+                          "goldBananaVoters": 0,
+                          "score": 0,
+                          "stows": 4581,
+                          "ups": 0,
+                          "views": 248641
+                          }
+                          },
+                          {
+                          "actionId": 2,
+                          "channelId": 155,
+                          "hide": 0,
+                          "id": 3817,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201510/05155829w7haxw35.jpg",
+                          "intro": "该动画是由日本StudioPierrot公司为纪念原漫画作者赤冢不二夫80周年诞辰所制作的电视动画的第3作，将讲述阿松等人成长为大人后的故事。",
+                          "latestBangumiVideo": {
+                          "bangumiId": 1470375,
+                          "sort": 160,
+                          "title": "第16话",
+                          "updateTime": 1453747206000,
+                          "videoId": 3125188
+                          },
+                          "regionId": 125,
+                          "releasedAt": 1453747817000,
+                          "status": 1,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "【10月】阿松",
+                          "url": "1470375",
+                          "visit": {
+                          "comments": 1088,
+                          "goldBanana": 0,
+                          "goldBananaVoters": 0,
+                          "score": 0,
+                          "stows": 15351,
+                          "ups": 0,
+                          "views": 3566156
+                          }
+                          },
+                          {
+                          "actionId": 2,
+                          "channelId": 155,
+                          "hide": 0,
+                          "id": 12783,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/03191849bwql7ohu.jpg",
+                          "intro": "一个刚搬入新家的年轻男子，在家中意外地发现天花板上贴着一道纸符。在他感到诧异时发现对面的房子有一个女人一直看着他，他感到坐立不安同时加深了对纸符的恐惧。有一天他回家的时候又发现了一道纸符，准备撕掉时被家中闯进来的女人吓了一跳，便报警让警察带走了那个女人。然而他回到家中清扫的时候竟然发现桌子下面全是纸符，当他歇斯底里地撕掉纸符时，却出现了……",
+                          "latestBangumiVideo": {
+                          "bangumiId": 1470412,
+                          "sort": 30,
+                          "title": "第3话",
+                          "updateTime": 1453682941000,
+                          "videoId": 3121968
+                          },
+                          "regionId": 125,
+                          "releasedAt": 1453682994000,
+                          "status": 1,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "【1月】暗芝居 第三季",
+                          "url": "1470412",
+                          "visit": {
+                          "comments": 190,
+                          "goldBanana": 0,
+                          "goldBananaVoters": 0,
+                          "score": 0,
+                          "stows": 7648,
+                          "ups": 0,
+                          "views": 372013
+                          }
+                          }
+                          ],
+             "hide": 0,
+             "id": 125,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201509/15225518kvt80zt8.png",
+             "menuCount": 0,
+             "name": "新番连载",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 0,
+             "showName": 0,
+             "sort": 180,
+             "type": {
+             "id": 3,
+             "name": "番剧",
+             "value": "bangumis"
+             },
+             "url": ""
+             },
+             {
+             "belong": 11,
+             "channelId": 155,
+             "contentCount": 4,
+             "contents": [
+                          {
+                          "actionId": 1,
+                          "channelId": 109,
+                          "hide": 0,
+                          "id": 13687,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/18175439jjwjfrb1.jpg",
+                          "intro": "补档，不是很懂你们ACER，但是好喜欢萌え娘啊",
+                          "regionId": 133,
+                          "releasedAt": 1454047064000,
+                          "releaseDate": 1453054639000,
+                          "status": 2,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "妄想改造人改藏OVA 1-6",
+                          "url": "2468748",
+                          "visit": {
+                          "comments": 37,
+                          "danmakuSize": 277,
+                          "goldBanana": 63,
+                          "score": 0,
+                          "stows": 476,
+                          "ups": 0,
+                          "views": 21465
+                          }
+                          },
+                          {
+                          "actionId": 1,
+                          "channelId": 109,
+                          "hide": 0,
+                          "id": 6689,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201511/161449291zcbwlxb.jpg",
+                          "intro": "于2002年播放，自压。片源信息在视频右上角。。。
+                          <br/>PS1：这个故事很至郁。。。
+                          <br/>PS：故事的主角是一个北海道的学生修次。他的同班同学千濑在故事开始的时候就已向修次表白了。但因为千濑的害羞性格和修次的不善辞令，所以他们就以写交换日记来开始他们的情侣关系。。。",
+                          "regionId": 133,
+                          "releasedAt": 1453886165000,
+                          "releaseDate": 1447558500000,
+                          "status": 2,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "【高清合集】最终兵器彼女",
+                          "url": "2328420",
+                          "visit": {
+                          "comments": 20,
+                          "danmakuSize": 13,
+                          "goldBanana": 2,
+                          "score": 0,
+                          "stows": 373,
+                          "ups": 0,
+                          "views": 2605
+                          }
+                          },
+                          {
+                          "actionId": 1,
+                          "channelId": 109,
+                          "hide": 0,
+                          "id": 15417,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/271712097r6zaro4.jpg",
+                          "intro": "哈姆太郎是一只具有永无止境好奇心的黄金鼠，它是一位小学五年级的小女生春名露的宠物。有一天哈姆太郎跟着小露她们搬到新家，基于好奇，哈姆太郎展开了对新环境的冒险，认识了“大老板”还有“哆哆”，经由大老板的介绍，哈姆太郎认识了更多的哈姆伙伴，并在大老板的家中成立了哈姆好友的秘密地下基地。哈姆伙伴都是一群既聪明又独一无二的黄金鼠，哈姆太郎每天都会从家中偷偷溜出，跑去了秘密地下基地，和哈姆伙伴们一同玩耍",
+                          "regionId": 133,
+                          "releasedAt": 1453886140000,
+                          "releaseDate": 1453276140000,
+                          "status": 2,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "【经典旧番】哈姆太郎1+2季",
+                          "url": "2476216",
+                          "visit": {
+                          "comments": 6,
+                          "danmakuSize": 5,
+                          "goldBanana": 5,
+                          "score": 0,
+                          "stows": 86,
+                          "ups": 0,
+                          "views": 3490
+                          }
+                          },
+                          {
+                          "actionId": 1,
+                          "channelId": 109,
+                          "hide": 0,
+                          "id": 15414,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/27170908dd99k0rt.jpg",
+                          "intro": "位於亚列克拉斯特大陆南方的诅咒之岛「罗德斯」。弗雷姆国的见习骑士，也是炎之部族直系後裔的史派克，在晚宴之夜发现暗黑妖精的踪影。急於抢功求表现的史派克不慎中计，使宝物“魂魄水晶球”被盗走。受命讨伐盗贼的史派克组成追踪小队并立刻出发。但在途中耳耳闻有神秘的圣少女也与追踪队一样地在追寻盗贼的下落…。",
+                          "regionId": 133,
+                          "releasedAt": 1453885965000,
+                          "releaseDate": 1453469283000,
+                          "status": 2,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "罗德斯岛战记-英雄骑士传 1—27集【日语中字】",
+                          "url": "2482352",
+                          "visit": {
+                          "comments": 1,
+                          "danmakuSize": 1,
+                          "goldBanana": 1,
+                          "score": 0,
+                          "stows": 44,
+                          "ups": 0,
+                          "views": 3305
+                          }
+                          }
+                          ],
+             "hide": 0,
+             "id": 133,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201509/15225526lsisvd0i.png",
+             "menuCount": 0,
+             "name": "旧番补档",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 0,
+             "showName": 0,
+             "sort": 170,
+             "type": {
+             "id": 1,
+             "name": "视频",
+             "value": "videos"
+             },
+             "url": ""
+             },
+             {
+             "belong": 11,
+             "channelId": 155,
+             "contentCount": 4,
+             "hide": 0,
+             "id": 135,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201509/15225205cykpijw2.png",
+             "menuCount": 0,
+             "name": "国产动画",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 0,
+             "showName": 0,
+             "sort": 160,
+             "type": {
+             "id": 1,
+             "name": "视频",
+             "value": "videos"
+             },
+             "url": ""
+             },
+             {
+             "belong": 11,
+             "channelId": 155,
+             "contentCount": 4,
+             "hide": 0,
+             "id": 137,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201509/15225610vv1xg2r4.png",
+             "menuCount": 0,
+             "name": "动画资讯",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 0,
+             "showName": 0,
+             "sort": 150,
+             "type": {
+             "id": 1,
+             "name": "视频",
+             "value": "videos"
+             },
+             "url": ""
+             }
+             ],
+    "message": "OK"
+}

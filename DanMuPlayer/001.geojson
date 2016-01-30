@@ -1,0 +1,758 @@
+// 推荐请求到的内容
+{
+    "code": 200,
+    "data": [
+             {
+             "belong": 0,
+             "channelId": 0,
+             "contentCount": 5,
+             "contents": [
+                          {
+                          "actionId": 1,
+                          "hide": 0,
+                          "id": 15817,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/29115705gz5lo42q.jpg",
+                          "regionId": 1,
+                          "releasedAt": 1454039849000,
+                          "subTitle": "",
+                          "title": "愤怒的小鸟  中文爆笑预告",
+                          "url": "2497536"
+                          },
+                          {
+                          "actionId": 1,
+                          "hide": 0,
+                          "id": 15795,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/29113638uthj1sn0.jpg",
+                          "regionId": 1,
+                          "releasedAt": 1454038602000,
+                          "subTitle": "",
+                          "title": "那年那兔那些事儿 第二季 6.5",
+                          "url": "2495746"
+                          },
+                          {
+                          "actionId": 1,
+                          "hide": 0,
+                          "id": 15763,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/2910564966qvgblj.jpg",
+                          "regionId": 1,
+                          "releasedAt": 1454036243000,
+                          "subTitle": "",
+                          "title": "NICONICO ROTATION",
+                          "url": "2488968"
+                          },
+                          {
+                          "actionId": 2,
+                          "hide": 0,
+                          "id": 3873,
+                          "image": "http://ww3.sinaimg.cn/mw690/8ff290f1jw1f0fbe7xx1cj20k00a0771.jpg",
+                          "regionId": 1,
+                          "releasedAt": 1453975888000,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "怪物弹珠 番外",
+                          "url": "1470402"
+                          },
+                          {
+                          "actionId": 2,
+                          "hide": 0,
+                          "id": 3947,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/27184034qdh8p3ou.jpg",
+                          "regionId": 1,
+                          "releasedAt": 1453971728000,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "银魂",
+                          "url": "1470353"
+                          }
+                          ],
+             "goText": "",
+             "hide": 0,
+             "id": 1,
+             "image": "",
+             "menuCount": 0,
+             "name": "轮播图",
+             "platformId": 1,
+             "showLine": 0,
+             "showMore": 0,
+             "showName": 0,
+             "sort": 200,
+             "type": {
+             "id": 5,
+             "name": "轮播",
+             "value": "carousels"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 0,
+             "contentCount": 4,
+             "contents": [
+                          {
+                          "actionId": 1,
+                          "channelId": 107,
+                          "hide": 0,
+                          "id": 15730,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/29095034lkv02hd6.jpg",
+                          "intro": "[EVA]第三年的见异思迁",
+                          "regionId": 3,
+                          "releaseDate": 1361097752000,
+                          "releasedAt": 1454032239000,
+                          "status": 2,
+                          "subTitle": "",
+                          "title": "【对你从未见异思迁】贞本义行生日快乐！",
+                          "url": "49890",
+                          "visit": {
+                          "comments": 10661,
+                          "danmakuSize": 6408,
+                          "goldBanana": 2888,
+                          "score": 30459686,
+                          "stows": 7554,
+                          "ups": 853,
+                          "views": 38189
+                          }
+                          },
+                          {
+                          "actionId": 1,
+                          "channelId": 85,
+                          "hide": 0,
+                          "id": 15729,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/290947267geu4qtg.jpg",
+                          "intro": "老狮子狗蕉辛巴做人~~
+                          <br/>新浪微博：@起小点     粉丝福利群：238891226 12群 229592783 11群",
+                          "regionId": 3,
+                          "releaseDate": 1453991985000,
+                          "releasedAt": 1454032053000,
+                          "status": 2,
+                          "subTitle": "",
+                          "title": "竟敢在我带妹的时候玩狮子？！",
+                          "url": "2497101",
+                          "visit": {
+                          "comments": 188,
+                          "danmakuSize": 915,
+                          "goldBanana": 124,
+                          "score": 0,
+                          "stows": 138,
+                          "ups": 0,
+                          "views": 47492
+                          }
+                          },
+                          {
+                          "actionId": 1,
+                          "channelId": 86,
+                          "hide": 0,
+                          "id": 15728,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/2900524886g9t717.jpg",
+                          "intro": "北半球寒潮来袭，数十年未飘雪的南方某些城市，迎来了2016年的第一场雪，然而下雪并未成为焦点，玩雪的南方人却成了雪景之中最亮的一处。猴年春晚将至，吉祥物“雷猴”康康横空出世，腮里藏雷时代席卷而来！朋友圈出现晒娃新手法，娃写情书，家长晒，难道你们还嫌虐狗虐的不够吗！大事件的老相好汪峰携方言再登大事件，我们才不是喜新厌旧的那种人！驾照难拿怎么办？王教练秘密压题，助大家巧过科目一！",
+                          "regionId": 3,
+                          "releaseDate": 1453992886000,
+                          "releasedAt": 1454031527000,
+                          "status": 2,
+                          "subTitle": "",
+                          "title": "老司机私塾开办，王教练密传驾考宝典！",
+                          "url": "2497126",
+                          "visit": {
+                          "comments": 279,
+                          "danmakuSize": 2458,
+                          "goldBanana": 582,
+                          "score": 0,
+                          "stows": 126,
+                          "ups": 0,
+                          "views": 61600
+                          }
+                          },
+                          {
+                          "actionId": 1,
+                          "channelId": 86,
+                          "hide": 0,
+                          "id": 15694,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/28183417tdavtucf.jpg",
+                          "intro": "UP主以节操担保这只是一首平凡的魔性歌曲！好评请五蕉！",
+                          "regionId": 3,
+                          "releaseDate": 1453914475000,
+                          "releasedAt": 1454031403000,
+                          "status": 2,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "你再给我笑一个试试！",
+                          "url": "2494794",
+                          "visit": {
+                          "comments": 139,
+                          "danmakuSize": 616,
+                          "goldBanana": 57,
+                          "score": 0,
+                          "stows": 799,
+                          "ups": 0,
+                          "views": 27323
+                          }
+                          }
+                          ],
+             "goText": "",
+             "hide": 0,
+             "id": 3,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/13164930csc8q70s.png",
+             "menuCount": 0,
+             "name": "热门推荐",
+             "platformId": 1,
+             "showLine": 0,
+             "showMore": 0,
+             "showName": 0,
+             "sort": 150,
+             "type": {
+             "id": 1,
+             "name": "视频",
+             "value": "videos"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 0,
+             "contentCount": 1,
+             "contents": [
+                          {
+                          "actionId": 7,
+                          "hide": 0,
+                          "id": 13817,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/19184445s1hgzk6a.gif",
+                          "regionId": 23,
+                          "releasedAt": 1453195263000,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "全站排行榜",
+                          "url": ""
+                          }
+                          ],
+             "goText": "",
+             "hide": 2,
+             "id": 23,
+             "image": "",
+             "menuCount": 0,
+             "name": "排行榜",
+             "platformId": 1,
+             "showLine": 0,
+             "showMore": 0,
+             "showName": 0,
+             "sort": 120,
+             "type": {
+             "id": 6,
+             "name": "横幅",
+             "value": "banners"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 155,
+             "contentCount": 6,
+             "contents": [
+                          {
+                          "actionId": 2,
+                          "channelId": 155,
+                          "hide": 0,
+                          "id": 12530,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/08103421ocvbnwy6.jpg",
+                          "intro": "国际刑警的钱形幸一警部收到了鲁邦三世从圣马力诺共和国发来的婚礼邀请函，不过结婚对象不是峰不二子，而是一位叫瑞贝卡·罗塞里尼的圣马力诺女财阀，身兼时尚模特、女演员等多个职务，她还以“八卦女王”的身份与许多名人有过艳闻。身世背景和不二子一样是个谜.......",
+                          "latestBangumiVideo": {
+                          "bangumiId": 1470427,
+                          "sort": 170,
+                          "title": "第17话",
+                          "updateTime": 1454005192000,
+                          "videoId": 3135956
+                          },
+                          "regionId": 7,
+                          "releasedAt": 1454032278000,
+                          "status": 1,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "一月·鲁邦三世S4",
+                          "url": "1470427",
+                          "visit": {
+                          "comments": 90,
+                          "goldBanana": 0,
+                          "goldBananaVoters": 0,
+                          "score": 0,
+                          "stows": 4287,
+                          "ups": 0,
+                          "views": 266111
+                          }
+                          },
+                          {
+                          "actionId": 2,
+                          "channelId": 155,
+                          "hide": 0,
+                          "id": 12529,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/08103349lkb8qneg.jpg",
+                          "intro": "在剧中的世界里，因为发生 第三次流砂现象 导致东京的一部分沉入泥泞下。为了快速重建复苏，企业发明一种高出力强化外骨骼 Willware 方便施工；但是相反地，利用Willware的犯罪行为也日益增加……为了有效遏止Willware犯罪事件，有一群充满正义感又热血的少年少女警察，尽管被死板的法律条文与长官人情所束缚，却仍然愿意以无比的智慧、勇气、嘴炮来正面迎战向恶势力。他们就是：由日本东京警察厅警备局在吉祥寺分室设立的第五特别公安课第三机动强袭室第八班——简称 第八（ダイハチ） ！",
+                          "latestBangumiVideo": {
+                          "bangumiId": 1470417,
+                          "sort": 40,
+                          "title": "第4话",
+                          "updateTime": 1453992901000,
+                          "videoId": 3135453
+                          },
+                          "regionId": 7,
+                          "releasedAt": 1454032265000,
+                          "status": 1,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "一月·机动强袭室第八组",
+                          "url": "1470417",
+                          "visit": {
+                          "comments": 137,
+                          "goldBanana": 0,
+                          "goldBananaVoters": 0,
+                          "score": 0,
+                          "stows": 4913,
+                          "ups": 0,
+                          "views": 391263
+                          }
+                          },
+                          {
+                          "actionId": 2,
+                          "channelId": 155,
+                          "hide": 0,
+                          "id": 4588,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201512/22165034nzzyolfr.jpg",
+                          "intro": "主人公·焰连回到曾经住过的街道·神之原，感受到了违和感。他确实应该在这条街道住过，却对那时的事情没有记忆。此时，连的智能手机突然被安装了从没见过的游戏，其名为“怪物弹珠”。他带着从手机中飞向现实世界的怪物，在街道中展开了战斗！经过战斗，连注意到了在自己体内沉睡的谜之记忆的正体，以及，怪物弹珠究竟是何物。与握有钥匙的水泽葵、影月明、若叶皆实一起，如今的连正迈出通往谜团的一步，对于前方沉睡着无法想象的真相一事，仍然一无所知——。",
+                          "latestBangumiVideo": {
+                          "bangumiId": 1470402,
+                          "sort": 142,
+                          "title": "番外02",
+                          "updateTime": 1453974806000,
+                          "videoId": 3131131
+                          },
+                          "regionId": 7,
+                          "releasedAt": 1453975925000,
+                          "status": 1,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "怪物弹珠",
+                          "url": "1470402",
+                          "visit": {
+                          "comments": 251,
+                          "goldBanana": 0,
+                          "goldBananaVoters": 0,
+                          "score": 0,
+                          "stows": 7921,
+                          "ups": 0,
+                          "views": 1116230
+                          }
+                          },
+                          {
+                          "actionId": 2,
+                          "channelId": 155,
+                          "hide": 0,
+                          "id": 35,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201512/23181957doi0499u.jpg",
+                          "intro": "银魂新系列。",
+                          "latestBangumiVideo": {
+                          "bangumiId": 1470353,
+                          "sort": 3070,
+                          "title": "第307话",
+                          "updateTime": 1453948399000,
+                          "videoId": 3131063
+                          },
+                          "regionId": 7,
+                          "releasedAt": 1453947922000,
+                          "status": 1,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "银魂 新系列",
+                          "url": "1470353",
+                          "visit": {
+                          "comments": 283,
+                          "goldBanana": 0,
+                          "goldBananaVoters": 0,
+                          "score": 0,
+                          "stows": 27910,
+                          "ups": 0,
+                          "views": 9543
+                          }
+                          },
+                          {
+                          "actionId": 2,
+                          "channelId": 155,
+                          "hide": 0,
+                          "id": 12403,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/07101946825hsnlq.jpg",
+                          "intro": "本片故事描述穗村千夏在国中时代虽然是排球队，但上了”清水南高中“后决定参加管弦乐社，好让自己更淑女一点。上条春太是他的青梅竹马，也在管弦乐社，却暗恋著社团的男老师草壁信二郎……结果，千夏也深深喜欢上草壁老师，并且发现春太是她的情敌，于是变成尴尬的三角关系。因为这一对青梅竹马+情敌都迫切希望能和老师一同迈进管弦乐的圣殿“普门馆”表演，偏偏遇到“社团人手严重不足”大问题，所以他们必须先把校园中的各路音乐奇葩一一挖角过来！只不过，想要“捕获”这群天才其实有难度：春夏两人必须一边提升好感度、一边化解每人的心结才行…
+                          ",
+                          "latestBangumiVideo": {
+                          "bangumiId": 1470416,
+                          "sort": 40,
+                          "title": "第4话",
+                          "updateTime": 1453941650000,
+                          "videoId": 3132464
+                          },
+                          "regionId": 7,
+                          "releasedAt": 1453947914000,
+                          "status": 1,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "一月·春&夏推理事件簿",
+                          "url": "1470416",
+                          "visit": {
+                          "comments": 306,
+                          "goldBanana": 0,
+                          "goldBananaVoters": 0,
+                          "score": 0,
+                          "stows": 8052,
+                          "ups": 0,
+                          "views": 403243
+                          }
+                          },
+                          {
+                          "actionId": 2,
+                          "channelId": 155,
+                          "hide": 0,
+                          "id": 12258,
+                          "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/061015204rsjo91m.jpg",
+                          "intro": "本作以虚构的极限运动”疾走（Stride/ストライド）“为主题，以六人一组的队伍，其中一位作为指挥，其馀五人担任跑者，是以都市街道为比赛舞台的街头田径接力赛。起初因为“方南学园疾走社”比赛影片而对此项运动非常著迷的少女“樱井奈奈”，高中进入方南学园高中就读後，为了重振即将废社的疾走社，与疾走社的少年们相遇，跨越障碍以高中疾走竞赛的顶点——东日本大会“EndofSummer”为目标迈进。",
+                          "latestBangumiVideo": {
+                          "bangumiId": 1470413,
+                          "sort": 40,
+                          "title": "第4话",
+                          "updateTime": 1453878603000,
+                          "videoId": 3128601
+                          },
+                          "regionId": 7,
+                          "releasedAt": 1453887043000,
+                          "status": 1,
+                          "subTitle": "",
+                          "subUrl": "",
+                          "title": "一月·疾走王子",
+                          "url": "1470413",
+                          "visit": {
+                          "comments": 365,
+                          "goldBanana": 0,
+                          "goldBananaVoters": 0,
+                          "score": 0,
+                          "stows": 10610,
+                          "ups": 0,
+                          "views": 537429
+                          }
+                          }
+                          ],
+             "goText": "",
+             "hide": 2,
+             "id": 7,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/13165002q505upph.png",
+             "menuCount": 1,
+             "menus": [
+                       {
+                       "actionId": 6,
+                       "channelId": 155,
+                       "hide": 0,
+                       "id": 4,
+                       "image": "",
+                       "name": "更多番剧内容",
+                       "regionId": 7,
+                       "sort": 0,
+                       "url": ""
+                       }
+                       ],
+             "name": "番剧",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 1,
+             "showName": 1,
+             "sort": 99,
+             "type": {
+             "id": 3,
+             "name": "番剧",
+             "value": "bangumis"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 1,
+             "contentCount": 4,
+             "goText": "",
+             "hide": 0,
+             "id": 9,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/13165019vb13fuje.png",
+             "menuCount": 1,
+             "name": "动画",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 1,
+             "showName": 1,
+             "sort": 98,
+             "type": {
+             "id": 1,
+             "name": "视频",
+             "value": "videos"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 0,
+             "contentCount": 1,
+             "goText": "",
+             "hide": 0,
+             "id": 188,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201601/18100819jyhrelmf.jpg",
+             "menuCount": 0,
+             "name": "二次元日历",
+             "platformId": 1,
+             "showLine": 0,
+             "showMore": 0,
+             "showName": 0,
+             "sort": 97,
+             "subTitle": "1",
+             "type": {
+             "id": 6,
+             "name": "横幅",
+             "value": "banners"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 60,
+             "contentCount": 4,
+             "goText": "",
+             "hide": 0,
+             "id": 11,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201511/25161000hx5bhsoy.png",
+             "menuCount": 1,
+             "name": "娱乐",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 1,
+             "showName": 1,
+             "sort": 97,
+             "type": {
+             "id": 1,
+             "name": "视频",
+             "value": "videos"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 59,
+             "contentCount": 4,
+             "goText": "",
+             "hide": 0,
+             "id": 13,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201511/25161015l65ars27.png",
+             "menuCount": 1,
+             "name": "游戏",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 1,
+             "showName": 1,
+             "sort": 96,
+             "type": {
+             "id": 1,
+             "name": "视频",
+             "value": "videos"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 0,
+             "contentCount": 1,
+             "goText": "",
+             "hide": 0,
+             "id": 143,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201510/291450488p81klm9.jpg",
+             "menuCount": 0,
+             "name": "banner",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 0,
+             "showName": 0,
+             "sort": 95,
+             "type": {
+             "id": 6,
+             "name": "横幅",
+             "value": "banners"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 68,
+             "contentCount": 4,
+             "goText": "",
+             "hide": 2,
+             "id": 141,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201511/25161033jegjny1e.png",
+             "menuCount": 1,
+             "name": "影视",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 1,
+             "showName": 1,
+             "sort": 95,
+             "type": {
+             "id": 1,
+             "name": "视频",
+             "value": "videos"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 58,
+             "contentCount": 4,
+             "goText": "",
+             "hide": 0,
+             "id": 15,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201511/25161048nuxub7vu.png",
+             "menuCount": 1,
+             "name": "音乐",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 1,
+             "showName": 1,
+             "sort": 95,
+             "type": {
+             "id": 1,
+             "name": "视频",
+             "value": "videos"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 123,
+             "contentCount": 4,
+             "goText": "",
+             "hide": 0,
+             "id": 17,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201511/25161102drxhqxpb.png",
+             "menuCount": 1,
+             "name": "舞蹈",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 1,
+             "showName": 1,
+             "sort": 70,
+             "type": {
+             "id": 1,
+             "name": "视频",
+             "value": "videos"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 70,
+             "contentCount": 4,
+             "goText": "",
+             "hide": 0,
+             "id": 19,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201511/25161118mrro1lbz.png",
+             "menuCount": 1,
+             "name": "科技",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 1,
+             "showName": 1,
+             "sort": 60,
+             "type": {
+             "id": 1,
+             "name": "视频",
+             "value": "videos"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 69,
+             "contentCount": 4,
+             "goText": "",
+             "hide": 0,
+             "id": 113,
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201511/25161145oq8plc8r.png",
+             "menuCount": 1,
+             "name": "体育",
+             "platformId": 1,
+             "showLine": 1,
+             "showMore": 1,
+             "showName": 1,
+             "sort": 55,
+             "type": {
+             "id": 1,
+             "name": "视频",
+             "value": "videos"
+             },
+             "url": ""
+             },
+             {
+             "belong": 0,
+             "channelId": 124,
+             "contentCount": 4,
+             "goText": "", 
+             "hide": 2, 
+             "id": 115, 
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201511/251611574cpx9jv6.png", 
+             "menuCount": 1, 
+             "name": "彼女", 
+             "platformId": 1, 
+             "showLine": 1, 
+             "showMore": 1, 
+             "showName": 1, 
+             "sort": 54, 
+             "type": {
+             "id": 1, 
+             "name": "视频", 
+             "value": "videos"
+             }, 
+             "url": ""
+             }, 
+             {
+             "belong": 0, 
+             "channelId": 125, 
+             "contentCount": 4, 
+             "goText": "", 
+             "hide": 0, 
+             "id": 139, 
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201511/25161208u4qzwvb9.png", 
+             "menuCount": 1, 
+             "name": "鱼塘", 
+             "platformId": 1, 
+             "showLine": 1, 
+             "showMore": 1, 
+             "showName": 1, 
+             "sort": 53, 
+             "type": {
+             "id": 1, 
+             "name": "视频", 
+             "value": "videos"
+             }, 
+             "url": ""
+             }, 
+             {
+             "belong": 0, 
+             "channelId": 63, 
+             "contentCount": 3, 
+             "goText": "", 
+             "hide": 0, 
+             "id": 21, 
+             "image": "http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201511/2516122144lps9v0.png", 
+             "menuCount": 1, 
+             "name": "文章", 
+             "platformId": 1, 
+             "showLine": 1, 
+             "showMore": 1, 
+             "showName": 1, 
+             "sort": 52, 
+             "type": {
+             "id": 2, 
+             "name": "文章", 
+             "value": "articles"
+             }, 
+             "url": ""
+             }
+             ], 
+    "message": "OK"
+}
+
