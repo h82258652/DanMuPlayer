@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RecommendModel.h"
 
 @interface RollPlayCollectionViewCell : UICollectionViewCell
+
+// 使用model赋值
+- (void)setValueWithModel:(RecommendModel *)model;
+
+//- (void)setValueWithDic:(NSDictionary *)dic;
 
 @end

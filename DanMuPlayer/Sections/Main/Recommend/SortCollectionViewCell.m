@@ -8,11 +8,31 @@
 
 #import "SortCollectionViewCell.h"
 
+@interface SortCollectionViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *LabelOfNumberOfView;
+@property (weak, nonatomic) IBOutlet UILabel *LabelOfUP;
+
+
+@end
+
 @implementation SortCollectionViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+// 赋值
+- (void)setValueWithModel:(RecommendCellModel *)model {
+    
+    [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:model.image]];
+    self.titleLabel.text = model.title;
+    NSInteger views = [model.visit[@"views"] integerValue];
+    self.LabelOfNumberOfView.text = views >= 10000 ? [NSString stringWithFormat:@"%ld万",views / 10000] : [NSString stringWithFormat:@"%ld",views];
+    self.LabelOfUP.text = [NSString stringWithFormat:@"UP主:%@",model.owner_name];
 }
 
 @end

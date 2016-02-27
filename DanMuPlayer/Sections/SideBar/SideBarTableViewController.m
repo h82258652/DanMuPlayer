@@ -14,6 +14,12 @@
 
 @implementation SideBarTableViewController
 
+- (void)loadView {
+    [super loadView];
+//    self.tableView.frame = CGRectMake(0, 0, 300, 200);
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

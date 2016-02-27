@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10089" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="xt3-9A-nhc" customClass="VideoCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="407"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="420" height="407"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p6w-Ja-L6z">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="263"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="p6w-Ja-L6z" secondAttribute="height" multiplier="1.6:1" id="XG7-8f-XI5"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hje-8M-nv2">
+                        <rect key="frame" x="0.0" y="263" width="420" height="144"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="p6w-Ja-L6z" firstAttribute="leading" secondItem="xt3-9A-nhc" secondAttribute="leading" id="0an-fR-XIt"/>
+                <constraint firstItem="p6w-Ja-L6z" firstAttribute="top" secondItem="xt3-9A-nhc" secondAttribute="top" id="AXj-cg-89X"/>
+                <constraint firstItem="hje-8M-nv2" firstAttribute="width" secondItem="xt3-9A-nhc" secondAttribute="width" id="Akl-ar-hDR"/>
+                <constraint firstItem="hje-8M-nv2" firstAttribute="leading" secondItem="xt3-9A-nhc" secondAttribute="leading" id="KPS-QE-plU"/>
+                <constraint firstAttribute="bottom" secondItem="hje-8M-nv2" secondAttribute="bottom" id="aJy-GK-cn5"/>
+                <constraint firstItem="hje-8M-nv2" firstAttribute="top" secondItem="p6w-Ja-L6z" secondAttribute="bottom" id="nbe-KG-d7g"/>
+                <constraint firstItem="p6w-Ja-L6z" firstAttribute="width" secondItem="xt3-9A-nhc" secondAttribute="width" id="uDC-FI-h7F"/>
+            </constraints>
+            <size key="customSize" width="420" height="407"/>
+            <connections>
+                <outlet property="bottomLabel" destination="hje-8M-nv2" id="eSc-Ag-WRt"/>
+                <outlet property="topImageView" destination="p6w-Ja-L6z" id="KoC-iK-afR"/>
+            </connections>
+            <point key="canvasLocation" x="498" y="369.5"/>
+        </collectionViewCell>
     </objects>
 </document>

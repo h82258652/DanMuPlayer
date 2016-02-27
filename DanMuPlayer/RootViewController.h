@@ -11,6 +11,7 @@
 @interface RootViewController : UIViewController
 
 
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
 @end
 

@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10089" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="RecommendCollectionReusableView">
+            <rect key="frame" x="0.0" y="0.0" width="618" height="244"/>
             <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GY8-pr-4y9">
+                    <rect key="frame" x="5" y="5" width="234" height="234"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="GY8-pr-4y9" secondAttribute="height" multiplier="1:1" id="95V-Jh-e8r"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxd-ea-S4h">
+                    <rect key="frame" x="244" y="5" width="374" height="234"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="GY8-pr-4y9" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="5" id="5fh-m9-bkm"/>
+                <constraint firstItem="kxd-ea-S4h" firstAttribute="leading" secondItem="GY8-pr-4y9" secondAttribute="trailing" constant="5" id="Bh4-x5-1QJ"/>
+                <constraint firstItem="kxd-ea-S4h" firstAttribute="bottom" secondItem="GY8-pr-4y9" secondAttribute="bottom" id="BxY-kS-A3l"/>
+                <constraint firstAttribute="trailing" secondItem="kxd-ea-S4h" secondAttribute="trailing" id="NgA-jU-JAa"/>
+                <constraint firstItem="GY8-pr-4y9" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="5" id="gt3-Z4-CRb"/>
+                <constraint firstItem="kxd-ea-S4h" firstAttribute="top" secondItem="GY8-pr-4y9" secondAttribute="top" id="h0L-WE-iQB"/>
+                <constraint firstAttribute="bottom" secondItem="GY8-pr-4y9" secondAttribute="bottom" constant="5" id="vij-iB-M8r"/>
+            </constraints>
+            <connections>
+                <outlet property="imageViewOfSection" destination="GY8-pr-4y9" id="7ml-P2-cVc"/>
+                <outlet property="labelOfSection" destination="kxd-ea-S4h" id="ehb-UF-OdX"/>
+            </connections>
+            <point key="canvasLocation" x="66" y="415"/>
         </collectionReusableView>
     </objects>
 </document>

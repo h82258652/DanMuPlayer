@@ -8,11 +8,27 @@
 
 #import "RecommendCollectionReusableView.h"
 
+@interface RecommendCollectionReusableView ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewOfSection;
+@property (weak, nonatomic) IBOutlet UILabel *labelOfSection;
+
+
+
+@end
+
 @implementation RecommendCollectionReusableView
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    NSLog(@"加载页眉");
+}
+
+- (void)setValueWithModel:(RecommendModel *)model {
+    [self.imageViewOfSection sd_setImageWithURL:[NSURL URLWithString:model.image]];
+    self.labelOfSection.text = model.name;
 }
 
 @end

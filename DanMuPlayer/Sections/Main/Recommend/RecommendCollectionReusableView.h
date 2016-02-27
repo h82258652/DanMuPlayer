@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RecommendModel.h"
 
 @interface RecommendCollectionReusableView : UICollectionReusableView
+
+// 赋值
+- (void)setValueWithModel:(RecommendModel *)model;
 
 @end
