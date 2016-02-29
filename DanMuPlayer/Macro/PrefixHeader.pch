@@ -27,5 +27,10 @@
 // 推荐
 #define kRegionsURLStr @"http://api.aixifan.com/regions"
 
+// 频道
+#define kChannelsURLStr @"http://api.aixifan.com/channels/allChannels"
+
+// 娱乐 番剧等网址
+#define kRegionsWithBelongURLStr @"http://api.aixifan.com/regions?belong=11&channelId=%d"
 
 #endif /* PrefixHeader_pch */

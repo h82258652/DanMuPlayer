@@ -18,15 +18,6 @@
         // 赋值
         [self setValuesForKeysWithDictionary:dic];
         
-        // 如果未请求到item的数据，则立即请求
-        if (self.contents.count != self.contentCount) {
-            // 异步请求数据
-            [self loadOtherData];
-        } else {
-            // 封装子model
-            [self changeContents];
-        }
-        
     }
     return self;
 }
@@ -37,6 +28,22 @@
     } else if ([key isEqualToString:@"type"]) {
         self.type_id = [value[@"id"] integerValue];
     }
+}
+
+- (void)setNameOfMessage:(NSString *)nameOfMessage {
+    if (_nameOfMessage != nameOfMessage) {
+        _nameOfMessage = [nameOfMessage copy];
+    }
+    
+    // 如果未请求到item的数据，则立即请求
+    if (self.contents.count != self.contentCount) {
+        // 异步请求数据
+        [self loadOtherData];
+    } else {
+        // 封装子model
+        [self changeContents];
+    }
+    
 }
 
 // 封装子model
@@ -54,8 +61,11 @@
 - (void)loadOtherData {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%ld",kRegionsURLStr,self.recommend_id];
 //    NSLog(@"%@",urlStr);
-    [DataHelper getDataSourceForCommendWithURLStr:urlStr withBlock:^(NSMutableArray *array) {
-        self.contents = [NSMutableArray  arrayWithArray:array];
+    
+//    NSLog(@"%@",self.nameOfMessage);
+    
+    [DataHelper getDataSourceForCommendWithURLStr:urlStr withName:self.nameOfMessage withBlock:^(NSDictionary *dic) {
+        self.contents = [NSMutableArray  arrayWithArray:dic[@"dataArray"]];
         // 给self.dataSource发送通知消息，让其改变数据并刷新页面
     }];
 }

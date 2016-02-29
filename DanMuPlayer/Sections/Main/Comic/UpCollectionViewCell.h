@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RecommendCellModel.h"
 
 @interface UpCollectionViewCell : UICollectionViewCell
+
+// 赋值
+- (void)setValueWithModel:(RecommendCellModel *)model;
 
 @end

@@ -31,11 +31,11 @@
 - (void)setValueWithModel:(RecommendCellModel *)model {
     self.labelOfFrom.text = [NSString stringWithFormat:@"/来自%@",[kFromDic valueForKey:[NSString stringWithFormat:@"%ld",model.channelId]]];
     NSInteger comments = [model.visit[@"comments"] integerValue];
-    self.LabelOfNumberOfComment.text = comments > 10000 ? [NSString stringWithFormat:@"%ld万",comments / 10000] : [NSString stringWithFormat:@"%ld",comments];
+    self.LabelOfNumberOfComment.text = comments > 10000 ? [NSString stringWithFormat:@"%.1f万",comments * 1.0 / 10000] : [NSString stringWithFormat:@"%ld",comments];
     self.LabelOfTitle.text = model.title;
     self.labelOfUP.text = [NSString stringWithFormat:@"UP主:%@",model.owner_name];
     NSInteger views = [model.visit[@"views"] integerValue];
-    self.LabelOfNumberOfRead.text = views >= 10000 ? [NSString stringWithFormat:@"%ld万",views / 10000] : [NSString stringWithFormat:@"%ld",views];
+    self.LabelOfNumberOfRead.text = views >= 10000 ? [NSString stringWithFormat:@"%.1f万",views * 1.0 / 10000] : [NSString stringWithFormat:@"%ld",views];
     
 }
 

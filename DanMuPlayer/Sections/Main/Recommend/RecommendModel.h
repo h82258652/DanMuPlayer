@@ -18,6 +18,13 @@
 @property (nonatomic,copy)NSString *name;  // 分区名
 @property (nonatomic,assign)NSInteger sort;  // 排序
 @property (nonatomic,assign)NSInteger type_id; // 类型id
+@property (nonatomic,assign)NSInteger showName;  // 是否展示页眉
+@property (nonatomic,assign)NSInteger showMore;  // 是否展示页脚
+@property (nonatomic,assign)NSInteger menusCount;  // 页脚项目数
+@property (nonatomic,strong)NSMutableArray *menus;  // 页脚项目数组
+@property (nonatomic,assign)NSInteger regionId;  // 作为页脚model用到的一个属性，所属类型的id
+
+@property (nonatomic,copy)NSString *nameOfMessage; // 通知发送的名字
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 

@@ -10,4 +10,6 @@
 
 @interface ChannelHeaderCollectionReusableView : UICollectionReusableView
 
+@property (nonatomic,copy)NSString *titleOfHeader;  // 页眉标题
+
 @end

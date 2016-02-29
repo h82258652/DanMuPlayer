@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChannelModel.h"
+#import "RecommendModel.h"
 
 @interface ChannelCollectionViewCell : UICollectionViewCell
+
+// 赋值
+- (void)setValueWithModel:(ChannelModel *)model;
+
+/** 另一种赋值 */
+- (void)setValueWithMainModel:(RecommendModel *)model;
 
 @end

@@ -8,6 +8,17 @@
 
 #import "ChannelHeaderCollectionReusableView.h"
 
+@interface ChannelHeaderCollectionReusableView ()
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+
+@end
+
 @implementation ChannelHeaderCollectionReusableView
+
+- (void)setTitleOfHeader:(NSString *)titleOfHeader {
+    self.titleLabel.text = titleOfHeader;
+}
 
 @end

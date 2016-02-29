@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^ClickFooterBlock)(NSInteger);
+
 @interface ChannelFooterCollectionReusableView : UICollectionReusableView
+
+@property (nonatomic,copy)NSString *nameOfMessage;
+
+// 赋值
+- (void)setTitleOfFooter:(NSString *)titleOfFooter withSection:(NSInteger)section;
+
+/** 页脚点击block */
+@property (nonatomic,copy)ClickFooterBlock clickFooterBlock;
 
 @end

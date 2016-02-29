@@ -44,6 +44,10 @@
         imageView.tag = 120 + i;
         [self.mainScrollView addSubview:imageView];
         imageView.image = [UIImage imageNamed:@"My_background"];
+        imageView.userInteractionEnabled = YES;
+        // 添加点击事件
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(TapActionOfImageView:)];
+        [imageView addGestureRecognizer:tap];
     }
     // 开始滚动
     self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(rollPalyAction) userInfo:nil repeats:YES];
@@ -63,6 +67,11 @@
 // imageView的点击事件
 - (void)TapActionOfImageView:(UITapGestureRecognizer *)tap {
     
+    // 创建一个IndexPath
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:tap.view.tag - 120 inSection:0];
+    
+    // 发送被点击通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"tapImage" object:nil userInfo:@{@"indexPath":indexPath}];
 }
 
 // 使用model赋值
@@ -71,21 +80,13 @@
         UIImageView *imageView = [self viewWithTag:120 + idx];
         [imageView sd_setImageWithURL:[NSURL URLWithString:obj.image]];
     }];
+    
 }
 
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    
-//    NSLog(@"aaa");
-//    
-//    [[NSBundle mainBundle] loadNibNamed:@"RollPlayCollectionViewCell" owner:self options:nil];
-//    self.rollPlayView.frame = self.frame;
-//    
-//    [self addSubview:self.rollPlayView];
-    
-    // 为image添加点击事件
     
 }
 

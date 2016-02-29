@@ -10,4 +10,14 @@
 
 @interface ChannelSubModel : NSObject
 
+@property (nonatomic,assign)NSInteger sub_Id;  // id
+@property (nonatomic,copy)NSString *img;  // 照片
+@property (nonatomic,copy)NSString *name;  // 子频道名字
+@property (nonatomic,assign)NSInteger pid;  // 未知 id
+@property (nonatomic,assign)NSInteger priority;  // 优先级
+@property (nonatomic,assign)NSInteger type;  // 类型
+
+/** 初始化方法 */
+- (instancetype)initWithDic:(NSDictionary *)dic;
+
 @end

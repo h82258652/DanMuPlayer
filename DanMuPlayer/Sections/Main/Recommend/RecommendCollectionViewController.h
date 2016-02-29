@@ -10,6 +10,6 @@
 
 @interface RecommendCollectionViewController : UICollectionViewController
 
-
+@property (nonatomic,copy)NSString *mainURLStr;
 
 @end

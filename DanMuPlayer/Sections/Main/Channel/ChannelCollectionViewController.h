@@ -10,4 +10,6 @@
 
 @interface ChannelCollectionViewController : UICollectionViewController
 
+@property (nonatomic,copy)NSString *mainURLStr;
+
 @end

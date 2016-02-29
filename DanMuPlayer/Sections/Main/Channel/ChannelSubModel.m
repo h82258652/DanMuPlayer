@@ -10,4 +10,18 @@
 
 @implementation ChannelSubModel
 
+- (instancetype)initWithDic:(NSDictionary *)dic {
+    self = [super init];
+    if (self) {
+        [self setValuesForKeysWithDictionary:dic];
+    }
+    return self;
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    if ([key isEqualToString:@"id"]) {
+        self.sub_Id = [value integerValue];
+    }
+}
+
 @end

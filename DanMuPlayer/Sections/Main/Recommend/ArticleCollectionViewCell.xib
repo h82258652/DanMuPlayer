@@ -25,20 +25,20 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="111" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rm8-t4-XX4">
-                        <rect key="frame" x="5" y="35" width="50" height="83"/>
+                        <rect key="frame" x="5" y="35" width="50" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="Zfl-lw-HkM"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评论" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDA-yQ-2LC">
-                        <rect key="frame" x="5" y="118" width="50" height="83"/>
+                        <rect key="frame" x="5" y="55" width="50" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="tza-Cr-j8J"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <variation key="default">
@@ -48,7 +48,7 @@
                         </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuQ-9E-fs6">
-                        <rect key="frame" x="588" y="206" width="70" height="20"/>
+                        <rect key="frame" x="588" y="58" width="70" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="vof-qW-k8L"/>
                         </constraints>
@@ -57,13 +57,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="article_read.png" translatesAutoresizingMaskIntoConstraints="NO" id="gvJ-XD-8Wn">
-                        <rect key="frame" x="563" y="206" width="20" height="20"/>
+                        <rect key="frame" x="563" y="58" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="gvJ-XD-8Wn" secondAttribute="height" multiplier="1:1" id="aSk-t5-r2R"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UP主" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNU-2t-egx">
-                        <rect key="frame" x="65" y="206" width="493" height="20"/>
+                        <rect key="frame" x="65" y="58" width="493" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="sc8-tv-9wi"/>
                         </constraints>
@@ -71,8 +71,8 @@
                         <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nn3-Mx-iZI">
-                        <rect key="frame" x="65" y="35" width="593" height="166"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nn3-Mx-iZI">
+                        <rect key="frame" x="65" y="35" width="593" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -80,6 +80,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="zDA-yQ-2LC" firstAttribute="height" secondItem="Rm8-t4-XX4" secondAttribute="height" id="2zX-mQ-GTS"/>
                 <constraint firstItem="zDA-yQ-2LC" firstAttribute="leading" secondItem="Rm8-t4-XX4" secondAttribute="leading" id="45z-Ho-wex"/>
@@ -102,6 +103,7 @@
                 <constraint firstItem="nuQ-9E-fs6" firstAttribute="leading" secondItem="gvJ-XD-8Wn" secondAttribute="trailing" constant="5" id="fTG-AI-x1z"/>
                 <constraint firstItem="gvJ-XD-8Wn" firstAttribute="bottom" secondItem="tNU-2t-egx" secondAttribute="bottom" id="gTN-Cf-oC3"/>
                 <constraint firstItem="nuQ-9E-fs6" firstAttribute="trailing" secondItem="nn3-Mx-iZI" secondAttribute="trailing" id="i97-i1-YH4"/>
+                <constraint firstItem="nn3-Mx-iZI" firstAttribute="height" secondItem="Rm8-t4-XX4" secondAttribute="height" multiplier="3:2" id="kPw-Gu-f12"/>
                 <constraint firstItem="zDA-yQ-2LC" firstAttribute="top" secondItem="Rm8-t4-XX4" secondAttribute="bottom" constant="5" id="kuE-zl-zOb"/>
                 <constraint firstItem="nuQ-9E-fs6" firstAttribute="top" secondItem="tNU-2t-egx" secondAttribute="top" id="nlw-ZB-0Q7"/>
                 <constraint firstItem="zDA-yQ-2LC" firstAttribute="height" secondItem="nn3-Mx-iZI" secondAttribute="height" multiplier="1:2" id="rDC-o3-kEQ"/>
@@ -111,9 +113,13 @@
             <size key="customSize" width="673" height="231"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="O4B-M2-0Gw"/>
+                    <exclude reference="2zX-mQ-GTS"/>
                     <exclude reference="kuE-zl-zOb"/>
                     <exclude reference="rDC-o3-kEQ"/>
+                    <exclude reference="60e-rf-Wnz"/>
+                    <exclude reference="O4B-M2-0Gw"/>
+                    <exclude reference="kPw-Gu-f12"/>
+                    <exclude reference="cZn-pL-SPz"/>
                 </mask>
             </variation>
             <connections>
