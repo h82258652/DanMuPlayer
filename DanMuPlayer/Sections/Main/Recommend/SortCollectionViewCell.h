@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "RecommendCellModel.h"
+#import "SubModel.h"
 
 @interface SortCollectionViewCell : UICollectionViewCell
 
 // 赋值
 - (void)setValueWithModel:(RecommendCellModel *)model;
+
+/** submodel 赋值 */
+- (void)setValueWithSubModel:(SubModel *)model;
+
 
 @end

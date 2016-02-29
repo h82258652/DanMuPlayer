@@ -15,6 +15,8 @@
 #import "ChannelModel.h"
 #import "ChannelSubModel.h"
 
+#import "SubCollectionViewController.h"
+
 @interface ChannelCollectionViewController ()<UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic,strong)NSMutableArray *dataSource;  // 数据源
@@ -84,6 +86,12 @@ static NSString * const reuseIdentifier = @"Cell";
     
     ChannelSubModel *model = sender.userInfo[@"model"];
     NSLog(@"子频道");
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+    
+    SubCollectionViewController *VC = [[SubCollectionViewController alloc]initWithCollectionViewLayout:layout];
+    VC.sub_Id = 106;
+    [self.navigationController pushViewController:VC animated:YES];
     
 }
 /** 选中更多内容 */

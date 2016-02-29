@@ -21,5 +21,7 @@ typedef void(^InputBlock)(NSDictionary *);
 /** 传入网址，请求频道界面数据 */
 + (void)getDataSourceForChannelsWithURLStr:(NSString *)urlStr withBlock:(InputBlock)block;
 
+/** 传入网址，请求子界面数据 */
++ (void)getDataSourceForSubWithURLStr:(NSString *)urlStr andParameters:(NSDictionary *)parameters withBlock:(InputBlock)block;
 
 @end

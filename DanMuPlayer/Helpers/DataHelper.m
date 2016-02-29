@@ -17,6 +17,8 @@
 
 #import "FooterModel.h"
 
+#import "SubModel.h"
+
 DataHelper *helper = nil;
 @implementation DataHelper
 
@@ -126,6 +128,41 @@ DataHelper *helper = nil;
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求失败");
-    }];}
+    }];
+}
+#pragma mark --传入网址，请求子界面数据
++ (void)getDataSourceForSubWithURLStr:(NSString *)urlStr andParameters:(NSDictionary *)parameters withBlock:(InputBlock)block {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+//    NSLog(@"%@ /n %@",urlStr,parameters);
+    
+    [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"deviceType"];
+    [manager.requestSerializer setValue:@"4.1.2" forHTTPHeaderField:@"appVersion"];
+    [manager GET:urlStr parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"请求成功");
+//        NSLog(@"%@",responseObject);
+        if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
+            NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+            for (NSDictionary *dic in responseObject[@"data"][@"list"]) {
+                SubModel *model = [[SubModel alloc]initWithDic:dic];
+                [array addObject:model];
+            }
+            NSDictionary *dic = @{@"data":array};
+            block(dic);
+        } else {
+            NSLog(@"%@",responseObject[@"message"]);
+        }
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"请求失败");
+        
+    }];
+}
+
+
 
 @end

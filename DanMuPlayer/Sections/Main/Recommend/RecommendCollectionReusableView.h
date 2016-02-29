@@ -14,4 +14,6 @@
 // 赋值
 - (void)setValueWithModel:(RecommendModel *)model;
 
+- (void)setValueWithDic:(NSDictionary *)dic;
+
 @end

@@ -35,4 +35,14 @@
     self.LabelOfUP.text = [NSString stringWithFormat:@"UP主:%@",model.owner_name];
 }
 
+/** submodel 赋值 */
+- (void)setValueWithSubModel:(SubModel *)model {
+    
+    [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:model.cover]];
+    self.titleLabel.text = model.title;
+    self.LabelOfNumberOfView.text = model.views >= 10000 ? [NSString stringWithFormat:@"%ld万",model.views / 10000] : [NSString stringWithFormat:@"%ld",model.views];
+    self.LabelOfUP.text = [NSString stringWithFormat:@"UP主:%@",model.username];
+    
+}
+
 @end

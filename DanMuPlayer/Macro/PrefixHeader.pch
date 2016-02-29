@@ -33,4 +33,8 @@
 // 娱乐 番剧等网址
 #define kRegionsWithBelongURLStr @"http://api.aixifan.com/regions?belong=11&channelId=%d"
 
+// 搜索网址 -热门
+#define kSearchURLStr @"http://api.aixifan.com/searches/channel?"
+
+
 #endif /* PrefixHeader_pch */

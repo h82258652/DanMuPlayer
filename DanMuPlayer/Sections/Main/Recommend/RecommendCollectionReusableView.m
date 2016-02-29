@@ -31,4 +31,12 @@
     self.labelOfSection.text = model.name;
 }
 
+- (void)setValueWithDic:(NSDictionary *)dic {
+    
+    self.imageViewOfSection.image = [UIImage imageNamed:dic[@"image"]];
+    self.labelOfSection.text = dic[@"name"];
+    
+}
+
+
 @end

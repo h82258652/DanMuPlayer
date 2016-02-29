@@ -21,7 +21,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 #warning contentOffset go ONE PAGE **********************
-    self.mainScrollView.contentOffset = CGPointMake(kScreenWidth , 0);
+    self.mainScrollView.contentOffset = CGPointMake(kScreenWidth * 5 , 0);
     NSLog(@"偏移");
 }
 
@@ -40,6 +40,8 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+#warning need change ******************
     if ([segue.identifier isEqualToString:@"about_segue"]) {  // 关注
         
         
@@ -47,25 +49,25 @@
     } else if ([segue.identifier isEqualToString:@"recommend_segue"]) {  // 推荐
         
         RecommendCollectionViewController *recommendVC = segue.destinationViewController;
-        recommendVC.mainURLStr = kRegionsURLStr;
+//        recommendVC.mainURLStr = kRegionsURLStr;
 //        NSLog(@"segue");
         
     } else if ([segue.identifier isEqualToString:@"comic_segue"]) {  // 番剧
         
         RecommendCollectionViewController *recommendVC = segue.destinationViewController;
-        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,155];
+//        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,155];
 //        NSLog(@"segue");
         
     } else if ([segue.identifier isEqualToString:@"entertainment_segue"]) {  // 娱乐
         
         RecommendCollectionViewController *recommendVC = segue.destinationViewController;
-        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,60];
+//        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,60];
 //        NSLog(@"segue");
         
     } else if ([segue.identifier isEqualToString:@"article_segue"]) {  // 文章
         
         RecommendCollectionViewController *recommendVC = segue.destinationViewController;
-        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,63];
+//        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,63];
 //        NSLog(@"segue");
         
     } else if ([segue.identifier isEqualToString:@"channel_segue"]) {  // 频道
