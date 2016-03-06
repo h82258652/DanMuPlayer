@@ -25,6 +25,10 @@
 
 #import "FooterModel.h"
 
+#import "SubViewController.h"
+#import "DetailVideoViewController.h"
+#import "ComicDetailViewController.h"
+
 
 @interface RecommendCollectionViewController ()<UICollectionViewDelegateFlowLayout>
 
@@ -40,7 +44,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 初始化参数
     self.dataSoruce = [NSMutableArray arrayWithCapacity:1];
+    
     
     // 注册cell
     [self.collectionView registerClass:[RollPlayCollectionViewCell class] forCellWithReuseIdentifier:@"rollCell"];  // 轮播cell
@@ -60,20 +66,25 @@
 //    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"yuan"];
     
     // 注册接收消息
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeModel:) name:self.mainURLStr object:nil];  // 请求到新的数据
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rollPlayViewDidSelect:) name:@"tapImage" object:nil]; // 轮播图被点击
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectFooterView:) name:@"recommend_footer" object:nil];
     
-#warning stop loadData ****************
+    
+
     // 请求数据
 //    [self loadData];
     
 }
-
+/** 为网址赋值，触发网络请求 */
 - (void)setMainURLStr:(NSString *)mainURLStr {
+    
+//    NSLog(@"设置");
+    
     if (_mainURLStr != mainURLStr) {
         _mainURLStr = [mainURLStr copy];
     }
+    // 注册接收消息
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeModel:) name:self.mainURLStr object:nil];  // 请求到新的数据
+    
     // 请求数据
     [self loadData];
 }
@@ -81,17 +92,20 @@
 #pragma mark - 请求数据
 - (void)loadData {
     
-    dispatch_queue_t queue = dispatch_queue_create("com.recommend.loadData", DISPATCH_QUEUE_CONCURRENT);
-    dispatch_async(queue, ^{
+//    NSLog(@"%@",self.mainURLStr);
+    __weak typeof(self)weakSelf = self;
+//    dispatch_queue_t queue = dispatch_queue_create("com.recommend.loadData", DISPATCH_QUEUE_CONCURRENT);
+//    dispatch_async(queue, ^{
         [DataHelper getDataSourceForCommendWithURLStr:self.mainURLStr withName:self.mainURLStr withBlock:^(NSDictionary *dic) {
             self.dataSoruce = [NSMutableArray arrayWithArray:dic[@"dataArray"]];
 //            NSLog(@"%@",[NSThread currentThread]);
             [self.collectionView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
         }];
-    });
+//    });
     
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -114,8 +128,6 @@
     
     NSDictionary *dic = sender.userInfo;
     
-//    NSLog(@"请求到新的数据");
-    
     for (RecommendModel *model in self.dataSoruce) {
         if (model.recommend_id == [dic[@"model_id"] integerValue]) {
             model.contents = dic[@"dataArray"];
@@ -124,9 +136,9 @@
                 model.menus = dic[@"menus"];
             }
 //            NSLog(@"%@",model.menus.firstObject);
+            // 刷新界面
+            [self.collectionView reloadData];
         }
-        // 刷新界面
-        [self.collectionView reloadData];
     }
 }
 // 当轮播图被点击时，触发事件
@@ -135,10 +147,6 @@
     
     [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
 }
-/** 页脚被点击时触发方法 */
-//- (void)didSelectFooterView:(NSNotification *)sender {
-//    NSLog(@"页脚被点击");
-//}
 
 
 
@@ -168,7 +176,7 @@
         case 6:  // 横幅
             
             if (model.contents.count == 2) {
-                return CGSizeMake((kScreenWidth - 10)/ 2, kScreenWidth * 4.5 / 19);
+                return CGSizeMake((kScreenWidth - 20)/ 2, kScreenWidth * 4.5 / 19);
                 break;
             }
             
@@ -183,13 +191,16 @@
             break;
     }
     NSLog(@"cell大小为0");
-    return CGSizeZero;
+    return CGSizeMake(50, 50);
     
 }
 
 // cell的边界
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    if (section == 0) {
+    
+    RecommendModel *model = self.dataSoruce[section];
+    
+    if (model.type_id == 5) {
         return UIEdgeInsetsZero;
     }
     return UIEdgeInsetsMake(5, 5, 5, 5);
@@ -200,7 +211,7 @@
     RecommendModel *model = self.dataSoruce[section];
     
     // 分区页眉是否显示
-    if (model.showName == 1) {
+    if (model.showName == 1 || model.type_id == 1 || model.type_id == 4) {
         return CGSizeMake(0, 50);
     }
     return CGSizeZero;
@@ -227,6 +238,8 @@
     
     if (model.type_id == 5 || model.type_id == 7) {  // 当为轮播图分区时，强制设置cell数为1
         return 1;
+    } else if (model.type_id == 6) {
+        return 0;
     }
     return model.contentCount;
 }
@@ -262,8 +275,8 @@
             return cell;
             break;}
         case 6: {
-            BannerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"bannerCell" forIndexPath:indexPath];
-            return cell;
+//            BannerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"bannerCell" forIndexPath:indexPath];
+//            return cell;
             break;}
         case 7: {
             ChannelCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"channelCell" forIndexPath:indexPath];
@@ -287,37 +300,51 @@
     
     
     // 根据不同种类的cell，调用不同的cell
-    if ([cell isKindOfClass:[RollPlayCollectionViewCell class]]) {
+    if ([cell isKindOfClass:[RollPlayCollectionViewCell class]]) {  // 轮播图
         
         [(RollPlayCollectionViewCell *)cell setValueWithModel:model];
         
-    } else if ([cell isKindOfClass:[VideoCollectionViewCell class]]) {
+    } else if ([cell isKindOfClass:[VideoCollectionViewCell class]]) {  // 视频
         
         [(VideoCollectionViewCell *)cell setValueWithModel:model.contents[indexPath.row]];
         
-    } else if ([cell isKindOfClass:[BannerCollectionViewCell class]]) {
+    } else if ([cell isKindOfClass:[BannerCollectionViewCell class]]) {  // 横幅
         
         [(BannerCollectionViewCell *)cell setValueWithModel:model.contents[indexPath.row]];
         
-    } else if ([cell isKindOfClass:[ComicCollectionViewCell class]]) {
+    } else if ([cell isKindOfClass:[ComicCollectionViewCell class]]) {  // 番剧
         
         [(ComicCollectionViewCell *)cell setValueWithModel:model.contents[indexPath.row]];
         
-    } else if ([cell isKindOfClass:[ArticleCollectionViewCell class]]) {
+    } else if ([cell isKindOfClass:[ArticleCollectionViewCell class]]) {  // 文章
         
         [(ArticleCollectionViewCell *)cell setValueWithModel:model.contents[indexPath.row]];
         
-    } else if ([cell isKindOfClass:[SortCollectionViewCell class]]) {
+    } else if ([cell isKindOfClass:[SortCollectionViewCell class]]) {  // 排行榜
         
         [(SortCollectionViewCell *)cell setValueWithModel:model.contents[indexPath.row]];
         
-    } else if ([cell isKindOfClass:[UpCollectionViewCell class]]) {
+    } else if ([cell isKindOfClass:[UpCollectionViewCell class]]) {  // up主
         
         [(UpCollectionViewCell *)cell setValueWithModel:model.contents[indexPath.row]];
-    } else if ([cell isKindOfClass:[ChannelCollectionViewCell class]]) {
+    } else if ([cell isKindOfClass:[ChannelCollectionViewCell class]]) {  // 频道
         
         [(ChannelCollectionViewCell *)cell setValueWithMainModel:model];
-//        NSLog(@"%@",model.name);
+        // 设置block触发事件
+        [(ChannelCollectionViewCell *)cell setSubChannelBlock:^(NSDictionary *dic){
+           
+            RecommendModel *rModel = dic[@"model"];
+            NSInteger index = [dic[@"index"] integerValue];
+            
+            // 在次级界面调整
+            UIStoryboard *substoryboard = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
+            SubViewController *subVC = [substoryboard instantiateViewControllerWithIdentifier:@"sub_main_vc"];
+            subVC.view.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64);
+            
+            [subVC setUpWithRecommendModel:rModel withCustomIndex:index];
+            [self.navigationController pushViewController:subVC animated:YES];
+            
+        }];
     }
 }
 // 设置页眉
@@ -370,20 +397,57 @@
         // 为页脚赋值
         if (model.menus.count > 0) {
             FooterModel *footerModel = [model.menus firstObject];
-//            NSLog(@"%@",[model.menus firstObject]);
-//            NSLog(@"%ld",footerModel.regionId);
-//            NSLog(@"%@",[footerModel valueForKey:@"name"]);
             [(ChannelFooterCollectionReusableView *)view setTitleOfFooter:[footerModel valueForKey:@"name"] withSection:indexPath.section];
 //            [(ChannelFooterCollectionReusableView *)view setNameOfMessage:[NSString stringWithFormat:@"footer%@",self.mainURLStr]];
             [(ChannelFooterCollectionReusableView *)view setClickFooterBlock:^(NSInteger section){
-                NSLog(@"点击了%ld",section);
+//                NSLog(@"点击了%ld",section);
+                RecommendModel *model = self.dataSoruce[section];
+                
+                if (model.channelId == 155 || model.channelId == 60 || model.channelId == 63) {
+                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeContentOffset" object:nil userInfo:@{@"channel_Id":@(model.channelId)}];
+                } else {
+                    
+                    static dispatch_once_t oneToken;
+                    dispatch_once(&oneToken, ^{
+                        // 注册成为接收 频道 model消息的观察者
+                        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getChannelModel:) name:@"getChannelModel" object:nil];
+                    });
+                    
+                    // 发送通知，要求 频道 界面提供对应的model
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"giveChannelModelToRecommendFooter" object:nil userInfo:@{@"channel_Id":@(model.channelId)}];
+                }
+                
             }];
         }
     }
     
 }
+// 注册成为接收 频道 model消息的观察者
+- (void)getChannelModel:(NSNotification *)sender {
+    
+    ChannelModel *model = sender.userInfo[@"model"];
+    [self goToSubPage:model withStartIndex:-1];
+    
+}
 
 
+/** 跳转子分区 */
+- (void)goToSubPage:(id)model withStartIndex:(NSInteger)startIndex {
+    // 在次级界面调整
+    UIStoryboard *substoryboard = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
+    SubViewController *subVC = [substoryboard instantiateViewControllerWithIdentifier:@"sub_main_vc"];
+    subVC.view.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64);
+    
+    if ([model isKindOfClass:[RecommendModel class]]) {
+        
+        [subVC setUpWithRecommendModel:model withCustomIndex:startIndex];
+    } else {
+        [subVC setUpWithChannelModel:model WithCustomIndex:startIndex];
+    }
+    
+    [self.navigationController pushViewController:subVC animated:YES];
+}
 
 
 #pragma mark <UICollectionViewDelegate>
@@ -392,7 +456,51 @@
     
     NSLog(@"*****%ld,%ld",indexPath.section,indexPath.item);
     
+    
+    
+    RecommendModel *model = self.dataSoruce[indexPath.section];
+    RecommendCellModel *subModel = model.contents[indexPath.item];
+    switch (model.type_id) {
+        case 1:
+        case 5:
+        case 12:
+        {
+            
+            // 视频播放界面
+            UIStoryboard *sub = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
+            DetailVideoViewController *subVC = [sub instantiateViewControllerWithIdentifier:@"detail_Video"];
+            [subVC loadDataWithVideoId:[subModel.url integerValue]];
+            [self.navigationController pushViewController:subVC animated:NO];
+            
+            break;
+        }
+        case 3:
+        {
+            UIStoryboard *sub = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
+            ComicDetailViewController *subVC = [sub instantiateViewControllerWithIdentifier:@"comic_detail"];
+//            NSLog(@"%ld",[subModel.url integerValue]);
+            [subVC loadDataWithBangumisId:[subModel.url integerValue]];
+            [self.navigationController pushViewController:subVC animated:NO];
+            
+            break;
+        }
+        default:
+            break;
+    }
+    
+    
+    
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // 状态栏切换
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBar.backgroundColor = kThemeColor;
+}
+
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking

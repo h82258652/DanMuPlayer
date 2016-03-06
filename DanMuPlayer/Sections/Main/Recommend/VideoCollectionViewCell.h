@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RecommendCellModel.h"
 #import "SubModel.h"
+#import "DetailVideoAboutModel.h"
 
 @interface VideoCollectionViewCell : UICollectionViewCell
 
@@ -18,5 +19,7 @@
 /** submodel 赋值 */
 - (void)setValueWithSubModel:(SubModel *)model;
 
+/** 视频相关model赋值 */
+- (void)setValueWithAboutModel:(DetailVideoAboutModel *)model;
 
 @end

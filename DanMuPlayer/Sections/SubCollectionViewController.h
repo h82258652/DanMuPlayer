@@ -10,6 +10,9 @@
 
 @interface SubCollectionViewController : UICollectionViewController
 
-@property (nonatomic,assign)NSInteger sub_Id;
+@property (nonatomic,copy)NSString *name;
+
+/** 请求数据 */
+- (void)loadDataWithChannelId:(NSInteger)channelId;
 
 @end

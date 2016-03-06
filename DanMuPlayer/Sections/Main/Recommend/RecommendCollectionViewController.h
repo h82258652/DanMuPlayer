@@ -12,4 +12,10 @@
 
 @property (nonatomic,copy)NSString *mainURLStr;
 
+///** 主界面的推荐页面 */
+//- (void)setUpPageForMainWithURLStr:(NSString *)URLStr;
+//
+///** 子界面的推荐页面 */
+//- (void)setUpPageForSubWithURLStr:(NSString *)URLStr;
+
 @end

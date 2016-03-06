@@ -15,7 +15,7 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="591" height="272"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HYz-e5-GG7">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="channel_go.png" translatesAutoresizingMaskIntoConstraints="NO" id="HYz-e5-GG7">
                         <rect key="frame" x="10" y="10" width="252" height="252"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="HYz-e5-GG7" secondAttribute="height" multiplier="1:1" id="pCj-8L-dwD"/>
@@ -24,7 +24,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3e-np-ILx">
                         <rect key="frame" x="272" y="10" width="299" height="168"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简介" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOX-9n-4jx">
@@ -64,4 +64,7 @@
             <point key="canvasLocation" x="524.5" y="368"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="channel_go.png" width="32" height="32"/>
+    </resources>
 </document>

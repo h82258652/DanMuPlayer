@@ -15,7 +15,9 @@
 #import "ChannelModel.h"
 #import "ChannelSubModel.h"
 
-#import "SubCollectionViewController.h"
+#import "SubViewController.h"
+
+#import "DetailVideoViewController.h"
 
 @interface ChannelCollectionViewController ()<UICollectionViewDelegateFlowLayout>
 
@@ -41,17 +43,15 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // 注册成为观察者
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectSubCell:) name:@"clickSubChannel" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectMore:) name:self.nameOfMessage object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(giveChannelModel:) name:@"giveChannelModelToRecommendFooter" object:nil];
+    
     
     // Register cell classes
     [self.collectionView registerNib:[UINib nibWithNibName:@"ChannelCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"channelCell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ChannelFooterCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
     
     // Do any additional setup after loading the view.
-    
-#warning -- need *****************
-    // 请求数据
-//    [self loadData];
+
     
     
 }
@@ -69,37 +69,42 @@ static NSString * const reuseIdentifier = @"Cell";
 
 /** 请求数据 */
 - (void)loadData {
-    dispatch_queue_t queue = dispatch_queue_create("com.channels.loadData", DISPATCH_QUEUE_CONCURRENT);
-    dispatch_async(queue, ^{
-        [DataHelper getDataSourceForChannelsWithURLStr:kChannelsURLStr withBlock:^(NSDictionary *dic) {
-            self.dataSource = [NSMutableArray arrayWithArray:dic[@"dataArray"]];
-//            NSLog(@"%@",[NSThread currentThread]);
-            [self.collectionView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
-        }];
-    });
+    [DataHelper getDataSourceForChannelsWithURLStr:kChannelsURLStr withBlock:^(NSDictionary *dic) {
+        self.dataSource = [NSMutableArray arrayWithArray:dic[@"dataArray"]];
+        //            NSLog(@"%@",[NSThread currentThread]);
+        [self.collectionView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+    }];
     
 }
 /** 选中了子频道 */
 - (void)didSelectSubCell:(NSNotification *)sender {
     
-#warning need completion****************
+    ChannelModel *model = sender.userInfo[@"model"];
+    NSInteger index = [sender.userInfo[@"index"] integerValue];
+//    NSLog(@"子频道");
     
-    ChannelSubModel *model = sender.userInfo[@"model"];
-    NSLog(@"子频道");
+    // 在次级界面调整
+    UIStoryboard *substoryboard = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
+    SubViewController *subVC = [substoryboard instantiateViewControllerWithIdentifier:@"sub_main_vc"];
+    subVC.view.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64);
     
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+    [subVC setUpWithChannelModel:model WithCustomIndex:index];
+    [self.navigationController pushViewController:subVC animated:YES];
     
-    SubCollectionViewController *VC = [[SubCollectionViewController alloc]initWithCollectionViewLayout:layout];
-    VC.sub_Id = 106;
-    [self.navigationController pushViewController:VC animated:YES];
+//    UIStoryboard *sub = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
+//    DetailVideoViewController *subVC = [sub instantiateViewControllerWithIdentifier:@"detail_Video"];
+//    [subVC loadDataWithVideoId:2575362];
+//    [self.navigationController pushViewController:subVC animated:NO];
     
 }
-/** 选中更多内容 */
-- (void)didSelectMore:(NSNotification *)sender {
-    NSInteger section = [sender.userInfo[@"section"] integerValue];
-//    NSLog(@"%ld",[sender.userInfo[@"section"] integerValue]);
-    ChannelModel *model = self.dataSource[section];
-#warning need go next VC *********************
+/** 提供频道信息给推荐界面 */
+- (void)giveChannelModel:(NSNotification *)sender {
+    
+    for (ChannelModel *model in self.dataSource) {
+        if (model.channel_Id == [sender.userInfo[@"channel_Id"] integerValue]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"getChannelModel" object:nil userInfo:@{@"model":model}];
+        }
+    }
     
 }
 
@@ -171,8 +176,33 @@ static NSString * const reuseIdentifier = @"Cell";
     } else if ([elementKind isEqualToString:UICollectionElementKindSectionFooter]) {
         [(ChannelFooterCollectionReusableView *)view setTitleOfFooter:[NSString stringWithFormat:@"%@推荐",model.name] withSection:indexPath.section];
 //        [(ChannelFooterCollectionReusableView *)view setNameOfMessage:self.nameOfMessage];
+        
+        __weak typeof(self)weakSelf = self;
         [(ChannelFooterCollectionReusableView *)view setClickFooterBlock:^(NSInteger section){
-            NSLog(@"点击了%ld",section);
+//            NSLog(@"点击了%ld",section);
+            ChannelModel *model = self.dataSource[section];
+            
+            // 是否在主界面调整
+            switch (model.channel_Id) {
+                case 155:
+                case 60:
+                case 63:
+                    // 主界面scrollView偏移通知
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeContentOffset" object:nil userInfo:@{@"channel_Id":@(model.channel_Id)}];
+                    return;
+                    break;
+                default:
+                    break;
+            }
+            
+            // 在次级界面调整
+            UIStoryboard *substoryboard = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
+            SubViewController *subVC = [substoryboard instantiateViewControllerWithIdentifier:@"sub_main_vc"];
+            subVC.view.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64);
+            
+            [subVC setUpWithChannelModel:model WithCustomIndex:-1];
+            [weakSelf.navigationController pushViewController:subVC animated:YES];
+            
         }];
     }
 }
@@ -200,7 +230,11 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark <UICollectionViewDelegate>
 
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"选中了item %ld",indexPath.item);
+    
+}
 
 
 /*

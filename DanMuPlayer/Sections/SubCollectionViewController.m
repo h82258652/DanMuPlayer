@@ -11,12 +11,16 @@
 #import "SortCollectionViewCell.h"
 #import "RecommendCollectionReusableView.h"  
 #import "ChannelFooterCollectionReusableView.h"
+#import "MoreHotCollectionViewController.h"
 
+#import "DetailVideoViewController.h"
 #import "DataHelper.h"
 
 @interface SubCollectionViewController ()<UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic,strong)NSMutableArray *dataSource;
+
+//@property (nonatomic,assign)NSInteger sub_Id;  // 频道id
 
 // 网址参数
 @property (nonatomic,assign)NSInteger channelIds;  // 频道id
@@ -63,10 +67,11 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark - 自定义方法
-/** 初始化布局 */
-- (void)setSub_Id:(NSInteger)sub_Id {
+
+/** 请求数据 */
+- (void)loadDataWithChannelId:(NSInteger)channelId {
     
-    self.channelIds = sub_Id;
+    self.channelIds = channelId;
     self.pageSize = 4;
     self.pageNo = 1;
     self.sort = 1;
@@ -76,7 +81,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [dic setValue:@(self.pageSize) forKey:@"pageSize"];
     [dic setValue:@(self.pageNo) forKey:@"pageNo"];
     [dic setValue:@(self.sort) forKey:@"sort"];
-    [dic setValue:@(6048000000) forKey:@"range"];
+    [dic setValue:@(604800000) forKey:@"range"];
     // 请求数据
     [DataHelper getDataSourceForSubWithURLStr:kSearchURLStr andParameters:dic withBlock:^(NSDictionary *dic) {
         NSMutableArray *array = dic[@"data"];
@@ -98,6 +103,13 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
+
+/** 初始化布局 */
+- (void)setSub_Id:(NSInteger)sub_Id {
+    
+    
+}
+
 #pragma mark <UICollectionViewDelegateFlowLayout>
 
 // cell大小
@@ -110,6 +122,11 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     
 }
+// 页眉大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    
+    return CGSizeMake(kScreenWidth, 50);
+}
 // 页脚大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
     
@@ -119,11 +136,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     return CGSizeZero;
 }
-// 页眉大小
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    
-    return CGSizeMake(kScreenWidth, 50);
-}
 // item边界
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     if (section == 0) {
@@ -132,15 +144,6 @@ static NSString * const reuseIdentifier = @"Cell";
         return UIEdgeInsetsZero;
     }
 }
-
-
-
-
-
-
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -219,7 +222,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     if ([elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
         
-        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObject:@"article_read" forKey:@"image"];
+        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObject:@"section_placeholder" forKey:@"image"];
         if (indexPath.section == 0) {
             [dic setValue:@"本区最热" forKey:@"name"];
         } else {
@@ -229,12 +232,40 @@ static NSString * const reuseIdentifier = @"Cell";
         [(RecommendCollectionReusableView *)view setValueWithDic:dic];
     } else {
         
+        [(ChannelFooterCollectionReusableView *)view setTitleOfFooter:@"查看更多热门" withSection:indexPath.section];
+        [(ChannelFooterCollectionReusableView *)view setClickFooterBlock:^(NSInteger section){
+           
+            // 点击了查看更多热门
+#warning next page ****************************
+            
+            
+            
+            UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+            MoreHotCollectionViewController *hotVC = [[MoreHotCollectionViewController alloc]initWithCollectionViewLayout:layout];
+            
+            hotVC.name = self.name;
+            [hotVC loadDataWithChannelId:self.channelIds];
+            
+            [self.navigationController pushViewController:hotVC animated:YES];
+            
+        }];
     }
     
     
 }
 
 #pragma mark <UICollectionViewDelegate>
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"选中了%ld,%ld",indexPath.section,indexPath.item);
+    SubModel *model = self.dataSource[indexPath.section][indexPath.item];
+    NSString *str = [model.contentId substringFromIndex:2];
+    UIStoryboard *sub = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
+    DetailVideoViewController *subVC = [sub instantiateViewControllerWithIdentifier:@"detail_Video"];
+    [subVC loadDataWithVideoId:[str integerValue]];
+    [self.navigationController pushViewController:subVC animated:NO];
+}
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking

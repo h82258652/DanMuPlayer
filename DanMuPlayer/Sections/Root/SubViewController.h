@@ -13,9 +13,9 @@
 @interface SubViewController : UIViewController
 
 /** 使用主model创建 */
-- (void)setUpWithRecommendModel:(RecommendModel *)model;
+- (void)setUpWithRecommendModel:(RecommendModel *)model withCustomIndex:(NSInteger)index;
 
 /** 使用频道model创建 */
-- (void)setUpWithChannelModel:(ChannelModel *)model;
+- (void)setUpWithChannelModel:(ChannelModel *)model WithCustomIndex:(NSInteger)index;
 
 @end

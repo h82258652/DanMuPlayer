@@ -10,6 +10,7 @@
 #import "ChannelModel.h"
 #import "RecommendModel.h"
 
+typedef void(^SubChannelBlock)(NSDictionary *);
 @interface ChannelCollectionViewCell : UICollectionViewCell
 
 // 赋值
@@ -17,5 +18,9 @@
 
 /** 另一种赋值 */
 - (void)setValueWithMainModel:(RecommendModel *)model;
+
+/** 事件block */
+@property (nonatomic,copy)SubChannelBlock subChannelBlock;
+
 
 @end

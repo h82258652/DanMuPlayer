@@ -31,6 +31,13 @@
     self.bottomLabel.text = model.title;
 }
 
+/** 视频相关model赋值 */
+- (void)setValueWithAboutModel:(DetailVideoAboutModel *)model {
+    
+    [self.topImageView sd_setImageWithURL:[NSURL URLWithString:model.titleImg]];
+    self.bottomLabel.text = model.title;
+    
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

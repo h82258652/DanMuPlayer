@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "RecommendCollectionViewController.h"
 #import "ChannelCollectionViewController.h"
+#import "SortTableViewController.h"
 
 @interface RootViewController ()<UIScrollViewDelegate>
 
@@ -21,10 +22,22 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 #warning contentOffset go ONE PAGE **********************
-    self.mainScrollView.contentOffset = CGPointMake(kScreenWidth * 5 , 0);
-    NSLog(@"偏移");
+//    NSLog(@"偏移");
+    
+    static dispatch_once_t oneToken;
+    dispatch_once(&oneToken, ^{
+        self.mainScrollView.contentOffset = CGPointMake(kScreenWidth * 1 , 0);
+        // 注册成为偏移量通知观察者
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeContentOffset:) name:@"changeContentOffset" object:nil];
+    });
+    
 }
-
+// 即将显示时
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setBackgroundColor:[kThemeColor colorWithAlphaComponent:1]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,8 +47,32 @@
     // 配置btn
     [self setUpBtn];
     
-    // 监测sroll的偏移量
-    [self.mainScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+/** 偏移通知事件 */
+- (void)changeContentOffset:(NSNotification *)sender {
+    
+    NSInteger channel_Id = [sender.userInfo[@"channel_Id"] integerValue];
+    
+    NSInteger index = 5;
+    switch (channel_Id) {
+        case 155:
+            index = 2;
+            break;
+        case 60:
+            index = 3;
+            break;
+        case 63:
+            index = 4;
+            break;
+        default:
+            break;
+    }
+    // 偏移
+    self.mainScrollView.contentOffset = CGPointMake(kScreenWidth * index, 0);
+    // 改变被选中的btn
+    [self changeTitleColorForBtn:index];
+    
     
 }
 
@@ -55,26 +92,31 @@
     } else if ([segue.identifier isEqualToString:@"comic_segue"]) {  // 番剧
         
         RecommendCollectionViewController *recommendVC = segue.destinationViewController;
-//        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,155];
+//        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,(long)155];
 //        NSLog(@"segue");
         
     } else if ([segue.identifier isEqualToString:@"entertainment_segue"]) {  // 娱乐
         
         RecommendCollectionViewController *recommendVC = segue.destinationViewController;
-//        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,60];
+//        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,(long)60];
 //        NSLog(@"segue");
         
     } else if ([segue.identifier isEqualToString:@"article_segue"]) {  // 文章
         
         RecommendCollectionViewController *recommendVC = segue.destinationViewController;
-//        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,63];
+        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,(long)63];
 //        NSLog(@"segue");
         
     } else if ([segue.identifier isEqualToString:@"channel_segue"]) {  // 频道
         
         ChannelCollectionViewController *channelVC = segue.destinationViewController;
-        channelVC.mainURLStr = kChannelsURLStr;
+//        channelVC.mainURLStr = kChannelsURLStr;
 //        NSLog(@"segue");
+        
+    } else if ([segue.identifier isEqualToString:@"sort_segue"]) {  // 综合排行榜
+        
+        SortTableViewController *sortVC = segue.destinationViewController;
+//        [sortVC loadDataWithURLStr:[NSString stringWithFormat:kSortMainURLStr,(long)1]];
         
     }
 }
@@ -89,21 +131,9 @@
     [self changeTitleColorForBtn:sender.tag - 140];
     
 }
-/** 监测滚动视图的偏移量 */
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    
-    
-    
-}
 
 #pragma mark <UIScrollViewDelegate>
-//  当拖动停止时
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-//    
-//    NSInteger index = self.mainScrollView.contentOffset.x / kScreenWidth;
-//    
-//    
-//}
+
 /** 当减速结束时 */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSInteger index = self.mainScrollView.contentOffset.x / kScreenWidth;
@@ -128,7 +158,7 @@
     
     for (int i = 140; i < 146; i++) {
         UIButton *btn = [self.view viewWithTag:i];
-        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        [btn setTitleColor:[UIColor yellowColor] forState:UIControlStateSelected];
     }
     
 }

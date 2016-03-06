@@ -28,7 +28,14 @@
 // 赋值
 - (void)setValueWithModel:(RecommendCellModel *)model {
     
-    [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:model.image]];
+    if (model.image.length == 0) {
+        
+        [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:model.owner_avatar]];
+    } else {
+        [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:model.image]];
+    }
+    
+    
     self.labelOfName.text = model.owner_name;
     self.labelOfIntro.text = model.title;
     

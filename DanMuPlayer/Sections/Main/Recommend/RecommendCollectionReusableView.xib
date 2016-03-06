@@ -13,6 +13,9 @@
             <rect key="frame" x="0.0" y="0.0" width="618" height="244"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="DlV-qA-TpQ" userLabel="background Image View">
+                    <rect key="frame" x="0.0" y="5" width="618" height="239"/>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GY8-pr-4y9">
                     <rect key="frame" x="10" y="41" width="162" height="162"/>
                     <constraints>
@@ -22,19 +25,24 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxd-ea-S4h">
                     <rect key="frame" x="177" y="41" width="441" height="162"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="GY8-pr-4y9" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="10" id="5fh-m9-bkm"/>
                 <constraint firstItem="kxd-ea-S4h" firstAttribute="leading" secondItem="GY8-pr-4y9" secondAttribute="trailing" constant="5" id="Bh4-x5-1QJ"/>
                 <constraint firstItem="kxd-ea-S4h" firstAttribute="bottom" secondItem="GY8-pr-4y9" secondAttribute="bottom" id="BxY-kS-A3l"/>
+                <constraint firstAttribute="trailing" secondItem="DlV-qA-TpQ" secondAttribute="trailing" id="Dd5-eT-bpZ"/>
                 <constraint firstItem="GY8-pr-4y9" firstAttribute="height" secondItem="U6b-Vx-4bR" secondAttribute="height" multiplier="2:3" id="HOx-MW-CoU"/>
                 <constraint firstAttribute="trailing" secondItem="kxd-ea-S4h" secondAttribute="trailing" id="NgA-jU-JAa"/>
                 <constraint firstItem="GY8-pr-4y9" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="Vkd-8L-pkk"/>
+                <constraint firstItem="DlV-qA-TpQ" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="Xat-8n-g2a"/>
                 <constraint firstItem="GY8-pr-4y9" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="5" id="gt3-Z4-CRb"/>
                 <constraint firstItem="kxd-ea-S4h" firstAttribute="top" secondItem="GY8-pr-4y9" secondAttribute="top" id="h0L-WE-iQB"/>
+                <constraint firstItem="DlV-qA-TpQ" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="5" id="oWr-Yp-kdL"/>
+                <constraint firstAttribute="bottom" secondItem="DlV-qA-TpQ" secondAttribute="bottom" id="p8g-f2-va0"/>
                 <constraint firstAttribute="bottom" secondItem="GY8-pr-4y9" secondAttribute="bottom" constant="5" id="vij-iB-M8r"/>
             </constraints>
             <variation key="default">
@@ -50,4 +58,7 @@
             <point key="canvasLocation" x="66" y="415"/>
         </collectionReusableView>
     </objects>
+    <resources>
+        <image name="white_background.png" width="1000" height="500"/>
+    </resources>
 </document>

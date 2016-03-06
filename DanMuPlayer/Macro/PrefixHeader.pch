@@ -20,6 +20,8 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 /** 屏幕高度 */
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
+/** 背景色 */
+#define kBGColor [UIColor colorWithRed:0.901961  green:0.901961   blue:0.901961  alpha:0.248195]
 
 // 启动页
 #define kFlashScreenURLStr @"http://api.aixifan.com/flashScreens/getFlashScreen"
@@ -31,10 +33,31 @@
 #define kChannelsURLStr @"http://api.aixifan.com/channels/allChannels"
 
 // 娱乐 番剧等网址
-#define kRegionsWithBelongURLStr @"http://api.aixifan.com/regions?belong=11&channelId=%d"
+#define kRegionsWithBelongURLStr @"http://api.aixifan.com/regions?belong=11&channelId=%ld"
 
 // 搜索网址 -热门
 #define kSearchURLStr @"http://api.aixifan.com/searches/channel?"
+
+// 视频界面
+#define kVideoURLStr @"http://api.aixifan.com/videos/%ld"
+
+// 视频播放源
+#define kVideoRealSourceURLStr @"http://api.aixifan.com/plays/%ld/realSource"
+
+// 评论网址
+#define kVideoCommentURLStr @"http://mobile.acfun.tv/comment/content/list?version=4&contentId=%ld&pageSize=50&pageNo=%ld"
+
+// 相关视频网址
+#define kVideoAboutURLStr @"http://search.acfun.tv/like?id=ac%ld&pageSize=6&pageNo=%ld&type=1"
+
+// 弹幕地址
+#define kDanMuURLStr @"http://danmu.aixifan.com/%d"
+
+// 番剧详情页面地址
+#define kComicDetailURLStr @"http://api.aixifan.com/bangumis/%ld?%@"
+
+// 排行榜
+#define kSortMainURLStr @"http://api.aixifan.com/searches/channel?channelIds=106,107,108,133,136,137,103,138,139,140,83,145,84,85,165,72,86,87,88,89,98,96,162,163,141,121,142,99,100,143,152,94,95,153,154,93,147,148,91,149,150,151,134,135,127,128,129,130,92,131,132&pageNo=%ld&pageSize=10&sort=1&range=86400000"
 
 
 #endif /* PrefixHeader_pch */

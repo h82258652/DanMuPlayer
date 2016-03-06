@@ -30,8 +30,16 @@
     
     
     UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:self.rootVC];
-    navi.navigationBar.translucent = NO;
-    [navi.navigationBar setBackgroundImage:[UIImage imageNamed:@"navibar_image"] forBarMetrics:UIBarMetricsDefault];
+    navi.navigationBar.backgroundColor = kThemeColor;
+    [navi.navigationBar setTintColor:[UIColor whiteColor]];
+    
+    for (id view in navi.navigationBar.subviews) {
+        if ([[NSString stringWithUTF8String:object_getClassName([view class])] isEqualToString:@"_UINavigationBarBackground"]) {
+            [(UIView *)view setHidden:YES];
+//            NSLog(@"%@",[(UIView *)view subviews]);
+        }
+    }
+    
     
     self.sideVC.view.frame = CGRectMake(-kScreenWidth * 2 / 3, 0, kScreenWidth * 2 / 3, kScreenHeight);
     
@@ -46,11 +54,16 @@
     // 调节明暗度的视图
     self.aboveView = [[UIView alloc]initWithFrame:self.view.frame];
     self.aboveView.backgroundColor = [UIColor grayColor];
-    [self.rootVC.view addSubview:self.aboveView];
+//    [self.rootVC.view addSubview:self.aboveView];
+    [self.view addSubview:self.aboveView];
     self.aboveView.hidden = YES;
     self.aboveView.alpha = 0;
     
+    [self.view bringSubviewToFront:self.sideVC.view];
+    
 }
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

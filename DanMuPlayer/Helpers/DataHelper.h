@@ -24,4 +24,19 @@ typedef void(^InputBlock)(NSDictionary *);
 /** 传入网址，请求子界面数据 */
 + (void)getDataSourceForSubWithURLStr:(NSString *)urlStr andParameters:(NSDictionary *)parameters withBlock:(InputBlock)block;
 
+/** 传入网址，请求视频详情界面数据 */
++ (void)getDataSourceForDetailVideoWithURLStr:(NSString *)urlStr withBlock:(InputBlock)block;
+
+/** 传入网址，获得字典 */
++ (void)getDataSourceWithURLStr:(NSString *)urlStr withBlock:(InputBlock)block;
+
+/** 传入网址，获得评论信息 */
++ (void)getDataSourceForCommentWithURLStr:(NSString *)urlStr withBlock:(InputBlock)block;
+
+/** 传入网址，获得视频相关信息 */
++ (void)getDataSourceForVideoAboutWithURLStr:(NSString *)urlStr withBlock:(InputBlock)block;
+
+/** 传入网址，获得番剧详情相关信息 */
++ (void)getDataSourceForComicDetailWithURLStr:(NSString *)urlStr withBlock:(InputBlock)block;
+
 @end

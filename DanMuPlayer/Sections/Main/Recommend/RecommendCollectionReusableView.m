@@ -23,7 +23,7 @@
     [super awakeFromNib];
     // Initialization code
     
-    NSLog(@"加载页眉");
+//    NSLog(@"加载页眉");
 }
 
 - (void)setValueWithModel:(RecommendModel *)model {

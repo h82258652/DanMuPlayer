@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10089" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="VideoInfoFirstCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="505" height="123"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="505" height="123"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysK-Iq-aD5" userLabel="title label">
+                        <rect key="frame" x="0.0" y="0.0" width="505" height="77"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCj-uK-7e7">
+                        <rect key="frame" x="0.0" y="77" width="505" height="16"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-JK-0jH">
+                        <rect key="frame" x="0.0" y="93" width="505" height="30"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="收起" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfU-YC-pKD">
+                                <rect key="frame" x="431" y="7" width="28" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="video_info_up.png" translatesAutoresizingMaskIntoConstraints="NO" id="5LK-Rz-xj2">
+                                <rect key="frame" x="469" y="5" width="16" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Mv9-wt-QXJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="jfU-YC-pKD" firstAttribute="centerY" secondItem="HTa-JK-0jH" secondAttribute="centerY" id="A56-7Z-nTE"/>
+                            <constraint firstAttribute="trailing" secondItem="5LK-Rz-xj2" secondAttribute="trailing" constant="20" id="a1d-Kt-ppz"/>
+                            <constraint firstAttribute="height" constant="30" id="oro-By-8BS"/>
+                            <constraint firstItem="5LK-Rz-xj2" firstAttribute="centerY" secondItem="HTa-JK-0jH" secondAttribute="centerY" id="umw-Hg-ezt"/>
+                            <constraint firstItem="5LK-Rz-xj2" firstAttribute="leading" secondItem="jfU-YC-pKD" secondAttribute="trailing" constant="10" id="ygO-I7-pyv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ysK-Iq-aD5" secondAttribute="trailing" id="4tr-fy-dag"/>
+                <constraint firstItem="HTa-JK-0jH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5Eu-L1-uXJ"/>
+                <constraint firstItem="ysK-Iq-aD5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Csz-xf-W35"/>
+                <constraint firstAttribute="trailing" secondItem="tCj-uK-7e7" secondAttribute="trailing" id="KSN-8x-CF1"/>
+                <constraint firstItem="HTa-JK-0jH" firstAttribute="top" secondItem="tCj-uK-7e7" secondAttribute="bottom" id="OMc-7J-YHn"/>
+                <constraint firstItem="tCj-uK-7e7" firstAttribute="top" secondItem="ysK-Iq-aD5" secondAttribute="bottom" id="T7m-5w-fUd"/>
+                <constraint firstAttribute="bottom" secondItem="HTa-JK-0jH" secondAttribute="bottom" id="U4r-yx-sXN"/>
+                <constraint firstAttribute="trailing" secondItem="tCj-uK-7e7" secondAttribute="trailing" id="Z4n-wk-aXh"/>
+                <constraint firstItem="tCj-uK-7e7" firstAttribute="top" secondItem="ysK-Iq-aD5" secondAttribute="bottom" id="eEo-Cp-VoK"/>
+                <constraint firstItem="HTa-JK-0jH" firstAttribute="top" secondItem="tCj-uK-7e7" secondAttribute="bottom" id="hdC-4f-cEt"/>
+                <constraint firstAttribute="trailing" secondItem="HTa-JK-0jH" secondAttribute="trailing" id="pKu-F6-Bkd"/>
+                <constraint firstItem="tCj-uK-7e7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tYQ-AO-ydI"/>
+                <constraint firstItem="tCj-uK-7e7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="w7j-r3-4eL"/>
+                <constraint firstItem="ysK-Iq-aD5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="wjE-kc-mHf"/>
+            </constraints>
+            <size key="customSize" width="505" height="123"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="KSN-8x-CF1"/>
+                    <exclude reference="T7m-5w-fUd"/>
+                    <exclude reference="w7j-r3-4eL"/>
+                    <exclude reference="OMc-7J-YHn"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="bottomView" destination="HTa-JK-0jH" id="Iys-e6-V1C"/>
+                <outlet property="infoLabel" destination="tCj-uK-7e7" id="wsH-bR-pZv"/>
+                <outlet property="videoIdLabel" destination="ysK-Iq-aD5" id="ne5-zX-Fm5"/>
+            </connections>
+            <point key="canvasLocation" x="380.5" y="293.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="video_info_up.png" width="16" height="16"/>
+    </resources>
+</document>

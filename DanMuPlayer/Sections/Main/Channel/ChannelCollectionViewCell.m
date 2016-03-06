@@ -39,6 +39,8 @@ typedef enum : NSUInteger {
     
     self.subCollectionView.delegate = self;
     self.subCollectionView.dataSource = self;
+    self.subCollectionView.contentOffset = CGPointMake(0, 0);
+    
     // 注册cell
     [self.subCollectionView registerNib:[UINib nibWithNibName:@"ChannelSubCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"channelCell"];
 }
@@ -49,6 +51,8 @@ typedef enum : NSUInteger {
     self.whichModelType = ChannelModelType;
     
     _model = model;
+    
+    self.subCollectionView.contentOffset = CGPointMake(0, 0);
     
     self.heightOfSelf = CGRectGetHeight(self.frame) - 10;
     
@@ -105,15 +109,19 @@ typedef enum : NSUInteger {
     
     switch (self.whichModelType) {
         case ChannelModelType: {
-            ChannelSubModel *model = self.model.childChannels[indexPath.item];
+//            ChannelSubModel *model = self.model.childChannels[indexPath.item];
             // 通知中心发送消息
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"clickSubChannel" object:nil userInfo:@{@"model":model}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"clickSubChannel" object:nil userInfo:@{@"model":self.model,@"index":@(indexPath.item)}];
             
             break; }
         case MainModelType: {
-            RecommendCellModel *model = self.mainModel.contents[indexPath.item];
-            // 通知中心发送消息
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"clickSubChannel111" object:nil userInfo:@{@"model":model}];
+            
+            // 触发block
+            NSDictionary *dic = @{@"model":self.mainModel,@"index":@(indexPath.item)};
+            if (self.subChannelBlock) {
+                self.subChannelBlock(dic);
+            }
+            
             break; }
         default:
             break;

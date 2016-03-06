@@ -19,6 +19,13 @@
 
 #import "SubModel.h"
 
+#import "DetailVideoModel.h"
+
+#import "DetailVideoCommentModel.h"
+#import "DetailVideoAboutModel.h"
+
+#import "ComicDetailModel.h"
+
 DataHelper *helper = nil;
 @implementation DataHelper
 
@@ -162,7 +169,159 @@ DataHelper *helper = nil;
         
     }];
 }
+#pragma mark -- 传入网址，请求视频详情界面数据
++ (void)getDataSourceForDetailVideoWithURLStr:(NSString *)urlStr withBlock:(InputBlock)block {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"deviceType"];
+    [manager.requestSerializer setValue:@"4.1.2" forHTTPHeaderField:@"appVersion"];
+    [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"请求成功");
+        
+        // 若果是数组类，则为主界面，若为字典类，则为子分区
+        
+        if ( [responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = responseObject[@"data"];
+            DetailVideoModel *model = [[DetailVideoModel alloc]initWithDic:dic];;
+            
+            NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithCapacity:1];
+            [dataDic setValue:model forKey:@"data"];
+            
+            block(dataDic);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"请求失败");
+    }];
+    
+}
+#pragma mark 传入网址，获得字典
++ (void)getDataSourceWithURLStr:(NSString *)urlStr withBlock:(InputBlock)block {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"deviceType"];
+    [manager.requestSerializer setValue:@"4.1.2" forHTTPHeaderField:@"appVersion"];
+    [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"请求成功");
+        
+        // 若果是数组类，则为主界面，若为字典类，则为子分区
+        
+        if ( [responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = responseObject[@"data"];
+            
+            NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithCapacity:1];
+            [dataDic setValue:dic forKey:@"data"];
+            
+            block(dataDic);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"请求失败");
+    }];
+}
 
-
+#pragma mark -- 传入网址，获得评论信息
++ (void)getDataSourceForCommentWithURLStr:(NSString *)urlStr withBlock:(InputBlock)block {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"deviceType"];
+    [manager.requestSerializer setValue:@"4.1.2" forHTTPHeaderField:@"appVersion"];
+    [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"请求成功");
+        
+        // 若果是数组类，则为主界面，若为字典类，则为子分区
+        
+        if ( [responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *mapDic = responseObject[@"data"][@"page"][@"map"];
+            
+            NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+            for (NSString *key in responseObject[@"data"][@"page"][@"list"]) {
+                NSDictionary *dic = mapDic[key];
+                DetailVideoCommentModel *model = [[DetailVideoCommentModel alloc]initWithDic:dic];
+                [array addObject:model];
+            }
+            
+            NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithDictionary:responseObject[@"data"][@"page"]];
+            [dataDic setValue:array forKey:@"map"];
+            
+            block(dataDic);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"请求失败");
+    }];
+}
+#pragma mark -- 传入网址，获得视频相关信息
++ (void)getDataSourceForVideoAboutWithURLStr:(NSString *)urlStr withBlock:(InputBlock)block {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"deviceType"];
+    [manager.requestSerializer setValue:@"4.1.2" forHTTPHeaderField:@"appVersion"];
+    [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"请求成功");
+        
+        // 若果是数组类，则为主界面，若为字典类，则为子分区
+        
+        if ( [responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
+            
+            NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+            for (NSDictionary *dic in responseObject[@"data"][@"page"][@"list"]) {
+                DetailVideoAboutModel *model = [[DetailVideoAboutModel alloc]initWithDic:dic];
+                [array addObject:model];
+            }
+            
+            NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithCapacity:1];
+            [dataDic setValue:array forKey:@"data"];
+            
+            block(dataDic);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"请求失败");
+    }];
+    
+}
+#pragma mark -- 传入网址，获得番剧详情相关信息
++ (void)getDataSourceForComicDetailWithURLStr:(NSString *)urlStr withBlock:(InputBlock)block {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager.requestSerializer setValue:@"1" forHTTPHeaderField:@"deviceType"];
+    [manager.requestSerializer setValue:@"4.1.2" forHTTPHeaderField:@"appVersion"];
+    [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"请求成功");
+        
+        // 若果是数组类，则为主界面，若为字典类，则为子分区
+//        NSLog(@"%@",responseObject);
+        if ( [responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
+            
+//            NSLog(@"%@",responseObject);
+            
+            ComicDetailModel *model = [[ComicDetailModel alloc]initWithDic:responseObject[@"data"]];
+            
+            NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithCapacity:1];
+            [dataDic setValue:model forKey:@"data"];
+            
+            block(dataDic);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"请求失败");
+    }];
+    
+    
+}
 
 @end
