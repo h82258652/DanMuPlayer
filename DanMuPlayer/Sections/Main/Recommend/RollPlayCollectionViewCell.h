@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "RecommendModel.h"
 
+typedef void(^DidSelectImageViewBlock)(NSIndexPath *);
 @interface RollPlayCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic,copy)DidSelectImageViewBlock didSelectImageViewBlock;
 
 // 使用model赋值
 - (void)setValueWithModel:(RecommendModel *)model;
+
+
 
 @end

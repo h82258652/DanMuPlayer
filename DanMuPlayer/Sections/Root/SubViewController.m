@@ -9,6 +9,7 @@
 #import "SubViewController.h"
 #import "RecommendCollectionViewController.h"
 #import "SubCollectionViewController.h"
+#import "NewComicListCollectionViewController.h"
 
 #import "RecommendCellModel.h"
 #import "ChannelSubModel.h"
@@ -64,7 +65,7 @@
     CGRect frameOfMainScrollView = self.MainScrollView.frame;
     frameOfMainScrollView.size = CGSizeMake(kScreenWidth, kScreenHeight - CGRectGetMaxY(self.FlagScrollView.frame));
     self.MainScrollView.frame = frameOfMainScrollView;
-    
+    self.MainScrollView.contentSize = CGSizeMake(0, 44);
     
     NSInteger numberOfStart = 0;
     
@@ -111,6 +112,8 @@
     CGRect frameOfMainScrollView = self.MainScrollView.frame;
     frameOfMainScrollView.size = CGSizeMake(kScreenWidth, kScreenHeight - CGRectGetMaxY(self.FlagScrollView.frame));
     self.MainScrollView.frame = frameOfMainScrollView;
+    
+    self.MainScrollView.contentSize = CGSizeMake(0, 44);
     
     NSInteger numberOfStart = 0;
     
@@ -175,22 +178,44 @@
 //    NSLog(@"%@",NSStringFromCGRect(self.MainScrollView.frame));
 }
 
-/** 创建其他节目并请求数据 */
+/** 创建其他界面并请求数据 */
 - (void)setUpSubPageWithModel_Id:(NSInteger)model_Id withName:(NSString *)name{
     
-    // 创建collectionView
+//    NSLog(@"%ld ----- %@",model_Id,name);
+    
+    
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
-    SubCollectionViewController *subVC = [[SubCollectionViewController alloc]initWithCollectionViewLayout:layout];
-    subVC.view.frame = CGRectMake(self.MainScrollView.contentSize.width, 0, kScreenWidth, CGRectGetHeight(self.MainScrollView.bounds));
     
-    [self.MainScrollView addSubview:subVC.view];
-    [self addChildViewController:subVC];
+    if (model_Id == 156) {  // 新番列表
+        NewComicListCollectionViewController *newVC = [[NewComicListCollectionViewController alloc]initWithCollectionViewLayout:layout];
+        newVC.view.frame = CGRectMake(self.MainScrollView.contentSize.width, 0, kScreenWidth, CGRectGetHeight(self.MainScrollView.bounds));
+        [self.MainScrollView addSubview:newVC.view];
+        [self addChildViewController:newVC];
+        
+        self.MainScrollView.contentSize = CGSizeMake(self.MainScrollView.contentSize.width + kScreenWidth, CGRectGetHeight(self.MainScrollView.bounds));
+        
+        // 设置数据
+        newVC.name = name;
+        [newVC loadDataWithChannelId:model_Id];
+        
+    } else {
+        
+        
+        // 创建collectionView
+        SubCollectionViewController *subVC = [[SubCollectionViewController alloc]initWithCollectionViewLayout:layout];
+        subVC.view.frame = CGRectMake(self.MainScrollView.contentSize.width, 0, kScreenWidth, CGRectGetHeight(self.MainScrollView.bounds));
+        
+        [self.MainScrollView addSubview:subVC.view];
+        [self addChildViewController:subVC];
+        
+        self.MainScrollView.contentSize = CGSizeMake(self.MainScrollView.contentSize.width + kScreenWidth, CGRectGetHeight(self.MainScrollView.bounds));
+        
+        // 设置数据
+        subVC.name = name;
+        [subVC loadDataWithChannelId:model_Id];
+        
+    }
     
-    self.MainScrollView.contentSize = CGSizeMake(self.MainScrollView.contentSize.width + kScreenWidth, CGRectGetHeight(self.MainScrollView.bounds));
-    
-    // 设置数据
-    subVC.name = name;
-    [subVC loadDataWithChannelId:model_Id];
     
 }
 
@@ -205,7 +230,7 @@
     CGFloat widthOfBtn = [self calculateWidthForStr:title];
     btn.frame = CGRectMake(self.FlagScrollView.contentSize.width + 10, -64, widthOfBtn, CGRectGetHeight(self.FlagScrollView.frame));
     
-    NSLog(@"%@",NSStringFromCGRect(btn.frame));
+//    NSLog(@"%@",NSStringFromCGRect(btn.frame));
     
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor yellowColor] forState:UIControlStateSelected];
@@ -287,9 +312,11 @@
     UIButton *btn = [self.FlagScrollView viewWithTag:tag];
     CGFloat widthOfFlag = self.FlagScrollView.contentSize.width;
     CGFloat xOfCenterOfBtn = btn.center.x;
+//    NSLog(@"%f",self.FlagScrollView.center.y);
     if (widthOfFlag > kScreenWidth) {
         
         CGPoint point;
+//        CGFloat yOfFlag = self.FlagScrollView.center.y;
         
         if (xOfCenterOfBtn > kScreenWidth / 2 && widthOfFlag - xOfCenterOfBtn > kScreenWidth / 2) {
             point = CGPointMake(xOfCenterOfBtn - kScreenWidth / 2, 0);
@@ -298,6 +325,7 @@
         } else {
             point = CGPointMake(0, 0);
         }
+        NSLog(@"%@",NSStringFromCGPoint(point));
         [UIView animateWithDuration:0.5 animations:^{
             self.FlagScrollView.contentOffset = point;
         }];

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ComicDetailModel.h"
+#import "NewComicListModel.h"
 
 @interface ComicDetailFirstCollectionViewCell : UICollectionViewCell
 
@@ -19,5 +20,8 @@
 
 /** 赋值 */
 - (void)setValueWithModel:(ComicDetailModel *)model;
+
+/** 频道赋值 */
+- (void)setValueWithNewComicListModel:(NewComicListModel *)model;
 
 @end

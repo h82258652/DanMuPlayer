@@ -94,11 +94,14 @@ static NSString * const reuseIdentifier = @"Cell";
             [self.commentDic setValue:listArr forKey:@"list"];
             [self.commentDic setValue:mapArr forKey:@"map"];
             
+//            NSLog(@"****%@",self.commentDic);
+            
             [self.collectionView reloadData];
             
             return;
         }
         self.commentDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+//        NSLog(@"++++%@",dic);
         [self.collectionView reloadData];
         
     }];
@@ -152,7 +155,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == 2 && self.mainModel.videos.count == 1) {
         return 0;
-    } else if (section == 3 && [self.commentDic[@"page"] isKindOfClass:[NSDictionary class]]) {
+    } else if (section == 3) {
         return [self.commentDic[@"list"] count];
     } else if (section == 0 && !self.showInfoCell) {
         return 0;
@@ -201,8 +204,8 @@ static NSString * const reuseIdentifier = @"Cell";
             [(VideoCommentCollectionViewCell *)cell setValueWithModel:nil];
             return;
         }
-        
-        DetailVideoCommentModel *model = self.commentDic[@"map"][indexPath.row];
+//        NSLog(@"*****%ld",indexPath.item);
+        DetailVideoCommentModel *model = self.commentDic[@"map"][indexPath.item];
         
         [(VideoCommentCollectionViewCell *)cell setValueWithModel:model];
         
@@ -232,11 +235,11 @@ static NSString * const reuseIdentifier = @"Cell";
             switch (indexPath.section) {
                 case 2:
                     headerView.labelOfTitle.text = @"选段";
-                    headerView.labelOfNum.text = [NSString stringWithFormat:@"%ld",self.mainModel.videos.count];
+                    headerView.labelOfNum.text = [NSString stringWithFormat:@"%ld",[self.commentDic[@"totalCount"] integerValue]];
                     break;
                 case 3:
                     headerView.labelOfTitle.text = @"评论";
-                    NSInteger comment = [self.mainModel.visit[@"comment"] integerValue];
+                    NSInteger comment = [self.commentDic[@"totalCount"] integerValue];
                     headerView.labelOfNum.text = comment < 10000 ? [NSString stringWithFormat:@"%ld",comment] : [NSString stringWithFormat:@"%.1f万",comment * 1.0 / 10000];
                     break;
                 default:
@@ -264,11 +267,12 @@ static NSString * const reuseIdentifier = @"Cell";
         }
     } else if (indexPath.section == 3) {
         
-        if ([self.commentDic[@"totoalCount"] integerValue] == 0) {
+        if ([self.commentDic[@"totalCount"] integerValue] == 0) {
+//            NSLog(@"%ld",[self.commentDic[@"totalCount"] integerValue]);
             return CGSizeMake(kScreenWidth - 4, 70);
         }
-        
         DetailVideoCommentModel *model = self.commentDic[@"map"][indexPath.row];
+//        NSLog(@"%f",[VideoCommentCollectionViewCell heightOfCellWithComment:model.content]);
         return CGSizeMake(kScreenWidth - 4, [VideoCommentCollectionViewCell heightOfCellWithComment:model.content]);
     } else if (indexPath.section == 0) {
         

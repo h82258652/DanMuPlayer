@@ -14,7 +14,11 @@
 #import "MoreHotCollectionViewController.h"
 
 #import "DetailVideoViewController.h"
+//#import "ComicDetailFirstCollectionViewCell.h"  // 新番列表
 #import "DataHelper.h"
+#import "NewComicListModel.h"
+
+//#define kBangumiURLStr @"http://api.aixifan.com/searches/bangumi?&pageNo=%ld&pageSize=10&sort=4&bangumiTypes=1&isNewBangumi=1"
 
 @interface SubCollectionViewController ()<UICollectionViewDelegateFlowLayout>
 
@@ -55,6 +59,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     [self.collectionView registerNib:[UINib nibWithNibName:@"VideoCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"videocell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"SortCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"sortcell"];
+//    [self.collectionView registerNib:[UINib nibWithNibName:@"ComicDetailFirstCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"comicCell"];
     
     // 注册页眉页脚
     [self.collectionView registerNib:[UINib nibWithNibName:@"RecommendCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
@@ -76,30 +81,48 @@ static NSString * const reuseIdentifier = @"Cell";
     self.pageNo = 1;
     self.sort = 1;
     
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:1];
-    [dic setValue:@(self.channelIds) forKey:@"channelIds"];
-    [dic setValue:@(self.pageSize) forKey:@"pageSize"];
-    [dic setValue:@(self.pageNo) forKey:@"pageNo"];
-    [dic setValue:@(self.sort) forKey:@"sort"];
-    [dic setValue:@(604800000) forKey:@"range"];
-    // 请求数据
-    [DataHelper getDataSourceForSubWithURLStr:kSearchURLStr andParameters:dic withBlock:^(NSDictionary *dic) {
-        NSMutableArray *array = dic[@"data"];
-        [self.dataSource replaceObjectAtIndex:0 withObject:array];
-        [self.collectionView reloadData];
-    }];
     
-    self.pageSize = 10;
-    self.sort = 4;
-    [dic setValue:@(self.pageSize) forKey:@"pageSize"];
-    [dic setValue:@(self.sort) forKey:@"sort"];
-    [dic removeObjectForKey:@"range"];
+//    if (channelId == 156) // 新番连载
+//    {
+//        NSString *urlStr = [NSString stringWithFormat:kBangumiURLStr,self.pageNo];
+//        [DataHelper getDataSourceForComicDetailWithURLStr:urlStr withBlock:^(NSDictionary *dic) {
+//            NSArray *array = dic[@"list"];
+//            for (NSDictionary *dic in array) {
+//                NewComicListModel *model = [[NewComicListModel alloc]initWithDic:dic];
+//                [self.dataSource addObject:model];
+//            }
+//            [self.collectionView reloadData];
+//        }];
+//        
+//        
+//    } else {
     
-    [DataHelper getDataSourceForSubWithURLStr:kSearchURLStr andParameters:dic withBlock:^(NSDictionary *dic) {
-        NSMutableArray *array = dic[@"data"];
-        [self.dataSource replaceObjectAtIndex:1 withObject:array];
-        [self.collectionView reloadData];
-    }];
+        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:1];
+        [dic setValue:@(self.channelIds) forKey:@"channelIds"];
+        [dic setValue:@(self.pageSize) forKey:@"pageSize"];
+        [dic setValue:@(self.pageNo) forKey:@"pageNo"];
+        [dic setValue:@(self.sort) forKey:@"sort"];
+        [dic setValue:@(604800000) forKey:@"range"];
+        // 请求数据
+        [DataHelper getDataSourceForSubWithURLStr:kSearchURLStr andParameters:dic withBlock:^(NSDictionary *dic) {
+            NSMutableArray *array = dic[@"data"];
+            [self.dataSource replaceObjectAtIndex:0 withObject:array];
+            [self.collectionView reloadData];
+        }];
+        
+        self.pageSize = 10;
+        self.sort = 4;
+        [dic setValue:@(self.pageSize) forKey:@"pageSize"];
+        [dic setValue:@(self.sort) forKey:@"sort"];
+        [dic removeObjectForKey:@"range"];
+        
+        [DataHelper getDataSourceForSubWithURLStr:kSearchURLStr andParameters:dic withBlock:^(NSDictionary *dic) {
+            NSMutableArray *array = dic[@"data"];
+            [self.dataSource replaceObjectAtIndex:1 withObject:array];
+            [self.collectionView reloadData];
+        }];
+//    }
+    
     
 }
 
@@ -165,6 +188,7 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 // 分区数
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+
     return 2;
 }
 // 行数
@@ -177,6 +201,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 // 选择cell
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     
     if (indexPath.section == 0) {
         VideoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"videocell" forIndexPath:indexPath];
@@ -236,9 +261,6 @@ static NSString * const reuseIdentifier = @"Cell";
         [(ChannelFooterCollectionReusableView *)view setClickFooterBlock:^(NSInteger section){
            
             // 点击了查看更多热门
-#warning next page ****************************
-            
-            
             
             UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
             MoreHotCollectionViewController *hotVC = [[MoreHotCollectionViewController alloc]initWithCollectionViewLayout:layout];

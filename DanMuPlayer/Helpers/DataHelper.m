@@ -242,8 +242,9 @@ DataHelper *helper = nil;
             NSDictionary *mapDic = responseObject[@"data"][@"page"][@"map"];
             
             NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
-            for (NSString *key in responseObject[@"data"][@"page"][@"list"]) {
-                NSDictionary *dic = mapDic[key];
+            for (NSNumber *userId in responseObject[@"data"][@"page"][@"list"]) {
+                NSDictionary *dic = mapDic[[NSString stringWithFormat:@"c%@",userId]];
+//                NSLog(@"++++++%@  %@",dic,userId);
                 DetailVideoCommentModel *model = [[DetailVideoCommentModel alloc]initWithDic:dic];
                 [array addObject:model];
             }

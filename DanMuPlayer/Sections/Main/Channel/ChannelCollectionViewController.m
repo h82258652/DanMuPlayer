@@ -19,6 +19,8 @@
 
 #import "DetailVideoViewController.h"
 
+#import "ArticleSubChannelCollectionViewController.h"
+
 @interface ChannelCollectionViewController ()<UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic,strong)NSMutableArray *dataSource;  // 数据源
@@ -82,6 +84,20 @@ static NSString * const reuseIdentifier = @"Cell";
     ChannelModel *model = sender.userInfo[@"model"];
     NSInteger index = [sender.userInfo[@"index"] integerValue];
 //    NSLog(@"子频道");
+    NSLog(@"%ld",model.type);
+    if (model.type == 11) {  // 文章子分区
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+        ArticleSubChannelCollectionViewController *subVC = [[ArticleSubChannelCollectionViewController alloc]initWithCollectionViewLayout:layout];
+        subVC.view.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64);
+        
+        ChannelSubModel *subModel = model.childChannels[index];
+        
+        [subVC loadDateWithSubChannelId:subModel.sub_Id];
+        [self.navigationController pushViewController:subVC animated:YES];
+        
+        return;
+    }
+    
     
     // 在次级界面调整
     UIStoryboard *substoryboard = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
@@ -91,10 +107,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [subVC setUpWithChannelModel:model WithCustomIndex:index];
     [self.navigationController pushViewController:subVC animated:YES];
     
-//    UIStoryboard *sub = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
-//    DetailVideoViewController *subVC = [sub instantiateViewControllerWithIdentifier:@"detail_Video"];
-//    [subVC loadDataWithVideoId:2575362];
-//    [self.navigationController pushViewController:subVC animated:NO];
+    
     
 }
 /** 提供频道信息给推荐界面 */

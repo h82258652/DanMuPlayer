@@ -44,6 +44,8 @@
         return;
     }
     
+    
+    
     [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
     self.nameLabel.text = model.username;
     self.floorLabel.text = [NSString stringWithFormat:@"#%ld",model.floor];

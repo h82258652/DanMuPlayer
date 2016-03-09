@@ -51,7 +51,7 @@
 #define kVideoAboutURLStr @"http://search.acfun.tv/like?id=ac%ld&pageSize=6&pageNo=%ld&type=1"
 
 // 弹幕地址
-#define kDanMuURLStr @"http://danmu.aixifan.com/%d"
+#define kDanMuURLStr @"http://danmu.aixifan.com/%ld"
 
 // 番剧详情页面地址
 #define kComicDetailURLStr @"http://api.aixifan.com/bangumis/%ld?%@"
@@ -59,5 +59,7 @@
 // 排行榜
 #define kSortMainURLStr @"http://api.aixifan.com/searches/channel?channelIds=106,107,108,133,136,137,103,138,139,140,83,145,84,85,165,72,86,87,88,89,98,96,162,163,141,121,142,99,100,143,152,94,95,153,154,93,147,148,91,149,150,151,134,135,127,128,129,130,92,131,132&pageNo=%ld&pageSize=10&sort=1&range=86400000"
 
+// 文章详情
+#define kArticleDetailURLStr @"http://api.aixifan.com/articles/%ld"
 
 #endif /* PrefixHeader_pch */

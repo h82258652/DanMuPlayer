@@ -28,6 +28,8 @@
 #import "SubViewController.h"
 #import "DetailVideoViewController.h"
 #import "ComicDetailViewController.h"
+#import "ArticleDetailViewController.h"
+#import "ArticleSubChannelCollectionViewController.h"
 
 
 @interface RecommendCollectionViewController ()<UICollectionViewDelegateFlowLayout>
@@ -66,7 +68,7 @@
 //    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"yuan"];
     
     // 注册接收消息
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rollPlayViewDidSelect:) name:@"tapImage" object:nil]; // 轮播图被点击
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rollPlayViewDidSelect:) name:@"tapImage" object:nil]; // 轮播图被点击
     
     
 
@@ -142,11 +144,11 @@
     }
 }
 // 当轮播图被点击时，触发事件
-- (void)rollPlayViewDidSelect:(NSNotification *)sender {
-    NSIndexPath *indexPath = sender.userInfo[@"indexPath"];
-    
-    [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
-}
+//- (void)rollPlayViewDidSelect:(NSNotification *)sender {
+//    NSIndexPath *indexPath = sender.userInfo[@"indexPath"];
+//    
+//    [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
+//}
 
 
 
@@ -303,6 +305,11 @@
     if ([cell isKindOfClass:[RollPlayCollectionViewCell class]]) {  // 轮播图
         
         [(RollPlayCollectionViewCell *)cell setValueWithModel:model];
+        ((RollPlayCollectionViewCell *)cell).didSelectImageViewBlock = ^(NSIndexPath *index) {
+            
+            [self collectionView:self.collectionView didSelectItemAtIndexPath:index];
+            
+        };
         
     } else if ([cell isKindOfClass:[VideoCollectionViewCell class]]) {  // 视频
         
@@ -335,14 +342,29 @@
            
             RecommendModel *rModel = dic[@"model"];
             NSInteger index = [dic[@"index"] integerValue];
+            NSLog(@"%ld",model.type_id);
+            if (rModel.channelId == 63) {
+                
+                // 文章子分区
+                UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+                ArticleSubChannelCollectionViewController *subVC = [[ArticleSubChannelCollectionViewController alloc]initWithCollectionViewLayout:layout];
+                subVC.view.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64);
+                [subVC loadDateWithModel:rModel withIndex:index];
+                //            NSLog(@"%@",rModel.contents);
+                [self.navigationController pushViewController:subVC animated:YES];
+            } else {
+                
+                // 在次级界面调整
+                UIStoryboard *substoryboard = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
+                SubViewController *subVC = [substoryboard instantiateViewControllerWithIdentifier:@"sub_main_vc"];
+                subVC.view.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64);
+                
+                [subVC setUpWithRecommendModel:rModel withCustomIndex:index];
+                [self.navigationController pushViewController:subVC animated:YES];
+            }
             
-            // 在次级界面调整
-            UIStoryboard *substoryboard = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
-            SubViewController *subVC = [substoryboard instantiateViewControllerWithIdentifier:@"sub_main_vc"];
-            subVC.view.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64);
             
-            [subVC setUpWithRecommendModel:rModel withCustomIndex:index];
-            [self.navigationController pushViewController:subVC animated:YES];
+            
             
         }];
     }
@@ -460,6 +482,7 @@
     
     RecommendModel *model = self.dataSoruce[indexPath.section];
     RecommendCellModel *subModel = model.contents[indexPath.item];
+    NSLog(@"%ld",model.type_id);
     switch (model.type_id) {
         case 1:
         case 5:
@@ -482,6 +505,14 @@
             [subVC loadDataWithBangumisId:[subModel.url integerValue]];
             [self.navigationController pushViewController:subVC animated:NO];
             
+            break;
+        }
+        case 2:
+        {
+            
+            ArticleDetailViewController *articleVC = [[ArticleDetailViewController alloc]initWithNibName:@"ArticleDetailViewController" bundle:nil];
+            [articleVC loadDataWithArticleId:[subModel.url integerValue]];
+            [self.navigationController pushViewController:articleVC animated:YES];
             break;
         }
         default:

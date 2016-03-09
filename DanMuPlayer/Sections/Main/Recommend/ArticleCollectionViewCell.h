@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "RecommendCellModel.h"
+#import "SubModel.h"
 
 @interface ArticleCollectionViewCell : UICollectionViewCell
 
 // 赋值
 - (void)setValueWithModel:(RecommendCellModel *)model;
+
 
 @end

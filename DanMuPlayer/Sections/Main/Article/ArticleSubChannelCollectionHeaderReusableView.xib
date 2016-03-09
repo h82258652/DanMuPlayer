@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10089" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="ArticleSubChannelCollectionHeaderReusableView">
+            <rect key="frame" x="0.0" y="0.0" width="712" height="70"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NEi-lg-OMC">
+                    <rect key="frame" x="0.0" y="0.0" width="712" height="68"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" tag="190" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLw-4U-C0j">
+                    <rect key="frame" x="9" y="21" width="80" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="综合">
+                        <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="changeSubChannelAction:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="VZ5-ja-6Lr"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="191" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AuA-AM-Dl0">
+                    <rect key="frame" x="89" y="21" width="178" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="工作·情感">
+                        <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="changeSubChannelAction:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="faM-dw-wfu"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="192" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQU-qZ-eSg">
+                    <rect key="frame" x="267" y="21" width="178" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="动漫·文化">
+                        <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="changeSubChannelAction:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="NGq-sF-kTb"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="193" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx0-M0-v2L">
+                    <rect key="frame" x="445" y="21" width="178" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="漫画·小说">
+                        <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="changeSubChannelAction:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="qYO-WP-nra"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="194" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3V-JW-qHW">
+                    <rect key="frame" x="623" y="21" width="80" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="游戏">
+                        <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="changeSubChannelAction:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="m2f-5o-3Ku"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="AuA-AM-Dl0" secondAttribute="bottom" constant="2" id="4iW-P5-B0b"/>
+                <constraint firstItem="bx0-M0-v2L" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="6fV-qc-mvf"/>
+                <constraint firstItem="NLw-4U-C0j" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="3" id="9XM-RQ-ro7"/>
+                <constraint firstItem="bx0-M0-v2L" firstAttribute="width" secondItem="AuA-AM-Dl0" secondAttribute="width" id="Bc5-e1-ckT"/>
+                <constraint firstItem="AuA-AM-Dl0" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="DgH-2e-lfi"/>
+                <constraint firstItem="AuA-AM-Dl0" firstAttribute="leading" secondItem="NLw-4U-C0j" secondAttribute="trailing" id="JNt-6u-nCn"/>
+                <constraint firstItem="NEi-lg-OMC" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="L0i-NS-OVL"/>
+                <constraint firstItem="AuA-AM-Dl0" firstAttribute="width" secondItem="U6b-Vx-4bR" secondAttribute="width" multiplier="2:8" id="OIP-tc-GEX"/>
+                <constraint firstItem="bx0-M0-v2L" firstAttribute="leading" secondItem="yQU-qZ-eSg" secondAttribute="trailing" id="QAg-aq-i0M"/>
+                <constraint firstItem="yQU-qZ-eSg" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="TCr-kG-ngQ"/>
+                <constraint firstItem="AuA-AM-Dl0" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="2" id="TSW-bO-Z6z"/>
+                <constraint firstItem="a3V-JW-qHW" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="VBG-tS-kbH"/>
+                <constraint firstItem="yQU-qZ-eSg" firstAttribute="leading" secondItem="AuA-AM-Dl0" secondAttribute="trailing" id="bQ6-uj-dTB"/>
+                <constraint firstItem="NLw-4U-C0j" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="2" id="hxz-Tu-TS7"/>
+                <constraint firstItem="a3V-JW-qHW" firstAttribute="width" secondItem="NLw-4U-C0j" secondAttribute="width" id="iHl-4U-Vv6"/>
+                <constraint firstItem="NEi-lg-OMC" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="j4C-pI-Pbu"/>
+                <constraint firstItem="NLw-4U-C0j" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="knf-uD-2Un"/>
+                <constraint firstItem="a3V-JW-qHW" firstAttribute="leading" secondItem="bx0-M0-v2L" secondAttribute="trailing" id="lma-Ov-o51"/>
+                <constraint firstAttribute="trailing" secondItem="NEi-lg-OMC" secondAttribute="trailing" id="r6M-b8-1Cb"/>
+                <constraint firstAttribute="bottom" secondItem="NLw-4U-C0j" secondAttribute="bottom" constant="2" id="rwr-0G-5Y2"/>
+                <constraint firstAttribute="bottom" secondItem="NEi-lg-OMC" secondAttribute="bottom" constant="2" id="seW-WR-Ofn"/>
+                <constraint firstItem="yQU-qZ-eSg" firstAttribute="width" secondItem="AuA-AM-Dl0" secondAttribute="width" id="tEt-x9-mVC"/>
+                <constraint firstItem="NLw-4U-C0j" firstAttribute="width" secondItem="U6b-Vx-4bR" secondAttribute="width" multiplier="0.9:8" id="tP9-j5-axy"/>
+                <constraint firstItem="yQU-qZ-eSg" firstAttribute="centerX" secondItem="U6b-Vx-4bR" secondAttribute="centerX" id="ue2-wJ-Rpz"/>
+                <constraint firstItem="yQU-qZ-eSg" firstAttribute="leading" secondItem="AuA-AM-Dl0" secondAttribute="trailing" id="yIP-xC-X4a"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="9XM-RQ-ro7"/>
+                    <exclude reference="hxz-Tu-TS7"/>
+                    <exclude reference="rwr-0G-5Y2"/>
+                    <exclude reference="4iW-P5-B0b"/>
+                    <exclude reference="TSW-bO-Z6z"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="467" y="289"/>
+        </collectionReusableView>
+    </objects>
+</document>

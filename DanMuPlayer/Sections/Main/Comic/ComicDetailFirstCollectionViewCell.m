@@ -39,6 +39,18 @@
     
 }
 
+/** 频道赋值 */
+- (void)setValueWithNewComicListModel:(NewComicListModel *)model
+{
+    [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:model.cover]];
+    self.titleLabel.text = model.title;
+    self.infoLabel.text = model.intro;
+    self.infoLabel.numberOfLines = 2;
+    self.nowLabel.text = [NSString stringWithFormat:@"更新至%@",model.lastVideoName];
+    
+    
+}
+
 
 /** 动态计算高度 */
 + (CGFloat)heightOfCellWithStr:(NSString *)str {

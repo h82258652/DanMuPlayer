@@ -39,4 +39,19 @@
     
 }
 
+//- (void)setValueWithSubModel:(SubModel *)model
+//{
+//    
+////    self.labelOfFrom.text = [NSString stringWithFormat:@"/来自%@",[kFromDic valueForKey:[NSString stringWithFormat:@"%ld",model.channelId]]];
+//    self.labelOfFrom.text = @"";
+//    NSInteger comments = model.comments;
+//    self.LabelOfNumberOfComment.text = comments > 10000 ? [NSString stringWithFormat:@"%.1f万",comments * 1.0 / 10000] : [NSString stringWithFormat:@"%ld",comments];
+//    self.LabelOfTitle.text = model.title;
+//    self.labelOfUP.text = [NSString stringWithFormat:@"UP主:%@",model.username];
+//    NSInteger views = model.views;
+//    self.LabelOfNumberOfRead.text = views >= 10000 ? [NSString stringWithFormat:@"%.1f万",views * 1.0 / 10000] : [NSString stringWithFormat:@"%ld",views];
+//  
+//}
+
+
 @end

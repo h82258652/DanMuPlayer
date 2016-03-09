@@ -7,8 +7,15 @@
 //
 
 #import "SideBarTableViewController.h"
+#import "SideBarTableViewCell.h"
+#import "SDImageCache.h"
+#import "CollectionTableViewController.h"
 
 @interface SideBarTableViewController ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *topBGImageView;
+
 
 @end
 
@@ -17,17 +24,22 @@
 - (void)loadView {
     [super loadView];
 //    self.tableView.frame = CGRectMake(0, 0, 300, 200);
-    
+ 
+//    [[[NSBundle mainBundle] loadNibNamed:@"" owner:self options:nil]lastObject];
+//    [[UINib nibWithNibName:@"" bundle:nil] ]
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    // 背景图片模糊
+//    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+//    UIVisualEffectView *effectivew = [[UIVisualEffectView alloc]initWithEffect:blur];
+//    effectivew.frame = CGRectMake(0, 0, self.topBGImageView.frame.size.width, self.topBGImageView.frame.size.height);
+//    [self.topBGImageView addSubview:effectivew];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.logoImageView.layer.cornerRadius = CGRectGetHeight(self.logoImageView.frame) / 2;
+    self.logoImageView.layer.masksToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,24 +50,106 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+
+    return 4;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    SideBarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sidebar_cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    switch (indexPath.row) {
+        case 0:
+            cell.cellLabel.text = @"我的收藏";
+            cell.cellImageView.image = [UIImage imageNamed:@"collection_did"];
+            break;
+        case 1:
+            cell.cellLabel.text = @"清除缓存";
+            cell.cellImageView.image = [UIImage imageNamed:@"sidebar_clear"];
+            break;
+        case 2:
+            cell.cellLabel.text = @"意见反馈";
+            cell.cellImageView.image = [UIImage imageNamed:@"sidebar_feedback"];
+            break;
+        case 3:
+            cell.cellLabel.text = @"关于我们";
+            cell.cellImageView.image = [UIImage imageNamed:@"sidebar_about"];
+            break;
+        default:
+            break;
+    }
     
     return cell;
 }
-*/
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"点击了侧边栏");
+    switch (indexPath.row) {
+        case 0:
+        { // 我的收藏
+//            CollectionTableViewController *cTB = [[CollectionTableViewController alloc]initWithStyle:UITableViewStylePlain];
+//            UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:cTB];
+//            navi.navigationBar.translucent = NO;
+////            [navi.navigationBar setBackgroundImage:[UIImage imageNamed:@"navibar_image"] forBarMetrics:UIBarMetricsDefault];
+//            
+//            [self presentViewController:navi animated:YES completion:nil];
+//            [self presentViewController:cTB animated:YES completion:nil];
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UINavigationController *cNA = [storyboard instantiateViewControllerWithIdentifier:@"side_collection_navi"];
+            [self presentViewController:cNA animated:YES completion:nil];
+            
+            
+            break;
+        }
+        case 1:
+            // 清除缓存
+            [[SDImageCache sharedImageCache] clearDisk];
+            if ([[SDImageCache sharedImageCache] getDiskCount] == 0) {
+                NSLog(@"清除缓存");
+                // 清除成功
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"清除缓存成功" preferredStyle:UIAlertControllerStyleAlert];
+                [self presentViewController:alert animated:YES completion:nil];
+                [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(dismissAlert:) userInfo:@{@"alert":alert} repeats:NO];
+            }
+            
+            break;
+        case 2:
+            // 意见反馈
+            
+            
+            
+            break;
+        case 3:
+            // 关于我们
+            
+            
+            
+            break;
+        default:
+            break;
+    }
+    
+    
+    
+}
+
+/** 隐藏alert */
+- (void)dismissAlert:(NSTimer *)timer
+{
+    
+    UIAlertController *alert = timer.userInfo[@"alert"];
+    [alert dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 /*
 // Override to support conditional editing of the table view.

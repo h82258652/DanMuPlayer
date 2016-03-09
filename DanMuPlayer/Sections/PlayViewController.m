@@ -47,7 +47,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *progressSliderH;
 
 @property (weak, nonatomic) IBOutlet UIView *horizontalControlTopView;  // 横屏要显示的上方控制器视图
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollTitle;  // 标题视图滚动
+@property (weak, nonatomic) IBOutlet UILabel *videoTitleLabel;  // 标题视图
 
 @property (weak, nonatomic) IBOutlet UIView *allDefinitionView;  // 全部清晰度
 @property (weak, nonatomic) IBOutlet UIButton *nowDefinitionBtn;  // 当前选择的清晰度
@@ -111,7 +111,8 @@
 - (void)setUpWithModel:(DetailVideoModel *)model {
     self.mainModel = model;
     
-    NSLog(@"%@",model.title);
+//    NSLog(@"%@",model.title);
+    
     
     DetailVideoListModel *listModel = [model.videos firstObject];
     [self loadDataWithVideoId:listModel.videoId];
@@ -131,6 +132,12 @@
 
 /** 请求数据(播放地址) */
 - (void)loadDataWithVideoId:(NSInteger)videoId {
+    
+    // 判断是否收藏过，添加收藏按钮
+//    [self whetherCollection];
+    
+//    NSLog(@"%ld",videoId);
+    self.videoId = videoId;
     
     [DataHelper getDataSourceWithURLStr:[NSString stringWithFormat:kVideoRealSourceURLStr,videoId] withBlock:^(NSDictionary *dic) {
         
@@ -154,15 +161,12 @@
         // 请求并封装弹幕数据
         [self modifyDanMuKuSource];
         // 初始化弹幕库
-        [self setUpDanMuKu];
+//        [self setUpDanMuKu];
         
-        for (id view in self.scrollTitle.subviews) {
-            if ([view isKindOfClass:[UILabel class]]) {
-                [(UILabel *)view setText:self.infoDic[@"title"]];
-//                NSLog(@"----%@",[self.infoDic[@"title"] stringValue]);
-            }
-        }
-        // 开启标题滚动
+        self.videoTitleLabel.text = self.infoDic[@"title"];
+        
+        
+        
         
         
     }];
@@ -734,12 +738,17 @@
         self.danmukuArray = [NSMutableArray arrayWithCapacity:1];
     }
     
-//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kDanMuURLStr,self.mainModel.contentId]];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kDanMuURLStr,3244392]];
-    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kDanMuURLStr,self.videoId]];
+//    NSLog(@"%@",[NSString stringWithFormat:kDanMuURLStr,self.videoId]);
     NSData *data = [NSData dataWithContentsOfURL:url];
-    NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-    [array[2] enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSArray *sourceArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+//    NSLog(@"++++%@",array);
+    sourceArr = [sourceArr sortedArrayUsingComparator:^NSComparisonResult(NSArray *  _Nonnull obj1, NSArray *  _Nonnull obj2) {
+        NSComparisonResult result = [[NSNumber numberWithUnsignedInteger:obj1.count] compare:[NSNumber numberWithUnsignedInteger:obj2.count]];
+        return result;
+    }];
+    
+    [sourceArr[2] enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 //        NSLog(@"*****%@",obj);
         // 格式化弹幕信息
         NSString *str1 = obj[@"c"];
@@ -784,6 +793,9 @@
         DanmakuSource *danmu = [DanmakuSource createWithP:str M:obj[@"m"]];
         [self.danmukuArray addObject:danmu];
     }];
+    
+    // 初始化弹幕库
+    [self setUpDanMuKu];
 }
 
 #pragma mark -DanmakuDelegate
@@ -830,7 +842,49 @@
 //    [self.mainPlayer.currentItem cancelPendingSeeks];
 //    [self.mainPlayer.currentItem.asset cancelLoading];
 }
+#pragma mark - 收藏
 
+///** 判断是否收藏过，添加收藏按钮 */
+//- (void)whetherCollection
+//{
+//    
+//    
+//    // 添加收藏按钮
+//    UIBarButtonItem *collectionItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"collection_action"] style:UIBarButtonItemStylePlain target:self action:@selector(collectionArticle)];
+//    self.navigationItem.rightBarButtonItem = collectionItem;
+//    
+//    
+//    //    if (/** 未收藏 */) {  // 未收藏
+//    //
+//    //        // 添加收藏按钮
+//    //        UIBarButtonItem *collectionItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"collection_action"] style:UIBarButtonItemStylePlain target:self action:@selector(collectionArticle)];
+//    //        self.navigationItem.rightBarButtonItem = collectionItem;
+//    //    } else {  // 已收藏
+//    //
+//    //        // 添加已收藏按钮
+//    //        UIBarButtonItem *collectionItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"collection_did"] style:UIBarButtonItemStylePlain target:self action:@selector(didCollection)];
+//    //        self.navigationItem.rightBarButtonItem = collectionItem;
+//    //    }
+//    
+//    
+//    
+//}
+//
+//
+///** 收藏文章 */
+//- (void)collectionArticle
+//{
+//    
+//    NSLog(@"收藏视频");
+//    
+//    
+//}
+///** 提示已收藏 */
+//- (void)didCollection {
+//    
+//    
+//    NSLog(@"已经收藏过了");
+//}
 
 
 - (void)didReceiveMemoryWarning {
@@ -839,6 +893,8 @@
 }
 
 
+
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -848,6 +904,6 @@
     
     NSLog(@"****%@",[segue.destinationViewController class]);
 }
-
+*/
 
 @end

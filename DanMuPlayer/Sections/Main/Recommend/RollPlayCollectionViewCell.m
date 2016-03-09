@@ -70,6 +70,10 @@
     // 创建一个IndexPath
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:tap.view.tag - 120 inSection:0];
     
+    if (self.didSelectImageViewBlock) {
+        self.didSelectImageViewBlock(indexPath);
+    }
+    
     // 发送被点击通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tapImage" object:nil userInfo:@{@"indexPath":indexPath}];
 }
