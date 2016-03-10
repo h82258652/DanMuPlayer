@@ -58,14 +58,16 @@
 /** 使用主model创建 */
 - (void)setUpWithRecommendModel:(RecommendModel *)model withCustomIndex:(NSInteger)customIndex {
     
-    CGRect frameOfFlagScrollView = self.FlagScrollView.frame;
-    frameOfFlagScrollView.size = CGSizeMake(kScreenWidth, CGRectGetHeight(self.FlagScrollView.frame));
-    self.FlagScrollView.frame = frameOfFlagScrollView;
+//    CGRect frameOfFlagScrollView = self.FlagScrollView.frame;
+//    frameOfFlagScrollView.size = CGSizeMake(kScreenWidth, CGRectGetHeight(self.FlagScrollView.frame));
+//    self.FlagScrollView.frame = frameOfFlagScrollView;
+//    
+//    CGRect frameOfMainScrollView = self.MainScrollView.frame;
+//    frameOfMainScrollView.size = CGSizeMake(kScreenWidth, kScreenHeight - CGRectGetMaxY(self.FlagScrollView.frame));
+//    self.MainScrollView.frame = frameOfMainScrollView;
+//    self.MainScrollView.contentSize = CGSizeMake(0, 44);
     
-    CGRect frameOfMainScrollView = self.MainScrollView.frame;
-    frameOfMainScrollView.size = CGSizeMake(kScreenWidth, kScreenHeight - CGRectGetMaxY(self.FlagScrollView.frame));
-    self.MainScrollView.frame = frameOfMainScrollView;
-    self.MainScrollView.contentSize = CGSizeMake(0, 44);
+    [self modifyFrame];
     
     NSInteger numberOfStart = 0;
     
@@ -105,15 +107,7 @@
 /** 使用频道model创建 */
 - (void)setUpWithChannelModel:(ChannelModel *)model WithCustomIndex:(NSInteger)customIndex{
     
-    CGRect frameOfFlagScrollView = self.FlagScrollView.frame;
-    frameOfFlagScrollView.size = CGSizeMake(kScreenWidth, CGRectGetHeight(self.FlagScrollView.frame));
-    self.FlagScrollView.frame = frameOfFlagScrollView;
-    
-    CGRect frameOfMainScrollView = self.MainScrollView.frame;
-    frameOfMainScrollView.size = CGSizeMake(kScreenWidth, kScreenHeight - CGRectGetMaxY(self.FlagScrollView.frame));
-    self.MainScrollView.frame = frameOfMainScrollView;
-    
-    self.MainScrollView.contentSize = CGSizeMake(0, 44);
+    [self modifyFrame];
     
     NSInteger numberOfStart = 0;
     
@@ -149,7 +143,22 @@
     
 }
 
-
+// 初始化界面
+- (void)modifyFrame {
+    
+    CGRect frameOfFlagScrollView = self.FlagScrollView.frame;
+    frameOfFlagScrollView.size = CGSizeMake(kScreenWidth, CGRectGetHeight(self.FlagScrollView.frame));
+    self.FlagScrollView.frame = frameOfFlagScrollView;
+    self.FlagScrollView.contentSize = CGSizeMake(0, 44);
+    
+    CGRect frameOfMainScrollView = self.MainScrollView.frame;
+    frameOfMainScrollView.size = CGSizeMake(kScreenWidth, kScreenHeight - CGRectGetMaxY(self.FlagScrollView.frame));
+    self.MainScrollView.frame = frameOfMainScrollView;
+    
+    self.MainScrollView.contentSize = CGSizeMake(0, 44);
+    
+    
+}
 
 /** 创建推荐界面并请求数据 */
 - (void)setUpRecommendPage:(NSInteger)model_Id {
@@ -161,7 +170,7 @@
     
     RecommendCollectionViewController *rVC = [[RecommendCollectionViewController alloc]initWithCollectionViewLayout:layout];
     
-    rVC.view.frame = self.MainScrollView.bounds;
+    rVC.view.frame = self.MainScrollView.frame;
     rVC.collectionView.backgroundColor = [UIColor whiteColor];
     
     [self addChildViewController:rVC];
@@ -184,11 +193,13 @@
 //    NSLog(@"%ld ----- %@",model_Id,name);
     
     
+    NSLog(@"+-+-%@",NSStringFromCGSize(self.MainScrollView.contentSize));
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     
     if (model_Id == 156) {  // 新番列表
         NewComicListCollectionViewController *newVC = [[NewComicListCollectionViewController alloc]initWithCollectionViewLayout:layout];
-        newVC.view.frame = CGRectMake(self.MainScrollView.contentSize.width, 0, kScreenWidth, CGRectGetHeight(self.MainScrollView.bounds));
+//        newVC.view.frame = CGRectMake(self.MainScrollView.contentSize.width, 0, kScreenWidth, CGRectGetHeight(self.MainScrollView.bounds));
+        newVC.view.frame = CGRectMake(self.MainScrollView.contentSize.width, 0, kScreenWidth, kScreenHeight - 64);
         [self.MainScrollView addSubview:newVC.view];
         [self addChildViewController:newVC];
         
@@ -203,7 +214,8 @@
         
         // 创建collectionView
         SubCollectionViewController *subVC = [[SubCollectionViewController alloc]initWithCollectionViewLayout:layout];
-        subVC.view.frame = CGRectMake(self.MainScrollView.contentSize.width, 0, kScreenWidth, CGRectGetHeight(self.MainScrollView.bounds));
+//        subVC.view.frame = CGRectMake(self.MainScrollView.contentSize.width, 0, kScreenWidth, CGRectGetHeight(self.MainScrollView.bounds));
+        subVC.view.frame = CGRectMake(self.MainScrollView.contentSize.width, 0, kScreenWidth, kScreenHeight - 64);
         
         [self.MainScrollView addSubview:subVC.view];
         [self addChildViewController:subVC];
@@ -215,7 +227,6 @@
         [subVC loadDataWithChannelId:model_Id];
         
     }
-    
     
 }
 
@@ -235,7 +246,7 @@
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor yellowColor] forState:UIControlStateSelected];
     
-    NSLog(@"%@",title);
+//    NSLog(@"%@",title);
     
     btn.tag = tag;
     [self.FlagScrollView addSubview:btn];
@@ -312,7 +323,7 @@
     UIButton *btn = [self.FlagScrollView viewWithTag:tag];
     CGFloat widthOfFlag = self.FlagScrollView.contentSize.width;
     CGFloat xOfCenterOfBtn = btn.center.x;
-//    NSLog(@"%f",self.FlagScrollView.center.y);
+//    NSLog(@"*+*+*+%@",NSStringFromCGPoint(self.FlagScrollView.contentOffset));
     if (widthOfFlag > kScreenWidth) {
         
         CGPoint point;
@@ -325,7 +336,8 @@
         } else {
             point = CGPointMake(0, 0);
         }
-        NSLog(@"%@",NSStringFromCGPoint(point));
+        point = CGPointMake(point.x, self.FlagScrollView.contentOffset.y);
+//        NSLog(@"%@",NSStringFromCGPoint(point));
         [UIView animateWithDuration:0.5 animations:^{
             self.FlagScrollView.contentOffset = point;
         }];

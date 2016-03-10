@@ -12,6 +12,7 @@
 #import "DanmakuRenderer.h"
 
 #import "DataHelper.h"
+#import "AFHTTPSessionManager.h"
 
 #import <AVFoundation/AVFoundation.h>
 
@@ -125,10 +126,7 @@
     [self loadDataWithVideoId:videoId];
     
 }
-/** 当改变选集时，清理以前的数据 */
-//- (void)removeUpData {
-//    
-//}
+
 
 /** 请求数据(播放地址) */
 - (void)loadDataWithVideoId:(NSInteger)videoId {
@@ -159,7 +157,18 @@
         [self setUpAllDefinitionView];
         
         // 请求并封装弹幕数据
-        [self modifyDanMuKuSource];
+//        [self modifyDanMuKuSource];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager GET:[NSString stringWithFormat:kDanMuURLStr,self.videoId] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//            NSLog(@"+++%@",responseObject);
+            if ([responseObject isKindOfClass:[NSArray class]]) {
+                [self modifyDanMuKuSourceWithArray:responseObject];
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+        }];
+        
         // 初始化弹幕库
 //        [self setUpDanMuKu];
         
@@ -591,13 +600,6 @@
                     [weakSelf.palyerBtn setTitle:@"暂停" forState:UIControlStateNormal];
                 }
                 
-//                AVPlayerLayer *newLayer = (AVPlayerLayer *)weakSelf.view.layer.sublayers[0];
-//                AVPlayerLayer *oldLayer = (AVPlayerLayer *)weakSelf.view.layer.sublayers[1];
-//                
-//                [oldLayer removeFromSuperlayer];
-                
-                
-                
             }
             
         } else {  // 记录新的播放进度
@@ -731,18 +733,22 @@
     [self.danmukuView prepareDanmakuSources:self.danmukuArray];
 }
 /** 将弹幕数组封装成model */
-- (void)modifyDanMuKuSource {
+- (void)modifyDanMuKuSourceWithArray:(NSArray *)arr {
     if (self.danmukuArray) {
         [self.danmukuArray removeAllObjects];
     } else {
         self.danmukuArray = [NSMutableArray arrayWithCapacity:1];
     }
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kDanMuURLStr,self.videoId]];
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kDanMuURLStr,self.videoId]];
 //    NSLog(@"%@",[NSString stringWithFormat:kDanMuURLStr,self.videoId]);
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    NSArray *sourceArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+//    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    
+    
+//    NSArray *sourceArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
 //    NSLog(@"++++%@",array);
+    NSArray *sourceArr = [NSArray arrayWithArray:arr];
     sourceArr = [sourceArr sortedArrayUsingComparator:^NSComparisonResult(NSArray *  _Nonnull obj1, NSArray *  _Nonnull obj2) {
         NSComparisonResult result = [[NSNumber numberWithUnsignedInteger:obj1.count] compare:[NSNumber numberWithUnsignedInteger:obj2.count]];
         return result;

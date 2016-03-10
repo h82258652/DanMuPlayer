@@ -212,7 +212,7 @@ static NSString * const reuseIdentifier = @"Cell";
             UIStoryboard *substoryboard = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
             SubViewController *subVC = [substoryboard instantiateViewControllerWithIdentifier:@"sub_main_vc"];
             subVC.view.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64);
-            
+//            subVC.view.frame = subVC.view.frame;
             [subVC setUpWithChannelModel:model WithCustomIndex:-1];
             [weakSelf.navigationController pushViewController:subVC animated:YES];
             
