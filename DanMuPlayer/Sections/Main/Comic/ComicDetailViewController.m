@@ -10,10 +10,11 @@
 #import "PlayViewController.h"
 #import "ComicInfoCollectionViewController.h"
 #import "DataHelper.h"
+#import "MBProgressHUD.h"
 
 #define kStr @"page=%7Bnum:1,size:50%7D"
 
-@interface ComicDetailViewController ()
+@interface ComicDetailViewController ()<MBProgressHUDDelegate>
 
 @property (nonatomic,strong)PlayViewController *playVC; // 播放界面
 @property (nonatomic,strong)ComicInfoCollectionViewController *infoVC;  // 视频界面
@@ -21,33 +22,55 @@
 @property (nonatomic,assign)NSInteger bangumisId;  // id
 @property (nonatomic,strong)ComicDetailModel *mainModel;  // 主model
 
+@property (nonatomic,strong)MBProgressHUD *hud;  // 加载提示
+
 @end
 
 @implementation ComicDetailViewController
+
+- (void)loadView {
+    [super loadView];
+    NSLog(@"aaa");
+    // 将状态栏设置为透明
+//    self.navigationController.navigationBar.translucent = YES;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // 将状态栏设置为透明
-    [self.navigationController.navigationBar setBackgroundColor:[kThemeColor colorWithAlphaComponent:0]];
 }
 
 #pragma mark - 自定义方法
 /** 加载数据 */
 - (void)loadDataWithBangumisId:(NSInteger)BangumisId {
+#warning need - 改变导航栏----
     
     self.bangumisId = BangumisId;
-    
-    
-//    NSURL *url = [NSURL URLWithString:[NSString ]]
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [DataHelper getDataSourceForComicDetailWithURLStr:[NSString stringWithFormat:kComicDetailURLStr,BangumisId,kStr] withBlock:^(NSDictionary *dic) {
-        NSLog(@"请求到数据了");
-        self.mainModel = dic[@"data"];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if ([dic[@"data"] isKindOfClass:[NSError class]]) {
+            
+            // 提示加载失败
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"抱歉，加载失败" preferredStyle:UIAlertControllerStyleAlert];
+            [self presentViewController:alert animated:YES completion:nil];
+            [UIView animateWithDuration:3 animations:^{} completion:^(BOOL finished) {
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            }];
+            
+        } else {
+            
+            NSLog(@"请求到数据了");
+            
+            self.mainModel = dic[@"data"];
+            
+            // 其他设置
+            [self otherAction];
+        }
         
-        // 其他设置
-        [self otherAction];
     }];
     
 }
@@ -55,8 +78,8 @@
 /** 其他设置 */
 - (void)otherAction {
     
-#warning need change*****************
     [self.playVC setUpWithVideoId:self.mainModel.latestVideoComic.videoId];
+    
     [self.infoVC setValueWithComicDetailModel:self.mainModel];
     
     __weak typeof(self)weakSelf = self;

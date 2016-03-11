@@ -31,6 +31,8 @@
 #import "ArticleDetailViewController.h"
 #import "ArticleSubChannelCollectionViewController.h"
 
+#import "MJRefresh.h"
+
 
 @interface RecommendCollectionViewController ()<UICollectionViewDelegateFlowLayout>
 
@@ -64,16 +66,10 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"RecommendCollectionReusableView" bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ChannelFooterCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
     
-    
-//    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"yuan"];
-    
-    // 注册接收消息
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rollPlayViewDidSelect:) name:@"tapImage" object:nil]; // 轮播图被点击
-    
+    // 下拉刷新
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshPage)];
     
 
-    // 请求数据
-//    [self loadData];
     
 }
 /** 为网址赋值，触发网络请求 */
@@ -82,6 +78,7 @@
 //    NSLog(@"设置");
     
     if (_mainURLStr != mainURLStr) {
+        _mainURLStr = nil;
         _mainURLStr = [mainURLStr copy];
     }
     // 注册接收消息
@@ -94,20 +91,39 @@
 #pragma mark - 请求数据
 - (void)loadData {
     
-//    NSLog(@"%@",self.mainURLStr);
-    __weak typeof(self)weakSelf = self;
-//    dispatch_queue_t queue = dispatch_queue_create("com.recommend.loadData", DISPATCH_QUEUE_CONCURRENT);
-//    dispatch_async(queue, ^{
-        [DataHelper getDataSourceForCommendWithURLStr:self.mainURLStr withName:self.mainURLStr withBlock:^(NSDictionary *dic) {
-            self.dataSoruce = [NSMutableArray arrayWithArray:dic[@"dataArray"]];
-//            NSLog(@"%@",[NSThread currentThread]);
-            [self.collectionView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
-        }];
-//    });
     
+    
+    [DataHelper getDataSourceForCommendWithURLStr:self.mainURLStr withName:self.mainURLStr withBlock:^(NSDictionary *dic) {
+        
+//        [self.collectionView.mj_header performSelectorOnMainThread:@selector(endRefreshing) withObject:nil waitUntilDone:YES];
+        [self.collectionView.mj_header endRefreshing];
+        
+        if ([dic[@"data"] isKindOfClass:[NSString class]] || [dic[@"data"] isKindOfClass:[NSError class]]) {
+            
+            // 提示加载失败
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"抱歉，加载失败" preferredStyle:UIAlertControllerStyleAlert];
+            [self presentViewController:alert animated:YES completion:nil];
+            [UIView animateWithDuration:3 animations:^{} completion:^(BOOL finished) {
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            }];
+        } else {
+            
+            self.dataSoruce = [NSMutableArray arrayWithArray:dic[@"dataArray"]];
+            
+            [self.collectionView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+        }
+        
+    }];
     
 }
 
+/** 下拉刷新 */
+- (void)refreshPage {
+    
+    [self.dataSoruce removeAllObjects];
+    
+    [self loadData];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

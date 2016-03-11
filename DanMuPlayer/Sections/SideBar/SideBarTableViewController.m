@@ -10,6 +10,7 @@
 #import "SideBarTableViewCell.h"
 #import "SDImageCache.h"
 #import "CollectionTableViewController.h"
+#import "UMFeedback.h"
 
 @interface SideBarTableViewController ()
 
@@ -103,9 +104,10 @@
 //            [self presentViewController:navi animated:YES completion:nil];
 //            [self presentViewController:cTB animated:YES completion:nil];
             
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UINavigationController *cNA = [storyboard instantiateViewControllerWithIdentifier:@"side_collection_navi"];
-            [self presentViewController:cNA animated:YES completion:nil];
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            UINavigationController *cNA = [storyboard instantiateViewControllerWithIdentifier:@"side_collection_navi"];
+//            [self presentViewController:cNA animated:YES completion:nil];
+            [self performSegueWithIdentifier:@"side_go_collection_segue" sender:self];
             
             
             break;
@@ -124,14 +126,14 @@
             break;
         case 2:
             // 意见反馈
-            
+            [self presentViewController:[UMFeedback feedbackModalViewController] animated:YES completion:nil];
             
             
             break;
         case 3:
             // 关于我们
             
-            
+            [self performSegueWithIdentifier:@"side_about_navi_segue" sender:self];
             
             break;
         default:

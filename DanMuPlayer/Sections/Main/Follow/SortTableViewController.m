@@ -12,6 +12,8 @@
 #import "SubModel.h"
 
 #import "DetailVideoViewController.h"
+#import "MBProgressHUD.h"
+#import "MJRefresh.h"
 
 @interface SortTableViewController ()
 
@@ -29,24 +31,43 @@
     self.pageNO = 1;
     self.dataSource = [NSMutableArray arrayWithCapacity:1];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // 上拉加载
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(addDataSource)];
+    // 下拉刷新
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshPage)];
 }
 
 #pragma mark - 自定义方法
 /** 请求数据 */
 - (void)loadDataWithURLStr:(NSString *)urlStr
 {
+    
     [DataHelper getDataSourceForSubWithURLStr:urlStr andParameters:nil withBlock:^(NSDictionary *dic) {
-        self.dataSource = dic[@"data"];
+        
+        if ([dic[@"data"] count] < 10) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+        [self.tableView.mj_header endRefreshing];
+        
+        [self.dataSource addObjectsFromArray:dic[@"data"]];
         [self.tableView reloadData];
     }];
     
 }
-
+/** 上拉加载 */
+- (void)addDataSource {
+    
+    self.pageNO++;
+    [self loadDataWithURLStr:[NSString stringWithFormat:kSortMainURLStr,self.pageNO]];
+}
+/** 下拉刷新 */
+- (void)refreshPage {
+    [self.dataSource removeAllObjects];
+    self.pageNO = 1;
+    [self loadDataWithURLStr:[NSString stringWithFormat:kSortMainURLStr,self.pageNO]];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

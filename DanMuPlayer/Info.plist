@@ -41,6 +41,8 @@
 	</array>
 	<key>UIStatusBarHidden</key>
 	<false/>
+    <key>StatusBarBackground</key>
+    <string>#FFFFFF</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

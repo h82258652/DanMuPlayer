@@ -46,7 +46,7 @@ DataHelper *helper = nil;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        NSLog(@"请求成功");
+
         NSMutableArray *dataSource = [NSMutableArray arrayWithCapacity:1];
         
         // 若果是数组类，则为主界面，若为字典类，则为子分区
@@ -54,7 +54,6 @@ DataHelper *helper = nil;
         if ( [responseObject[@"data"] isKindOfClass:[NSArray class]]) {
             NSArray *array = responseObject[@"data"];
             
-//            NSLog(@"******* %@",array);
             for (NSDictionary *dic in array) {
                 RecommendModel *model = [[RecommendModel alloc]initWithDic:dic];
                 model.nameOfMessage = name;
@@ -66,8 +65,6 @@ DataHelper *helper = nil;
             block(dataDic);
         } else if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]] && [responseObject[@"data"][@"contents"] isKindOfClass:[NSArray class]]) {
             NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
-            
-//            NSLog(@"******%@",name);
             
             for (NSDictionary *dic in responseObject[@"data"][@"contents"]) {
                 RecommendCellModel *model = [[RecommendCellModel alloc]initWithDic:dic];
@@ -85,21 +82,21 @@ DataHelper *helper = nil;
                 NSMutableArray *menusArray = [NSMutableArray arrayWithCapacity:1];
                 for (NSDictionary *dic in responseObject[@"data"][@"menus"]) {
                     FooterModel *model = [[FooterModel alloc]initWithDic:dic];
-//                    NSLog(@"%@",model.name);
                     [menusArray addObject:model];
                 }
                 [dataDic setValue:menusArray forKey:@"menus"];
-//                NSLog(@"%@",dataDic[@"menus"]);
             }
             
             // 发送通知（当其model的值）
             [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil userInfo:dataDic];
         } else if ([responseObject[@"data"] isKindOfClass:[NSString class]]) {
             NSLog(@"%@",responseObject[@"data"]);
+            block(responseObject);
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求失败");
+        block(@{@"data":error});
     }];
     
 }
@@ -166,6 +163,7 @@ DataHelper *helper = nil;
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求失败");
+        block(@{@"data":error});
         
     }];
 }
@@ -320,6 +318,8 @@ DataHelper *helper = nil;
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求失败");
+        block(@{@"data":error});
+//        NSLog(@"%@  error = %@",task,error);
     }];
     
     

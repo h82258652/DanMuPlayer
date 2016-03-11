@@ -317,11 +317,39 @@
                     <connections>
                         <outlet property="logoImageView" destination="CtI-go-a0X" id="DOF-Md-xV3"/>
                         <outlet property="topBGImageView" destination="2Hv-9h-ybP" id="xR3-En-MU3"/>
+                        <segue destination="Nwp-Vr-lmQ" kind="presentation" identifier="side_go_collection_segue" id="sZl-4W-71s"/>
+                        <segue destination="sYF-S3-CXb" kind="presentation" identifier="side_about_navi_segue" id="dzl-Fr-Dbr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fhk-df-Vy8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="668" y="1084"/>
+        </scene>
+        <!--关于我们-->
+        <scene sceneID="rBR-9g-jhb">
+            <objects>
+                <viewController title="关于我们" id="OVa-7G-t1i" customClass="SideAboutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tag-zW-qRN"/>
+                        <viewControllerLayoutGuide type="bottom" id="KwL-lj-jIe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9vi-xX-IuV">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oYn-jz-cMh">
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="ykU-CH-S1E">
+                            <color key="tintColor" red="0.94117647059999998" green="0.1960784314" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="dismissBeforePage:" destination="OVa-7G-t1i" id="ers-Hr-3YM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KZB-Gi-5dK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5" y="2007"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="PQx-Yj-we6">
@@ -694,12 +722,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCL-E0-c5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-201" y="1880"/>
+            <point key="canvasLocation" x="-5" y="1209"/>
         </scene>
-        <!--Collection Table View Controller-->
+        <!--我收藏的文章界面-->
         <scene sceneID="mlP-4i-YtF">
             <objects>
-                <tableViewController id="uSW-ZB-DH1" customClass="CollectionTableViewController" sceneMemberID="viewController">
+                <tableViewController title="我收藏的文章界面" id="uSW-ZB-DH1" customClass="CollectionTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TZE-mb-4oM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -723,7 +751,25 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nv4-f9-mhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="531" y="1880"/>
+            <point key="canvasLocation" x="-754" y="1200"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EAk-ub-dnR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sYF-S3-CXb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Cba-5F-Fzn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OVa-7G-t1i" kind="relationship" relationship="rootViewController" id="gcb-44-HkD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eat-nJ-sbe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="707" y="2007"/>
         </scene>
     </scenes>
     <resources>

@@ -30,15 +30,10 @@
     
     
     UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:self.rootVC];
-    navi.navigationBar.backgroundColor = kThemeColor;
+    navi.navigationBar.translucent = NO;
+    [navi.navigationBar setBackgroundImage:[UIImage imageWithColor:kThemeColor size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
+    [navi.navigationBar setShadowImage:[[UIImage alloc]init]];
     [navi.navigationBar setTintColor:[UIColor whiteColor]];
-    
-    for (id view in navi.navigationBar.subviews) {
-        if ([[NSString stringWithUTF8String:object_getClassName([view class])] isEqualToString:@"_UINavigationBarBackground"]) {
-            [(UIView *)view setHidden:YES];
-//            NSLog(@"%@",[(UIView *)view subviews]);
-        }
-    }
     
     
     self.sideVC.view.frame = CGRectMake(-kScreenWidth * 2 / 3, 0, kScreenWidth * 2 / 3, kScreenHeight);

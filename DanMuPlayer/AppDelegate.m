@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "UMFeedback.h"
+#define kUMAppkey @"56e2797de0f55aa46a00040e"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [UMFeedback setAppkey:kUMAppkey];
     
     return YES;
 }

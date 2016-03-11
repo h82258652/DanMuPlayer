@@ -15,6 +15,7 @@
 #import "DataHelper.h"
 
 #import "SubModel.h"
+#import "MJRefresh.h"
 
 @interface MoreHotCollectionViewController ()<UICollectionViewDelegateFlowLayout>
 
@@ -39,8 +40,6 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
     [self.collectionView registerNib:[UINib nibWithNibName:@"MoreHotCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
@@ -48,18 +47,27 @@ static NSString * const reuseIdentifier = @"Cell";
     // 注册页眉
     [self.collectionView registerNib:[UINib nibWithNibName:@"RecommendCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     
-    // Do any additional setup after loading the view.
-    
-    // 创建返回按钮
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:self.name style:UIBarButtonItemStyleDone target:self action:@selector(backBeforePage)];
+    // 下拉刷新
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        [self.dataSource removeAllObjects];
+        self.pageNo = 1;
+        [self loadDataWithChannelId:self.channel_Id];
+    }];
+    // 上拉加载
+    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        self.pageNo++;
+        [self loadDataWithChannelId:self.channel_Id];
+    }];
     
 }
 
 #pragma mark -自定义方法
 - (void)loadDataWithChannelId:(NSInteger)channelId {
-    
+    NSLog(@"%ld",self.pageNo);
     self.channel_Id = channelId;
-    self.pageNo = 1;
+    if (self.pageNo == 0) {
+        self.pageNo = 1;
+    }
     self.pageSize = 10;
     self.sort = 1;
     
@@ -73,8 +81,40 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [DataHelper getDataSourceForSubWithURLStr:kSearchURLStr andParameters:dic withBlock:^(NSDictionary *info) {
        
-        self.dataSource = info[@"data"];
-        [self.collectionView reloadData];
+        
+        if ([info[@"data"] isKindOfClass:[NSError class]]) {  //加载错误
+            
+            if (self.pageNo == 1) {
+                [self.collectionView.mj_header endRefreshing];
+            } else {
+                [self.collectionView.mj_footer endRefreshing];
+            }
+            // 提示加载失败
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"抱歉，加载失败" preferredStyle:UIAlertControllerStyleAlert];
+            [self presentViewController:alert animated:YES completion:nil];
+            [UIView animateWithDuration:3 animations:^{} completion:^(BOOL finished) {
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            }];
+            
+        } else {  // 加载成功
+            
+            if (self.pageNo == 1) {
+                [self.collectionView.mj_header endRefreshing];
+                [self.dataSource removeAllObjects];
+            } else {
+                [self.collectionView.mj_footer endRefreshing];
+            }
+            
+            if ([info[@"data"] count] < 10) {
+                [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+            } else {
+                [self.collectionView.mj_footer endRefreshing];
+            }
+            [self.dataSource addObjectsFromArray:info[@"data"]];
+            [self.collectionView reloadData];
+        }
+        
+        
         
     }];
     
@@ -88,13 +128,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.navigationController popViewControllerAnimated:YES];
     
 }
-
-
-
-
-
-
-
 
 
 - (void)didReceiveMemoryWarning {
@@ -165,7 +198,7 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"选中了%ld,%ld",indexPath.section,indexPath.row);
+//    NSLog(@"选中了%ld,%ld",indexPath.section,indexPath.row);
     
     SubModel *model = self.dataSource[indexPath.item];
     NSString *str = [model.contentId substringFromIndex:2];
