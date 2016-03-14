@@ -82,53 +82,30 @@ static NSString * const reuseIdentifier = @"Cell";
     self.sort = 1;
     
     
-//    if (channelId == 156) // 新番连载
-//    {
-//        NSString *urlStr = [NSString stringWithFormat:kBangumiURLStr,self.pageNo];
-//        [DataHelper getDataSourceForComicDetailWithURLStr:urlStr withBlock:^(NSDictionary *dic) {
-//            NSArray *array = dic[@"list"];
-//            for (NSDictionary *dic in array) {
-//                NewComicListModel *model = [[NewComicListModel alloc]initWithDic:dic];
-//                [self.dataSource addObject:model];
-//            }
-//            [self.collectionView reloadData];
-//        }];
-//        
-//        
-//    } else {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:1];
+    [dic setValue:@(self.channelIds) forKey:@"channelIds"];
+    [dic setValue:@(self.pageSize) forKey:@"pageSize"];
+    [dic setValue:@(self.pageNo) forKey:@"pageNo"];
+    [dic setValue:@(self.sort) forKey:@"sort"];
+    [dic setValue:@(604800000) forKey:@"range"];
+    // 请求数据
+    [DataHelper getDataSourceForSubWithURLStr:kSearchURLStr andParameters:dic withBlock:^(NSDictionary *dic) {
+        NSMutableArray *array = dic[@"data"];
+        [self.dataSource replaceObjectAtIndex:0 withObject:array];
+        [self.collectionView reloadData];
+    }];
     
-        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:1];
-        [dic setValue:@(self.channelIds) forKey:@"channelIds"];
-        [dic setValue:@(self.pageSize) forKey:@"pageSize"];
-        [dic setValue:@(self.pageNo) forKey:@"pageNo"];
-        [dic setValue:@(self.sort) forKey:@"sort"];
-        [dic setValue:@(604800000) forKey:@"range"];
-        // 请求数据
-        [DataHelper getDataSourceForSubWithURLStr:kSearchURLStr andParameters:dic withBlock:^(NSDictionary *dic) {
-            NSMutableArray *array = dic[@"data"];
-            [self.dataSource replaceObjectAtIndex:0 withObject:array];
-            [self.collectionView reloadData];
-        }];
-        
-        self.pageSize = 10;
-        self.sort = 4;
-        [dic setValue:@(self.pageSize) forKey:@"pageSize"];
-        [dic setValue:@(self.sort) forKey:@"sort"];
-        [dic removeObjectForKey:@"range"];
-        
-        [DataHelper getDataSourceForSubWithURLStr:kSearchURLStr andParameters:dic withBlock:^(NSDictionary *dic) {
-            NSMutableArray *array = dic[@"data"];
-            [self.dataSource replaceObjectAtIndex:1 withObject:array];
-            [self.collectionView reloadData];
-        }];
-//    }
+    self.pageSize = 10;
+    self.sort = 4;
+    [dic setValue:@(self.pageSize) forKey:@"pageSize"];
+    [dic setValue:@(self.sort) forKey:@"sort"];
+    [dic removeObjectForKey:@"range"];
     
-    
-}
-
-
-/** 初始化布局 */
-- (void)setSub_Id:(NSInteger)sub_Id {
+    [DataHelper getDataSourceForSubWithURLStr:kSearchURLStr andParameters:dic withBlock:^(NSDictionary *dic) {
+        NSMutableArray *array = dic[@"data"];
+        [self.dataSource replaceObjectAtIndex:1 withObject:array];
+        [self.collectionView reloadData];
+    }];
     
     
 }
@@ -195,6 +172,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     if ([self.dataSource[section] count] != 0) {
+//        NSLog(@"%@",self.dataSource[section]);
         return [self.dataSource[section] count];
     }
     return 0;
@@ -280,13 +258,14 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"选中了%ld,%ld",indexPath.section,indexPath.item);
+//    NSLog(@"选中了%ld,%ld",indexPath.section,indexPath.item);
     SubModel *model = self.dataSource[indexPath.section][indexPath.item];
     NSString *str = [model.contentId substringFromIndex:2];
     UIStoryboard *sub = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
     DetailVideoViewController *subVC = [sub instantiateViewControllerWithIdentifier:@"detail_Video"];
     [subVC loadDataWithVideoId:[str integerValue]];
-    [self.navigationController pushViewController:subVC animated:NO];
+//    [self.navigationController pushViewController:subVC animated:NO];
+    [self presentViewController:subVC animated:YES completion:nil];
 }
 
 /*

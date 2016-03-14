@@ -31,7 +31,7 @@
     self.upLabel.text = [NSString stringWithFormat:@"up主：%@",articleEntity.up];
     
     NSInteger views = [articleEntity.views integerValue];
-    self.viewsLabel.text = views >= 10000 ? [NSString stringWithFormat:@"%.1f万",views * 1.0 / 10000] : [NSString stringWithFormat:@"%ld",views];
+    self.viewsLabel.text = views >= 10000 ? [NSString stringWithFormat:@"%.1f万",views * 1.0 / 10000] : [NSString stringWithFormat:@"%ld",(long)views];
 }
 
 

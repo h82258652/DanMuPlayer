@@ -24,9 +24,9 @@
                                 <subviews>
                                     <button opaque="NO" tag="140" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9d-pD-Px3">
                                         <rect key="frame" x="10" y="5" width="88" height="34"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="排行榜">
+                                        <state key="normal" title="排行">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -35,7 +35,7 @@
                                     </button>
                                     <button opaque="NO" tag="142" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ef8-tx-RcW">
                                         <rect key="frame" x="207" y="5" width="88" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="番剧">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,7 +46,7 @@
                                     </button>
                                     <button opaque="NO" tag="143" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yic-3e-r5y">
                                         <rect key="frame" x="305" y="5" width="88" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="娱乐">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -57,7 +57,7 @@
                                     </button>
                                     <button opaque="NO" tag="144" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVd-Dg-bmv">
                                         <rect key="frame" x="403" y="5" width="89" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="文章">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -68,7 +68,7 @@
                                     </button>
                                     <button opaque="NO" tag="145" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EmB-Aa-b2p">
                                         <rect key="frame" x="502" y="5" width="88" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="频道">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,7 +79,7 @@
                                     </button>
                                     <button opaque="NO" tag="141" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIB-R5-NWM">
                                         <rect key="frame" x="108" y="5" width="89" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="推荐">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -336,7 +336,69 @@
                     <view key="view" contentMode="scaleToFill" id="9vi-xX-IuV">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="2gB-lT-MU9">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于我们" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0z-f3-om5">
+                                <rect key="frame" x="20" y="133" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="TCg-cM-aNe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06b-tt-C3P">
+                                <rect key="frame" x="20" y="193" width="560" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="hHY-7j-dso"/>
+                                </constraints>
+                                <string key="text">本应用由本人(韩少帅)独立开发。
+本应用是具有弹幕播放功能、以二次元视频为主的视频应用。
+若您对本应用有任何疑问，可通过以下联系方式联系我。</string>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机：15003889481" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6v-gb-g2o">
+                                <rect key="frame" x="40" y="404" width="223" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="0.64768318965517246" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮箱：1970980284@qq.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OJ-kM-ltY">
+                                <rect key="frame" x="40" y="363" width="223" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="0.64768318965517246" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="06b-tt-C3P" firstAttribute="centerY" secondItem="9vi-xX-IuV" secondAttribute="centerY" id="5fI-dB-FxF"/>
+                            <constraint firstItem="2gB-lT-MU9" firstAttribute="leading" secondItem="9vi-xX-IuV" secondAttribute="leading" id="5hc-XA-Hvx"/>
+                            <constraint firstItem="t6v-gb-g2o" firstAttribute="leading" secondItem="0OJ-kM-ltY" secondAttribute="leading" id="Djg-Vg-62R"/>
+                            <constraint firstItem="KwL-lj-jIe" firstAttribute="top" secondItem="2gB-lT-MU9" secondAttribute="bottom" id="Dnr-vZ-4JD"/>
+                            <constraint firstItem="2gB-lT-MU9" firstAttribute="top" secondItem="tag-zW-qRN" secondAttribute="bottom" id="EJm-TD-fb8"/>
+                            <constraint firstAttribute="trailing" secondItem="J0z-f3-om5" secondAttribute="trailing" constant="20" id="Isr-5X-ZVI"/>
+                            <constraint firstItem="06b-tt-C3P" firstAttribute="top" secondItem="J0z-f3-om5" secondAttribute="bottom" constant="20" id="LoN-PF-XDy"/>
+                            <constraint firstItem="t6v-gb-g2o" firstAttribute="top" secondItem="0OJ-kM-ltY" secondAttribute="bottom" constant="20" id="N42-ic-wPl"/>
+                            <constraint firstItem="06b-tt-C3P" firstAttribute="centerX" secondItem="9vi-xX-IuV" secondAttribute="centerX" id="QH3-gG-hGG"/>
+                            <constraint firstItem="0OJ-kM-ltY" firstAttribute="top" secondItem="06b-tt-C3P" secondAttribute="bottom" constant="20" id="UrJ-dT-JK3"/>
+                            <constraint firstItem="J0z-f3-om5" firstAttribute="top" secondItem="tag-zW-qRN" secondAttribute="bottom" constant="20" id="bTX-iy-2Dc"/>
+                            <constraint firstAttribute="trailing" secondItem="06b-tt-C3P" secondAttribute="trailing" constant="20" id="bhT-69-hcs"/>
+                            <constraint firstItem="t6v-gb-g2o" firstAttribute="trailing" secondItem="0OJ-kM-ltY" secondAttribute="trailing" id="dX9-uN-JXB"/>
+                            <constraint firstItem="0OJ-kM-ltY" firstAttribute="leading" secondItem="9vi-xX-IuV" secondAttribute="leading" constant="40" id="qKF-yg-6xN"/>
+                            <constraint firstItem="J0z-f3-om5" firstAttribute="leading" secondItem="9vi-xX-IuV" secondAttribute="leading" constant="20" id="qao-P3-o85"/>
+                            <constraint firstItem="06b-tt-C3P" firstAttribute="leading" secondItem="9vi-xX-IuV" secondAttribute="leading" constant="20" id="x95-M5-UqS"/>
+                            <constraint firstAttribute="trailing" secondItem="2gB-lT-MU9" secondAttribute="trailing" id="xlC-y2-8zD"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bTX-iy-2Dc"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="oYn-jz-cMh">
                         <barButtonItem key="leftBarButtonItem" title="返回" id="ykU-CH-S1E">
@@ -758,7 +820,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sYF-S3-CXb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Cba-5F-Fzn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" backIndicatorImage="navibar_image.png" id="Cba-5F-Fzn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -774,6 +836,8 @@
     </scenes>
     <resources>
         <image name="DMP.png" width="351" height="169"/>
+        <image name="about_BG.png" width="1200" height="1821"/>
+        <image name="navibar_image.png" width="1000" height="64"/>
         <image name="sideBar_BG.png" width="500" height="376"/>
         <image name="white_background.png" width="1000" height="500"/>
     </resources>

@@ -17,6 +17,7 @@
     if (self) {
         // 赋值
         [self setValuesForKeysWithDictionary:dic];
+//        NSLog(@"%@",dic);
         
     }
     return self;
@@ -27,6 +28,7 @@
         self.recommend_id = [value integerValue];
     } else if ([key isEqualToString:@"type"]) {
         self.type_id = [value[@"id"] integerValue];
+//        NSLog(@"++++%ld",[value[@"id"] integerValue]);
     }
 }
 
@@ -59,7 +61,7 @@
 
 // 请求其他数据
 - (void)loadOtherData {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%ld",kRegionsURLStr,self.recommend_id];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%ld",kRegionsURLStr,(long)self.recommend_id];
 //    NSLog(@"%@",urlStr);
     
 //    NSLog(@"%@",self.nameOfMessage);

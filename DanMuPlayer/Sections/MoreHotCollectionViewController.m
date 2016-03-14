@@ -63,7 +63,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark -自定义方法
 - (void)loadDataWithChannelId:(NSInteger)channelId {
-    NSLog(@"%ld",self.pageNo);
+//    NSLog(@"%ld",self.pageNo);
     self.channel_Id = channelId;
     if (self.pageNo == 0) {
         self.pageNo = 1;
@@ -205,7 +205,8 @@ static NSString * const reuseIdentifier = @"Cell";
     UIStoryboard *sub = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
     DetailVideoViewController *subVC = [sub instantiateViewControllerWithIdentifier:@"detail_Video"];
     [subVC loadDataWithVideoId:[str integerValue]];
-    [self.navigationController pushViewController:subVC animated:NO];
+//    [self.navigationController pushViewController:subVC animated:NO];
+    [self presentViewController:subVC animated:YES completion:nil];
 }
 
 

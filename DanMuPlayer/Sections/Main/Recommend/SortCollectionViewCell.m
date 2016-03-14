@@ -31,7 +31,7 @@
     [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:model.image]];
     self.titleLabel.text = model.title;
     NSInteger views = [model.visit[@"views"] integerValue];
-    self.LabelOfNumberOfView.text = views >= 10000 ? [NSString stringWithFormat:@"%ld万",views / 10000] : [NSString stringWithFormat:@"%ld",views];
+    self.LabelOfNumberOfView.text = views >= 10000 ? [NSString stringWithFormat:@"%ld",views / 10000] : [NSString stringWithFormat:@"%ld",views];
     self.LabelOfUP.text = [NSString stringWithFormat:@"UP主:%@",model.owner_name];
 }
 
@@ -40,7 +40,7 @@
     
     [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:model.cover]];
     self.titleLabel.text = model.title;
-    self.LabelOfNumberOfView.text = model.views >= 10000 ? [NSString stringWithFormat:@"%ld万",model.views / 10000] : [NSString stringWithFormat:@"%ld",model.views];
+    self.LabelOfNumberOfView.text = model.views >= 10000 ? [NSString stringWithFormat:@"%d万",model.views / 10000] : [NSString stringWithFormat:@"%ld",model.views];
     self.LabelOfUP.text = [NSString stringWithFormat:@"UP主:%@",model.username];
     
 }

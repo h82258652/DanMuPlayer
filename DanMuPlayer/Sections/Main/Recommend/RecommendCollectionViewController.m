@@ -91,21 +91,21 @@
 #pragma mark - 请求数据
 - (void)loadData {
     
-    
+//    NSLog(@"%@",self.mainURLStr);
     
     [DataHelper getDataSourceForCommendWithURLStr:self.mainURLStr withName:self.mainURLStr withBlock:^(NSDictionary *dic) {
         
 //        [self.collectionView.mj_header performSelectorOnMainThread:@selector(endRefreshing) withObject:nil waitUntilDone:YES];
         [self.collectionView.mj_header endRefreshing];
         
+        
+        
         if ([dic[@"data"] isKindOfClass:[NSString class]] || [dic[@"data"] isKindOfClass:[NSError class]]) {
             
             // 提示加载失败
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"抱歉，加载失败" preferredStyle:UIAlertControllerStyleAlert];
             [self presentViewController:alert animated:YES completion:nil];
-            [UIView animateWithDuration:3 animations:^{} completion:^(BOOL finished) {
-                [alert dismissViewControllerAnimated:YES completion:nil];
-            }];
+            [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(dismissAlert:) userInfo:@{@"alert":alert} repeats:NO];
         } else {
             
             self.dataSoruce = [NSMutableArray arrayWithArray:dic[@"dataArray"]];
@@ -116,6 +116,14 @@
     }];
     
 }
+/** dismiss alert */
+- (void)dismissAlert:(NSTimer *)timer {
+    
+    UIAlertController *alert = timer.userInfo[@"alert"];
+    [alert dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
 
 /** 下拉刷新 */
 - (void)refreshPage {
@@ -174,12 +182,19 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     RecommendModel *model = self.dataSoruce[indexPath.section];
+    
+//    NSLog(@"***%ld",model.type_id);
+    
     // 根据不同的类型设置分区页眉是否显示
     switch (model.type_id) {
+        case 19:
         case 1:  // 视频
             return CGSizeMake((kScreenWidth - 5 * 4) / 2, kScreenWidth / 2.5);
             break;
         case 2:  // 文章
+            if (kScreenWidth * 5 / 19 < 90) {
+                return CGSizeMake(kScreenWidth - 20, 90);
+            }
             return CGSizeMake(kScreenWidth - 20, kScreenWidth * 5 / 19);
             break;
         case 3:  // 番剧
@@ -208,7 +223,7 @@
         default:
             break;
     }
-    NSLog(@"cell大小为0");
+//    NSLog(@"cell大小为0");
     return CGSizeMake(50, 50);
     
 }
@@ -259,7 +274,7 @@
     } else if (model.type_id == 6) {
         return 0;
     }
-    return model.contentCount;
+    return [model.contents count];
 }
 
 
@@ -272,6 +287,7 @@
 //    NSLog(@"***** %ld",model.type_id);
     // 判断使用哪种cell
     switch (model.type_id) {
+        case 19:
         case 1: {
             VideoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"videoCell" forIndexPath:indexPath];
             return cell;
@@ -358,7 +374,7 @@
            
             RecommendModel *rModel = dic[@"model"];
             NSInteger index = [dic[@"index"] integerValue];
-            NSLog(@"%ld",model.type_id);
+//            NSLog(@"%ld",model.type_id);
             if (rModel.channelId == 63) {
                 
                 // 文章子分区
@@ -411,6 +427,7 @@
     if ([elementKind isEqualToString:UICollectionElementKindSectionHeader]) {  // 页眉
         
         switch (model.type_id) {
+            case 19:
             case 1:
             case 2:
             case 3:
@@ -492,14 +509,15 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"*****%ld,%ld",indexPath.section,indexPath.item);
+//    NSLog(@"*****%ld,%ld",indexPath.section,indexPath.item);
     
     
     
     RecommendModel *model = self.dataSoruce[indexPath.section];
     RecommendCellModel *subModel = model.contents[indexPath.item];
-    NSLog(@"%ld",model.type_id);
+//    NSLog(@"%ld",model.type_id);
     switch (model.type_id) {
+        case 19:
         case 1:
         case 5:
         case 12:
@@ -509,7 +527,8 @@
             UIStoryboard *sub = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
             DetailVideoViewController *subVC = [sub instantiateViewControllerWithIdentifier:@"detail_Video"];
             [subVC loadDataWithVideoId:[subModel.url integerValue]];
-            [self.navigationController pushViewController:subVC animated:NO];
+//            [self.navigationController pushViewController:subVC animated:NO];
+            [self presentViewController:subVC animated:YES completion:nil];
             
             break;
         }
@@ -519,7 +538,8 @@
             ComicDetailViewController *subVC = [sub instantiateViewControllerWithIdentifier:@"comic_detail"];
 //            NSLog(@"%ld",[subModel.url integerValue]);
             [subVC loadDataWithBangumisId:[subModel.url integerValue]];
-            [self.navigationController pushViewController:subVC animated:NO];
+//            [self.navigationController pushViewController:subVC animated:NO];
+            [self presentViewController:subVC animated:YES completion:nil];
             
             break;
         }

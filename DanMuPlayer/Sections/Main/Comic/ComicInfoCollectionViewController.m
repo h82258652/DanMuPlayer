@@ -115,6 +115,7 @@ static NSString * const reuseIdentifier = @"Cell";
             ComicDetailVideoModel *videoModel = self.mainModel.videosArr[indexPath.item];
 //            ((ComicDetailSecondCollectionViewCell *)cell).titleLabel.text = videoModel.title;
             [(ComicDetailSecondCollectionViewCell *)cell setValueWithTitle:videoModel.title];
+//            NSLog(@"%@",videoModel.urlMobile);
             break;
         }
         default:
@@ -167,7 +168,7 @@ static NSString * const reuseIdentifier = @"Cell";
     } else
     {
         ComicDetailVideoModel *model = self.mainModel.videosArr[indexPath.item];
-        self.changeVideoIdBlock(model.videoId);
+        self.changeVideoIdBlock(model);
     }
     
     

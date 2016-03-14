@@ -48,7 +48,7 @@
     
     [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
     self.nameLabel.text = model.username;
-    self.floorLabel.text = [NSString stringWithFormat:@"#%ld",model.floor];
+    self.floorLabel.text = [NSString stringWithFormat:@"#%ld",(long)model.floor];
     self.contentLabel.text = model.content;
     
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:model.time / 1000];

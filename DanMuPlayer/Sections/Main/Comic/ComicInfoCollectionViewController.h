@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ComicDetailModel.h"
+#import "ComicDetailVideoModel.h"
 
-typedef void(^changeVideoIdBlock)(NSInteger);
+typedef void(^changeVideoIdBlock)(ComicDetailVideoModel *);
 
 @interface ComicInfoCollectionViewController : UICollectionViewController
 

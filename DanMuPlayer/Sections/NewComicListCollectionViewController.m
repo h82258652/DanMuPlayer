@@ -57,7 +57,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.pageNo = 1;
     self.sort = 1;
     
-    NSString *urlStr = [NSString stringWithFormat:kBangumiURLStr,self.pageNo];
+    NSString *urlStr = [NSString stringWithFormat:kBangumiURLStr,(long)self.pageNo];
     
     [DataHelper getDataSourceWithURLStr:urlStr withBlock:^(NSDictionary *dic) {
         
@@ -132,7 +132,8 @@ static NSString * const reuseIdentifier = @"Cell";
     //            NSLog(@"%ld",[subModel.url integerValue]);
     [subVC loadDataWithBangumisId:model.bangumiId];
 //    NSLog(@"+-*+-*  %ld",model.bangumiId);
-    [self.navigationController pushViewController:subVC animated:NO];
+//    [self.navigationController pushViewController:subVC animated:NO];
+    [self presentViewController:subVC animated:YES completion:nil];
     
 }
 

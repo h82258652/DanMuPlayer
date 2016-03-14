@@ -34,7 +34,7 @@
 - (void)setValueWithModel:(DetailVideoModel *)model withBlock:(MotifyCellNumBlock)block {
     self.motifyBlock = block;
     
-    self.videoIdLabel.text = [NSString stringWithFormat:@"av%ld",model.contentId];
+    self.videoIdLabel.text = [NSString stringWithFormat:@"av%ld",(long)model.contentId];
     self.infoLabel.text = model.info;
     
     //    NSLog(@"%@",self.backgroundColor);
@@ -44,7 +44,7 @@
 
 // tap点击事件
 - (void)tapAction:(UITapGestureRecognizer *)sender {
-    NSLog(@"点击了cell");
+//    NSLog(@"点击了cell");
     // 收起cell
     NSDictionary *dic = [NSDictionary dictionary];
     self.motifyBlock(dic);

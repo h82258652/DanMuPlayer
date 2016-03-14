@@ -64,9 +64,9 @@
 /** btn点击事件 */
 - (IBAction)changeSubChannelAction:(UIButton *)sender
 {
-    NSLog(@"%ld",sender.tag);
+//    NSLog(@"%ld",sender.tag);
     [self modifyBtnStateWithTag:sender.tag];
-    NSLog(@"++++%ld",sender.tag);
+//    NSLog(@"++++%ld",sender.tag);
     self.changeSubChannelBlock([kArr[sender.tag - 190] integerValue]);
     
 }

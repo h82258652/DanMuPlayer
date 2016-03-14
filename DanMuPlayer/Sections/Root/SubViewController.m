@@ -111,7 +111,8 @@
     
     NSInteger numberOfStart = 0;
     
-    if (model.channel_Id == 155 || model.channel_Id == 60 || model.channel_Id == 63) {
+    
+    if (model.channel_Id == 155 || model.channel_Id == 60 || model.channel_Id == 63 || model.channel_Id == 1) {
         numberOfStart = 0;
         self.countOfPage = model.childChannels.count;
     } else {
@@ -120,10 +121,11 @@
         numberOfStart = 1;
         self.countOfPage = model.childChannels.count + 1;
     }
-    
+
     // 创建其他界面
     
     [model.childChannels enumerateObjectsUsingBlock:^(ChannelSubModel *  _Nonnull sub_model, NSUInteger idx, BOOL * _Nonnull stop) {
+//        NSLog(@"%@",sub_model.name);
         // 创建视图
         [self setUpSubPageWithModel_Id:sub_model.sub_Id withName:sub_model.name];
         
@@ -163,7 +165,7 @@
 /** 创建推荐界面并请求数据 */
 - (void)setUpRecommendPage:(NSInteger)model_Id {
     
-    NSLog(@"ccc");
+//    NSLog(@"ccc");
     
     // 创建推荐界面并请求数据
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
@@ -182,7 +184,7 @@
     [self setUpBtnWithTitle:@"推荐" andTag:160];
     
     // 设置数据
-    rVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,model_Id];
+    rVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,(long)model_Id];
     
 //    NSLog(@"%@",NSStringFromCGRect(self.MainScrollView.frame));
 }
@@ -193,7 +195,7 @@
 //    NSLog(@"%ld ----- %@",model_Id,name);
     
     
-    NSLog(@"+-+-%@",NSStringFromCGSize(self.MainScrollView.contentSize));
+//    NSLog(@"+-+-%@",NSStringFromCGSize(self.MainScrollView.contentSize));
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     
     if (model_Id == 156) {  // 新番列表
@@ -239,7 +241,7 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     // 计算btn的长度
     CGFloat widthOfBtn = [self calculateWidthForStr:title];
-    btn.frame = CGRectMake(self.FlagScrollView.contentSize.width + 10, -64, widthOfBtn, CGRectGetHeight(self.FlagScrollView.frame));
+    btn.frame = CGRectMake(self.FlagScrollView.contentSize.width + 10, 0, widthOfBtn, CGRectGetHeight(self.FlagScrollView.frame));
     
 //    NSLog(@"%@",NSStringFromCGRect(btn.frame));
     

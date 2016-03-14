@@ -11,6 +11,7 @@
 #import "DetailVideoViewController.h"
 
 #import "VideoCollectionViewCell.h"
+#import "MJRefresh.h"
 
 @interface DetailVideoAboutCollectionViewController ()<UICollectionViewDelegateFlowLayout>
 
@@ -40,22 +41,41 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     [self.collectionView registerNib:[UINib nibWithNibName:@"VideoCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"video_about"];
     
-    // Do any additional setup after loading the view.
+    // 下拉刷新
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadDataWithVideoId:self.videoId];
+    }];
 }
 
 #pragma mark - 自定义方法
 /** 请求数据 */
 - (void)loadDataWithVideoId:(NSInteger)videoId {
     
-    NSString *urlStr = [NSString stringWithFormat:kVideoAboutURLStr,videoId,self.pageNo];
+    NSString *urlStr = [NSString stringWithFormat:kVideoAboutURLStr,(long)videoId,self.pageNo];
     [DataHelper getDataSourceForVideoAboutWithURLStr:urlStr withBlock:^(NSDictionary *dic) {
-       
-        self.dataSource = [NSMutableArray arrayWithArray:dic[@"data"]];
-        [self.collectionView reloadData];
+        [self.collectionView.mj_header endRefreshing];
+        if ([dic[@"data"] isKindOfClass:[NSString class]] || [dic[@"data"] isKindOfClass:[NSError class]]) {
+            
+            // 提示加载失败
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"抱歉，加载失败" preferredStyle:UIAlertControllerStyleAlert];
+            [self presentViewController:alert animated:YES completion:nil];
+            [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(dismissAlert:) userInfo:@{@"alert":alert} repeats:NO];
+            
+        } else {
+            [self.dataSource removeAllObjects];
+            [self.dataSource addObjectsFromArray:dic[@"data"]];
+            [self.collectionView reloadData];
+        }
         
     }];
 }
-
+/** dismiss alert */
+- (void)dismissAlert:(NSTimer *)timer {
+    
+    UIAlertController *alert = timer.userInfo[@"alert"];
+    [alert dismissViewControllerAnimated:YES completion:nil];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -126,10 +146,10 @@ static NSString * const reuseIdentifier = @"Cell";
     NSString *str = [model.contentId substringFromIndex:2];
     [videoVC loadDataWithVideoId:[str integerValue]];
     
-    NSLog(@"%@",str);
+//    NSLog(@"%@",str);
     
-    [self.navigationController pushViewController:videoVC animated:YES];
-    
+//    [self.navigationController pushViewController:videoVC animated:YES];
+    [self presentViewController:videoVC animated:YES completion:nil];
 }
 
 /*

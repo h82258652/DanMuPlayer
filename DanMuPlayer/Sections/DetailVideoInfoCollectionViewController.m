@@ -68,7 +68,7 @@ static NSString * const reuseIdentifier = @"Cell";
 /** 请求数据 */
 - (void)loadDataWithModel:(DetailVideoModel *)model {
     
-    NSLog(@"接收到model");
+//    NSLog(@"接收到model");
     
     self.mainModel = model;
     
@@ -81,49 +81,51 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 /** 请求评论数据 */
 - (void)loadCommentData {
-    NSString *urlStr = [NSString stringWithFormat:kVideoCommentURLStr,self.mainModel.contentId,self.pageNo];
+    NSString *urlStr = [NSString stringWithFormat:kVideoCommentURLStr,(long)self.mainModel.contentId,self.pageNo];
     [DataHelper getDataSourceForCommentWithURLStr:urlStr withBlock:^(NSDictionary *dic) {
         
-        if (self.commentDic) {
-            NSMutableArray *mapArr = [NSMutableArray arrayWithArray:self.commentDic[@"map"]];
-            [mapArr addObjectsFromArray:dic[@"map"]];
+        if ([dic[@"data"] isKindOfClass:[NSString class]] || [dic[@"data"] isKindOfClass:[NSError class]]) {
             
-            NSMutableArray *listArr = [NSMutableArray arrayWithArray:self.commentDic[@"list"]];
-            [listArr addObjectsFromArray:dic[@"list"]];
+            // 提示加载失败
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"抱歉，评论加载失败" preferredStyle:UIAlertControllerStyleAlert];
+            [self presentViewController:alert animated:YES completion:nil];
+            [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(dismissAlert:) userInfo:@{@"alert":alert} repeats:NO];
             
-            [self.commentDic setValue:listArr forKey:@"list"];
-            [self.commentDic setValue:mapArr forKey:@"map"];
+        } else {
             
-//            NSLog(@"****%@",self.commentDic);
-            
+            if (self.commentDic) {
+                NSMutableArray *mapArr = [NSMutableArray arrayWithArray:self.commentDic[@"map"]];
+                [mapArr addObjectsFromArray:dic[@"map"]];
+                
+                NSMutableArray *listArr = [NSMutableArray arrayWithArray:self.commentDic[@"list"]];
+                [listArr addObjectsFromArray:dic[@"list"]];
+                
+                [self.commentDic setValue:listArr forKey:@"list"];
+                [self.commentDic setValue:mapArr forKey:@"map"];
+                
+                //            NSLog(@"****%@",self.commentDic);
+                
+                [self.collectionView reloadData];
+                
+                return;
+            }
+            self.commentDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+            //        NSLog(@"++++%@",dic);
             [self.collectionView reloadData];
-            
-            return;
         }
-        self.commentDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-//        NSLog(@"++++%@",dic);
-        [self.collectionView reloadData];
+        
+        
         
     }];
     
 }
-
-/** 观察cell的动态高度 */
-//- (void)motifyHeightOfCell:(NSNotification *)sender {
-//    
-////    NSLog(@"%@",sender.userInfo);
-//    CGFloat height = [sender.userInfo[@"height"] floatValue];
-//    NSInteger index = [sender.userInfo[@"index"] integerValue];
-//    CGFloat heightOfOld = [self.heightOfCellArr[index] floatValue];
-//    
-//    if (heightOfOld != height) {
-//        [self.heightOfCellArr replaceObjectAtIndex:index withObject:@(height)];
-//        
-//        [self.collectionView reloadData];
-//    }
-//    
-//}
-
+/** dismiss alert */
+- (void)dismissAlert:(NSTimer *)timer {
+    
+    UIAlertController *alert = timer.userInfo[@"alert"];
+    [alert dismissViewControllerAnimated:YES completion:nil];
+    
+}
 
 
 
@@ -240,7 +242,7 @@ static NSString * const reuseIdentifier = @"Cell";
                 case 3:
                     headerView.labelOfTitle.text = @"评论";
                     NSInteger comment = [self.commentDic[@"totalCount"] integerValue];
-                    headerView.labelOfNum.text = comment < 10000 ? [NSString stringWithFormat:@"%ld",comment] : [NSString stringWithFormat:@"%.1f万",comment * 1.0 / 10000];
+                    headerView.labelOfNum.text = comment < 10000 ? [NSString stringWithFormat:@"%ld",(long)comment] : [NSString stringWithFormat:@"%.1f万",comment * 1.0 / 10000];
                     break;
                 default:
                     break;

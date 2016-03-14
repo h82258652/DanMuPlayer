@@ -32,6 +32,9 @@
 @property (nonatomic,strong)DetailVideoModel *mainModel;  // 主model
 @property (nonatomic,assign)NSInteger videoId;  // 视频id
 
+@property (nonatomic,assign)BOOL isFullScreen;  // 现在是全屏
+@property (weak, nonatomic) IBOutlet UIView *backBeforePageView;  // 返回页面
+
 @end
 
 @implementation DetailVideoViewController
@@ -80,6 +83,12 @@
         self.aboutBtn.selected = YES;
     }
 }
+/** 返回上一页 */
+- (IBAction)backBeforePage:(id)sender {
+    self.playViewController.modifyFSBB = nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 #pragma mark <UIScrollViewDelegate>
 // 滑动停止
@@ -103,27 +112,48 @@
 - (void)loadDataWithVideoId:(NSInteger)videoId {
     
     self.videoId = videoId;
-    [DataHelper getDataSourceForDetailVideoWithURLStr:[NSString stringWithFormat:kVideoURLStr,videoId] withBlock:^(NSDictionary *dic) {
-        self.mainModel = dic[@"data"];
+    [DataHelper getDataSourceForDetailVideoWithURLStr:[NSString stringWithFormat:kVideoURLStr,(long)videoId] withBlock:^(NSDictionary *dic) {
         
-        NSLog(@"拿到了model");
-        // 传递给视频视图
-        [self.playViewController setUpWithModel:self.mainModel];
-        
-        __weak typeof(self)weakSelf = self;
-        // 传递给collectionView视图
-        [self.infoCollectionVC loadDataWithModel:self.mainModel];
-        self.infoCollectionVC.changeVideoIdBlock = ^(NSInteger videoId) {
-          
-            [weakSelf.playViewController setUpWithVideoId:videoId];
+        if ([dic[@"data"] isKindOfClass:[NSString class]] || [dic[@"data"] isKindOfClass:[NSError class]]) {
             
-        };
-        
-        
-        [self.aboutCollectionVC loadDataWithVideoId:self.mainModel.contentId];
-        self.aboutCollectionVC.changeVideoIdBlock = ^(NSInteger one){
-            [weakSelf.playViewController pushAboutVideos];
-        };
+            // 提示加载失败
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"抱歉，视频信息加载失败" preferredStyle:UIAlertControllerStyleAlert];
+            [self presentViewController:alert animated:YES completion:nil];
+            [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(dismissAlert:) userInfo:@{@"alert":alert} repeats:NO];
+            
+        } else {
+            
+            self.mainModel = dic[@"data"];
+            
+//            NSLog(@"拿到了model");
+            __weak typeof(self)weakSelf = self;
+            // 传递给视频视图
+            [self.playViewController setUpWithModel:self.mainModel];
+            // 调用block切换全屏
+            self.playViewController.modifyFSBB = ^(BOOL yesOrNo) {
+                
+                _isFullScreen = !yesOrNo;
+                
+                UIViewController *vc = [[UIViewController alloc]init];
+                [weakSelf presentViewController:vc animated:NO completion:nil];
+                [vc dismissViewControllerAnimated:NO completion:nil];
+            };
+            
+            
+            // 传递给collectionView视图
+            [self.infoCollectionVC loadDataWithModel:self.mainModel];
+            self.infoCollectionVC.changeVideoIdBlock = ^(NSInteger videoId) {
+                
+                [weakSelf.playViewController setUpWithVideoId:videoId];
+                
+            };
+            
+            
+            [self.aboutCollectionVC loadDataWithVideoId:self.mainModel.contentId];
+            self.aboutCollectionVC.changeVideoIdBlock = ^(NSInteger one){
+                [weakSelf.playViewController pushAboutVideos];
+            };
+        }
         
         
     }];
@@ -132,8 +162,13 @@
 
 
 
-
-
+/** dismiss alert */
+- (void)dismissAlert:(NSTimer *)timer {
+    
+    UIAlertController *alert = timer.userInfo[@"alert"];
+    [alert dismissViewControllerAnimated:YES completion:nil];
+    
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -161,6 +196,90 @@
     
     
     
+}
+
+#pragma mark - 屏幕方向
+// 支持自动旋屏
+- (BOOL)shouldAutorotate {
+//    NSLog(@"aaa");
+    
+    return YES;
+}
+// 旋屏方向
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    
+    if (self.isFullScreen) {
+        return UIInterfaceOrientationMaskLandscape;
+    } else {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+    
+}
+
+// 屏幕在旋转的过程中（调节控件大小）
+-(void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    
+//    NSLog(@"**** %ld",(long)[[UIApplication sharedApplication] statusBarOrientation]);
+    
+    
+    switch ([[UIApplication sharedApplication] statusBarOrientation]) {
+        case UIInterfaceOrientationUnknown: {
+            
+            break;
+        }
+        case UIInterfaceOrientationPortrait: {
+//            NSLog(@"现在是竖屏");
+            
+            if (self.isFullScreen) {
+                self.backBeforePageView.hidden = YES;
+                [[UIApplication sharedApplication] setStatusBarHidden:YES];
+                CALayer *layer = [self.playViewController.view.layer.sublayers firstObject];
+                if ([layer isKindOfClass:[AVPlayerLayer class]]) {
+                    CGRect frame = layer.frame;
+                    //                frame.origin.y -= 20;
+                    frame.size = CGSizeMake(kScreenHeight, kScreenWidth);
+                    layer.frame = frame;
+                }
+                
+                CGRect frame = self.playViewController.view.frame;
+                frame.origin.y -= 20;
+                frame.size.height += 20;
+                self.playViewController.view.frame = frame;
+                
+                // 切换为全屏
+                [self.playViewController modifyFullScreenOrNo:YES];
+                
+            }
+            
+            break;
+        }
+        case UIInterfaceOrientationPortraitUpsideDown: {
+            
+            break;
+        }
+        case UIInterfaceOrientationLandscapeLeft:
+        case UIInterfaceOrientationLandscapeRight: {
+//            NSLog(@"现在是横屏");
+            self.backBeforePageView.hidden = NO;
+            [[UIApplication sharedApplication] setStatusBarHidden:NO];
+            CALayer *layer = [self.playViewController.view.layer.sublayers firstObject];
+            if ([layer isKindOfClass:[AVPlayerLayer class]]) {
+                CGRect frame = layer.frame;
+                //                frame.origin.y += 20;
+                frame.size = CGSizeMake(kScreenHeight, kScreenHeight * 8 / 16 - 20);
+                layer.frame = frame;
+//                NSLog(@"++%@",NSStringFromCGRect(layer.frame));
+            }
+            
+            CGRect frame = self.playViewController.view.frame;
+            frame.origin.y += 20;
+            frame.size.height -= 20;
+            self.playViewController.view.frame = frame;
+            // 切幻为非全屏
+            [self.playViewController modifyFullScreenOrNo:NO];
+            break;
+        }
+    }
 }
 
 

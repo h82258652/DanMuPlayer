@@ -44,6 +44,11 @@
     
     [DataHelper getDataSourceForSubWithURLStr:urlStr andParameters:nil withBlock:^(NSDictionary *dic) {
         
+        if ([dic[@"data"] isKindOfClass:[NSString class]] || [dic[@"data"] isKindOfClass:[NSError class]]) {
+//            NSLog(@"%@",dic[@"data"]);
+            return ;
+        }
+        
         if ([dic[@"data"] count] < 10) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         } else {
@@ -60,13 +65,13 @@
 - (void)addDataSource {
     
     self.pageNO++;
-    [self loadDataWithURLStr:[NSString stringWithFormat:kSortMainURLStr,self.pageNO]];
+    [self loadDataWithURLStr:[NSString stringWithFormat:kSortMainURLStr,(long)self.pageNO]];
 }
 /** 下拉刷新 */
 - (void)refreshPage {
     [self.dataSource removeAllObjects];
     self.pageNO = 1;
-    [self loadDataWithURLStr:[NSString stringWithFormat:kSortMainURLStr,self.pageNO]];
+    [self loadDataWithURLStr:[NSString stringWithFormat:kSortMainURLStr,(long)self.pageNO]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -109,7 +114,7 @@
     UIStoryboard *sub = [UIStoryboard storyboardWithName:@"Sub" bundle:nil];
     DetailVideoViewController *subVC = [sub instantiateViewControllerWithIdentifier:@"detail_Video"];
     [subVC loadDataWithVideoId:[str integerValue]];
-    [self.navigationController pushViewController:subVC animated:NO];
+    [self.navigationController presentViewController:subVC animated:YES completion:nil];
     
 }
 // 行高

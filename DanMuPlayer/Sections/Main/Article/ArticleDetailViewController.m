@@ -53,13 +53,13 @@
 - (void)loadDataWithArticleId:(NSInteger)articleId
 {
     self.articleId = articleId;
-    NSString *urlStr = [NSString stringWithFormat:kArticleDetailURLStr,articleId];
+    NSString *urlStr = [NSString stringWithFormat:kArticleDetailURLStr,(long)articleId];
 //    NSLog(@"%@",urlStr);
     [DataHelper getDataSourceWithURLStr:urlStr withBlock:^(NSDictionary *dic)
     {
         // 拿到的数据，封装成model
         self.mainModel = [[ArticleModel alloc]initWithDic:dic[@"data"]];
-        NSLog(@"拿到了model");
+//        NSLog(@"拿到了model");
         // 赋值
         [self setValue];
     }];
@@ -98,12 +98,12 @@
 //    self.navigationItem.rightBarButtonItem = collectionItem;
     
     if ([self selectCoreDataWithId:self.articleId]) {  // 已收藏
-        NSLog(@"已收藏");
+//        NSLog(@"已收藏");
         // 添加已收藏按钮
         UIBarButtonItem *collectionItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"collection_did"] style:UIBarButtonItemStylePlain target:self action:@selector(didCollection)];
         self.navigationItem.rightBarButtonItem = collectionItem;
     } else {  // 未收藏
-        NSLog(@"未收藏");
+//        NSLog(@"未收藏");
         // 添加收藏按钮
         UIBarButtonItem *collectionItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"collection_action"] style:UIBarButtonItemStylePlain target:self action:@selector(collectionArticle)];
         self.navigationItem.rightBarButtonItem = collectionItem;
@@ -118,7 +118,7 @@
 - (void)collectionArticle
 {
     
-    NSLog(@"收藏文章");
+//    NSLog(@"收藏文章");
     
     // 1.创建描述
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"ArticleEntity" inManagedObjectContext:[kAppDelegate managedObjectContext]];
@@ -136,9 +136,9 @@
     NSError *error = nil;
     [[kAppDelegate managedObjectContext] save:&error];
     if (error) {
-        NSLog(@"保存失败");
+//        NSLog(@"保存失败");
     } else {
-        NSLog(@"保存成功");
+//        NSLog(@"保存成功");
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"收藏成功" preferredStyle:UIAlertControllerStyleAlert];
         [self presentViewController:alert animated:YES completion:nil];
         
@@ -174,7 +174,7 @@
     [self presentViewController:alert animated:YES completion:nil];
     
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(dismissAlert:) userInfo:@{@"alert":alert} repeats:NO];
-    NSLog(@"已经收藏过了");
+//    NSLog(@"已经收藏过了");
 }
 - (void)dismissAlert:(NSTimer *)timer
 {

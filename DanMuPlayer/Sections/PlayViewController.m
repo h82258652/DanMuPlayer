@@ -13,8 +13,9 @@
 
 #import "DataHelper.h"
 #import "AFHTTPSessionManager.h"
+#import "MBProgressHUD.h"
 
-#import <AVFoundation/AVFoundation.h>
+
 
 @interface PlayViewController ()<DanmakuDelegate>
 
@@ -27,7 +28,7 @@
 @property (nonatomic,assign)NSInteger videoId;  // 视频id
 @property (nonatomic,strong)NSDictionary *infoDic;  // 信息字典
 
-@property (nonatomic,strong)AVPlayer *mainPlayer;  // 播放器
+//@property (nonatomic,strong)AVPlayer *mainPlayer;  // 播放器
 @property (nonatomic,strong)AVPlayerItem *currentItem; // 当前播放器的item
 
 
@@ -78,12 +79,15 @@
 
 @implementation PlayViewController
 
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    if (self.hiddenControlViewAfter) {
+        [self.hiddenControlViewAfter invalidate];
+    }
     
     // 默认开启时间戳
-    self.hiddenControlViewAfter = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(changeControlViewHiddenOrNo) userInfo:nil repeats:YES];
-    
+    self.hiddenControlViewAfter = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(changeControlViewHiddenOrNo) userInfo:nil repeats:YES];
 }
 
 - (void)viewDidLoad {
@@ -100,9 +104,6 @@
     
     
     [self.clickTapOnce requireGestureRecognizerToFail:self.clickTapTwice];
-    
-    
-//    [NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nil) name: object:<#(nullable id)#>
     
 }
 
@@ -131,53 +132,66 @@
 /** 请求数据(播放地址) */
 - (void)loadDataWithVideoId:(NSInteger)videoId {
     
+    // 为了避免切换不同集数造成无法清除菊花，先隐藏一下
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    // 菊花效果
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     // 判断是否收藏过，添加收藏按钮
 //    [self whetherCollection];
     
 //    NSLog(@"%ld",videoId);
     self.videoId = videoId;
     
-    [DataHelper getDataSourceWithURLStr:[NSString stringWithFormat:kVideoRealSourceURLStr,videoId] withBlock:^(NSDictionary *dic) {
+    __weak typeof(self)weakSelf = self;
+    [DataHelper getDataSourceWithURLStr:[NSString stringWithFormat:kVideoRealSourceURLStr,(long)videoId] withBlock:^(NSDictionary *dic) {
         
-        self.isNextIn = YES;
-        
-        // 请求到了播放地址
-        self.infoDic = dic[@"data"];
-        NSLog(@"请求到了播放地址");
-        
-        
-        // 默认加载第一个视频
-        NSDictionary *fileDic = [self.infoDic[@"files"] firstObject];
-        NSString *urlStr = [fileDic[@"url"] firstObject];
-        
-        // 设置默认播放状态
-        [self setUpAvPlayerWithURL:[NSURL URLWithString:urlStr]];
-        
-        // 设置全部频道数据
-        [self setUpAllDefinitionView];
-        
-        // 请求并封装弹幕数据
-//        [self modifyDanMuKuSource];
-        
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [manager GET:[NSString stringWithFormat:kDanMuURLStr,self.videoId] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//            NSLog(@"+++%@",responseObject);
-            if ([responseObject isKindOfClass:[NSArray class]]) {
-                [self modifyDanMuKuSourceWithArray:responseObject];
-            }
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if ([dic[@"data"] isKindOfClass:[NSString class]] || [dic[@"data"] isKindOfClass:[NSError class]]) {
+            NSLog(@"*+*+* %@",dic);
+            // 提示加载失败
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"抱歉，视频加载失败" preferredStyle:UIAlertControllerStyleAlert];
+            [weakSelf presentViewController:alert animated:YES completion:nil];
+            [UIView animateWithDuration:3 animations:^{} completion:^(BOOL finished) {
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            }];
             
-        }];
-        
-        // 初始化弹幕库
-//        [self setUpDanMuKu];
-        
-        self.videoTitleLabel.text = self.infoDic[@"title"];
-        
-        
-        
-        
-        
+        } else {
+            
+            
+            weakSelf.isNextIn = YES;
+            
+            // 请求到了播放地址
+            self.infoDic = dic[@"data"];
+            NSLog(@"请求到了播放地址");
+            
+            
+            // 默认加载第一个视频
+            NSDictionary *fileDic = [weakSelf.infoDic[@"files"] firstObject];
+            NSString *urlStr = [fileDic[@"url"] firstObject];
+            
+            // 设置默认播放状态
+            [weakSelf setUpAvPlayerWithURL:[NSURL URLWithString:urlStr]];
+            
+            // 设置全部频道数据
+            [weakSelf setUpAllDefinitionView];
+            
+            // 请求并封装弹幕数据
+            //        [self modifyDanMuKuSource];
+            
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            [manager GET:[NSString stringWithFormat:kDanMuURLStr,(long)weakSelf.videoId] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                //            NSLog(@"+++%@",responseObject);
+                if ([responseObject isKindOfClass:[NSArray class]]) {
+                    [weakSelf modifyDanMuKuSourceWithArray:responseObject];
+                }
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                
+            }];
+            
+            weakSelf.videoTitleLabel.text = weakSelf.infoDic[@"title"];
+            
+        }
     }];
 }
 
@@ -194,19 +208,21 @@
     }
     
     self.currentCMTime = self.mainPlayer.currentTime;
-    
     if (self.nowIsSwitchDetifinition || self.isNextIn) {
         // 移除监听者
         [self removeObserver:self.currentItem];
     }
     
+    if (self.currentItem) {
+        self.currentItem = nil;
+    }
     self.currentItem = [AVPlayerItem playerItemWithURL:URL];
     
     if (self.mainPlayer == nil) {
         
         self.mainPlayer = [AVPlayer playerWithPlayerItem:self.currentItem];
         AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:self.mainPlayer];
-        layer.frame = self.view.frame;
+        layer.frame = self.view.bounds;
         [self.view.layer insertSublayer:layer atIndex:0];
     } else {
         
@@ -226,7 +242,7 @@
         [self.mainPlayer seekToTime:self.currentCMTime];
         
         // 播放
-//        [self.mainPlayer play];
+        [self.mainPlayer play];
         
 
     }
@@ -245,20 +261,21 @@
         }
     }
     
+    __weak typeof(self)weakSelf = self;
     // 创建btn
     [self.infoDic[@"files"] enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         if (idx == 0) {
-            [self.nowDefinitionBtn setTitle:obj[@"description"] forState:UIControlStateNormal];
+            [weakSelf.nowDefinitionBtn setTitle:obj[@"description"] forState:UIControlStateNormal];
         }
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(5, 3 + 30 * idx, 70, 30);
-        [self.allDefinitionView addSubview:btn];
+        [weakSelf.allDefinitionView addSubview:btn];
         btn.tag = 180 + idx;
         [btn setTitle:obj[@"description"] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(switchDefinitionAction:) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:weakSelf action:@selector(switchDefinitionAction:) forControlEvents:UIControlEventTouchUpInside];
         
     }];
     
@@ -307,30 +324,37 @@
 
 
 #pragma mark - 界面处理
-/** 全屏 */
-- (IBAction)switchFullScreen:(UIButton *)sender {
-    
-    
+/** 切换全屏 */
+- (void)modifyFullScreenOrNo:(BOOL)full {
     // 选择之后隐藏清晰度视图
     self.allDefinitionView.hidden = YES;
+    __weak typeof(self)weakSelf = self;
     
-    
-    if (self.isFullScreenOrNO) {  // 退出全屏
+    if (full) {  // 切换为全屏控件
+        CGRect frameOfDM = self.danmukuView.frame;
+        frameOfDM.size = CGSizeMake(kScreenHeight, kScreenWidth);
+        self.danmukuView.frame = frameOfDM;
+        // 控件切换
         
-        // 状态栏切换
-        [[UIApplication sharedApplication] setStatusBarHidden:NO];
-        self.navigationController.navigationBarHidden = NO;
-
-        self.view.superview.transform = CGAffineTransformRotate(self.view.superview.transform, -M_PI_2);
+        self.verticalControlView.hidden = YES;
+        self.horizontalControlTopView.hidden = NO;
+        self.horizontalControlBottomView.hidden = NO;
         
-        CGRect frame = self.view.superview.frame;
-        frame.origin = CGPointMake(0, 20);
-        frame.size = CGSizeMake(kScreenWidth,kScreenWidth * 8 / 16);
-        self.view.superview.frame = frame;
+        [UIView animateWithDuration:0.2 animations:^{
+            
+            weakSelf.YOfBottomViewV.constant = -50;
+//            NSLog(@"***%@",NSStringFromCGRect(self.view.frame));
+            weakSelf.YOfTopViewH.constant = 0;
+            weakSelf.YOfBottomViewH.constant = 0;
+            
+        }];
         
-//        frame = self.danmukuView.frame;
-//        frame.size = CGSizeMake(kScreenWidth, kScreenWidth * 8 / 16);
-        self.danmukuView.frame = CGRectMake(0, 0, kScreenWidth, kScreenWidth * 8 / 16 - 20);
+        self.isFullScreenOrNO = YES;
+    } else {  // 切换为非全屏控件
+        // 弹幕位置改变
+        CGRect frameOfDM = self.danmukuView.frame;
+        frameOfDM.size = CGSizeMake(kScreenHeight, kScreenHeight * 8 / 16 - 20);
+        self.danmukuView.frame = frameOfDM;
         
         // 控件切换
         
@@ -340,67 +364,29 @@
         
         [UIView animateWithDuration:0.2 animations:^{
             
-            self.YOfBottomViewV.constant = 0;
+            weakSelf.YOfBottomViewV.constant = 0;
             
-            self.YOfTopViewH.constant = -50;
-            self.YOfBottomViewH.constant = -50;
-            
+//            NSLog(@"***%@",NSStringFromCGRect(self.view.frame));
+            weakSelf.YOfTopViewH.constant = -50;
+            weakSelf.YOfBottomViewH.constant = -50;
         }];
-        
-//        [DanmakuRenderer setCanvasWidth:kScreenWidth + 100];
-        
+
         self.isFullScreenOrNO = NO;
-    } else {  // 进入全屏
-        
-        
-        // 状态栏切换
-        [[UIApplication sharedApplication] setStatusBarHidden:YES];
-        self.navigationController.navigationBarHidden = YES;
-        
-        self.view.superview.layer.anchorPoint = CGPointMake(0, 0);
-        
-        self.view.superview.transform = CGAffineTransformRotate(self.view.superview.transform, M_PI_2);
-        
-        CGRect frame = self.view.superview.frame;
-        frame.origin = CGPointMake(kScreenWidth, 0);
-        frame.size = CGSizeMake(kScreenWidth, kScreenHeight);
-        self.view.superview.frame = frame;
-        
-//        frame = self.danmukuView.frame;
-//        frame.size = CGSizeMake(kScreenHeight, kScreenWidth);
-        self.danmukuView.frame = CGRectMake(0, 0, kScreenHeight, kScreenWidth);
-        
-        // 控件切换
-        
-        self.verticalControlView.hidden = YES;
-        self.horizontalControlTopView.hidden = NO;
-        self.horizontalControlBottomView.hidden = NO;
-        
-        [UIView animateWithDuration:0.2 animations:^{
-            
-            self.YOfBottomViewV.constant = -50;
-            
-            self.YOfTopViewH.constant = 0;
-            self.YOfBottomViewH.constant = 0;
-            
-        }];
-        
-//        [DanmakuRenderer setCanvasWidth:kScreenHeight + 200];
-        self.isFullScreenOrNO = YES;
     }
     
-    // 取到当前的播放layer
-    CALayer *layer = [self.view.layer.sublayers firstObject];
-    // 改变frame
-    [UIView animateWithDuration:0.5 animations:^{
-        
-        layer.frame = self.view.frame;
-    }];
+    
     
     // 切换之后，显示控制器视图
     [self displayCotrollView:YES];
     
-//    NSLog(@"%@",NSStringFromCGRect(self.view.frame));
+}
+// 切换全屏按钮
+- (IBAction)switchFullScreen:(UIButton *)sender {
+//    NSLog(@"切换全屏");
+    if (self.modifyFSBB) {
+        self.modifyFSBB(self.isFullScreenOrNO);
+    }
+    
 }
 /** 切换清晰度事件 */
 - (void)switchDefinitionAction:(UIButton *)sender {
@@ -414,7 +400,7 @@
     if ([set.URL isEqual:url]) {
         // 与当前播放的网址一样，不用切换
         
-        NSLog(@"不用切换");
+//        NSLog(@"不用切换");
     } else {
         
         [self.mainPlayer pause];  // 暂停播放
@@ -428,7 +414,7 @@
         
         // 与当前播放的网址不一样，需要切换
         [self setUpAvPlayerWithURL:url];
-        NSLog(@"需要切换");
+//        NSLog(@"需要切换");
         
         
         
@@ -442,9 +428,6 @@
 }
 /** 调节控制器的显示与消失 */
 - (void)changeControlViewHiddenOrNo {
-    
-//    [self.hiddenControlViewAfter setFireDate:[NSDate distantFuture]];  // 关闭一定事件后隐藏控制器视图的时间戳
-//    NSLog(@"时间戳事件");
     
     // 隐藏控制器视图
     [self displayCotrollView:NO];
@@ -551,12 +534,18 @@
 /** 返回到上一界面 */
 - (IBAction)backToBeforePage:(UIButton *)sender {
     
-    [self.navigationController popViewControllerAnimated:NO];
+    self.modifyFSBB = nil;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 /** 切换清晰度视图显示 */
 - (IBAction)switchDefinition:(UIButton *)sender {
     self.allDefinitionView.hidden = !self.allDefinitionView.hidden;
 }
+
+
 /** 关闭弹幕 */
 - (IBAction)closeOrOpenDanMu:(UIButton *)sender {
     
@@ -588,9 +577,10 @@
             
             // 如果进度大于等于切换清晰度之前的进度值，就删除老的的播放层，开始记录进的播放层
             if (CMTimeGetSeconds(weakSelf.currentCMTime) <= current) {
-                // 移除当前播放层
-//                NSLog(@"%@",weakSelf.view.layer.sublayers);
+                
                 NSLog(@"切换完成");
+                
+                
                 
                 weakSelf.nowIsSwitchDetifinition = NO;
                 
@@ -649,6 +639,7 @@
 //KVO监听方法
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    __weak typeof(self)weakSelf = self;
     // 获取item
     AVPlayerItem *avPlayerItem = object;
     if ([keyPath isEqualToString:@"status"]) {
@@ -658,12 +649,16 @@
             // 获取音乐播放的总时长
             CMTime totalTime = avPlayerItem.duration;
             //因为slider的值是小数，要转成float，当前时间和总时间相除才能得到小数s
-            self.totalTimeOfVideo = (CGFloat)totalTime.value/totalTime.timescale;
-            int musicM = self.totalTimeOfVideo / 60;
-            int musicS = (int)self.totalTimeOfVideo % 60;
+            weakSelf.totalTimeOfVideo = (CGFloat)totalTime.value/totalTime.timescale;
+            int musicM = weakSelf.totalTimeOfVideo / 60;
+            int musicS = (int)weakSelf.totalTimeOfVideo % 60;
             //给总时长label添加时间
-            self.totalTimeLabelH.text = [NSString stringWithFormat:@"/%.2d:%.2d",musicM,musicS];
-            self.totalTimeLabelV.text = [NSString stringWithFormat:@"/%.2d:%.2d",musicM,musicS];
+            weakSelf.totalTimeLabelH.text = [NSString stringWithFormat:@"/%.2d:%.2d",musicM,musicS];
+            weakSelf.totalTimeLabelV.text = [NSString stringWithFormat:@"/%.2d:%.2d",musicM,musicS];
+            
+            // 菊花效果
+            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+            
         }
     }else if ([keyPath isEqualToString:@"loadedTimeRanges"]){
 //        // 获得缓冲数组
@@ -698,7 +693,7 @@
     }
     else
     {
-        NSLog(@"没有资源对象");
+//        NSLog(@"没有资源对象");
     }
     
     
@@ -740,14 +735,6 @@
         self.danmukuArray = [NSMutableArray arrayWithCapacity:1];
     }
     
-//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kDanMuURLStr,self.videoId]];
-//    NSLog(@"%@",[NSString stringWithFormat:kDanMuURLStr,self.videoId]);
-//    NSData *data = [NSData dataWithContentsOfURL:url];
-    
-    
-    
-//    NSArray *sourceArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-//    NSLog(@"++++%@",array);
     NSArray *sourceArr = [NSArray arrayWithArray:arr];
     sourceArr = [sourceArr sortedArrayUsingComparator:^NSComparisonResult(NSArray *  _Nonnull obj1, NSArray *  _Nonnull obj2) {
         NSComparisonResult result = [[NSNumber numberWithUnsignedInteger:obj1.count] compare:[NSNumber numberWithUnsignedInteger:obj2.count]];
@@ -841,63 +828,25 @@
 
 - (void)dealloc {
     NSLog(@"dealloc");
-    
     // 移除观察者
     [self removeObserver:self.currentItem];
     
-//    [self.mainPlayer.currentItem cancelPendingSeeks];
-//    [self.mainPlayer.currentItem.asset cancelLoading];
+    [MBProgressHUD hideHUDForView:self.view animated:NO];
+    
+    
 }
-#pragma mark - 收藏
-
-///** 判断是否收藏过，添加收藏按钮 */
-//- (void)whetherCollection
-//{
-//    
-//    
-//    // 添加收藏按钮
-//    UIBarButtonItem *collectionItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"collection_action"] style:UIBarButtonItemStylePlain target:self action:@selector(collectionArticle)];
-//    self.navigationItem.rightBarButtonItem = collectionItem;
-//    
-//    
-//    //    if (/** 未收藏 */) {  // 未收藏
-//    //
-//    //        // 添加收藏按钮
-//    //        UIBarButtonItem *collectionItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"collection_action"] style:UIBarButtonItemStylePlain target:self action:@selector(collectionArticle)];
-//    //        self.navigationItem.rightBarButtonItem = collectionItem;
-//    //    } else {  // 已收藏
-//    //
-//    //        // 添加已收藏按钮
-//    //        UIBarButtonItem *collectionItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"collection_did"] style:UIBarButtonItemStylePlain target:self action:@selector(didCollection)];
-//    //        self.navigationItem.rightBarButtonItem = collectionItem;
-//    //    }
-//    
-//    
-//    
-//}
-//
-//
-///** 收藏文章 */
-//- (void)collectionArticle
-//{
-//    
-//    NSLog(@"收藏视频");
-//    
-//    
-//}
-///** 提示已收藏 */
-//- (void)didCollection {
-//    
-//    
-//    NSLog(@"已经收藏过了");
-//}
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/** 切换到其他播放源，此处停止播放 */
+- (void)otherPlayerURLStopCurrentPage {
+    
+//    [self removeObserver:self.currentItem];
+    [self.mainPlayer pause];
+    [self.hiddenControlViewAfter invalidate];
+    
+}
 
 
 /*

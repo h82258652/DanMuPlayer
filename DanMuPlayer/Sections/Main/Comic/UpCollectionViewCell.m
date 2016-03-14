@@ -27,17 +27,19 @@
 
 // 赋值
 - (void)setValueWithModel:(RecommendCellModel *)model {
+    NSLog(@"%@",[model valueForKey:@"image"]);
+    NSString *imageStr = [model valueForKey:@"image"];
     
-    if (model.image.length == 0) {
+    if (imageStr.length == 0) {
         
-        [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:model.owner_avatar]];
+        [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:[model valueForKey:@"owner_avatar"]]];
     } else {
-        [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:model.image]];
+        [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:imageStr]];
     }
     
     
-    self.labelOfName.text = model.owner_name;
-    self.labelOfIntro.text = model.title;
+    self.labelOfName.text = [model valueForKey:@"owner_name"];
+    self.labelOfIntro.text = [model valueForKey:@"title"];
     
 }
 

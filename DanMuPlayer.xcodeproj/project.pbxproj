@@ -18,7 +18,6 @@
 		343E187F1C84713400DEABED /* SubModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 343E187E1C84713400DEABED /* SubModel.m */; };
 		343E18831C85223E00DEABED /* section_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 343E18811C85223E00DEABED /* section_placeholder.png */; };
 		343E18841C85223E00DEABED /* section_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 343E18821C85223E00DEABED /* section_placeholder@2x.png */; };
-		3444F9211C92AEAA002499E5 /* launchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3444F9201C92AEAA002499E5 /* launchImage.png */; };
 		3444F94C1C92B0A7002499E5 /* UMFeedbackLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3444F9231C92B0A7002499E5 /* UMFeedbackLocalizable.strings */; };
 		3444F94D1C92B0A7002499E5 /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3444F9251C92B0A7002499E5 /* libUMFeedback.a */; };
 		3444F94E1C92B0A7002499E5 /* bubble_min@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3444F9271C92B0A7002499E5 /* bubble_min@2x.png */; };
@@ -47,6 +46,13 @@
 		3444F9671C92B48F002499E5 /* SideAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3444F9661C92B48F002499E5 /* SideAboutViewController.m */; };
 		3444F96B1C92B6AC002499E5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3444F96A1C92B6AC002499E5 /* MBProgressHUD.m */; };
 		3444F96E1C92DDFB002499E5 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 3444F96D1C92DDFB002499E5 /* UIImage+Color.m */; };
+		3444F9721C92E9A8002499E5 /* player_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3444F9701C92E9A8002499E5 /* player_back.png */; };
+		3444F9731C92E9A8002499E5 /* player_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3444F9711C92E9A8002499E5 /* player_back@2x.png */; };
+		3444F9761C93C59C002499E5 /* UIViewController+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3444F9751C93C59C002499E5 /* UIViewController+Rotate.m */; };
+		3444F98A1C945F14002499E5 /* OtherURLPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3444F9891C945F14002499E5 /* OtherURLPlayerViewController.m */; };
+		3444F9AF1C968BE5002499E5 /* about_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 3444F9AE1C968BE5002499E5 /* about_BG.png */; };
+		3444F9B11C9694DA002499E5 /* paly_btn_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 3444F9B01C9694DA002499E5 /* paly_btn_image.png */; };
+		3444F9B31C96A4CF002499E5 /* launch_Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 3444F9B21C96A4CF002499E5 /* launch_Image.png */; };
 		3461B39C1C7DCCC600D3392C /* BottomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3461B39B1C7DCCC600D3392C /* BottomViewController.m */; };
 		346BFFEF1C8823D400D39A32 /* DetailVideoCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 346BFFEE1C8823D400D39A32 /* DetailVideoCommentModel.m */; };
 		346BFFF21C88345300D39A32 /* DetailVideoAboutCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346BFFF11C88345300D39A32 /* DetailVideoAboutCollectionViewController.m */; };
@@ -258,7 +264,6 @@
 		343E187E1C84713400DEABED /* SubModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubModel.m; sourceTree = "<group>"; };
 		343E18811C85223E00DEABED /* section_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = section_placeholder.png; sourceTree = "<group>"; };
 		343E18821C85223E00DEABED /* section_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section_placeholder@2x.png"; sourceTree = "<group>"; };
-		3444F9201C92AEAA002499E5 /* launchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchImage.png; sourceTree = "<group>"; };
 		3444F9241C92B0A7002499E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/UMFeedbackLocalizable.strings; sourceTree = "<group>"; };
 		3444F9251C92B0A7002499E5 /* libUMFeedback.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMFeedback.a; sourceTree = "<group>"; };
 		3444F9271C92B0A7002499E5 /* bubble_min@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_min@2x.png"; sourceTree = "<group>"; };
@@ -302,6 +307,15 @@
 		3444F96A1C92B6AC002499E5 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		3444F96C1C92DDFB002499E5 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		3444F96D1C92DDFB002499E5 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		3444F9701C92E9A8002499E5 /* player_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_back.png; sourceTree = "<group>"; };
+		3444F9711C92E9A8002499E5 /* player_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_back@2x.png"; sourceTree = "<group>"; };
+		3444F9741C93C59C002499E5 /* UIViewController+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Rotate.h"; sourceTree = "<group>"; };
+		3444F9751C93C59C002499E5 /* UIViewController+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Rotate.m"; sourceTree = "<group>"; };
+		3444F9881C945F14002499E5 /* OtherURLPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherURLPlayerViewController.h; sourceTree = "<group>"; };
+		3444F9891C945F14002499E5 /* OtherURLPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherURLPlayerViewController.m; sourceTree = "<group>"; };
+		3444F9AE1C968BE5002499E5 /* about_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about_BG.png; sourceTree = "<group>"; };
+		3444F9B01C9694DA002499E5 /* paly_btn_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paly_btn_image.png; sourceTree = "<group>"; };
+		3444F9B21C96A4CF002499E5 /* launch_Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_Image.png; sourceTree = "<group>"; };
 		3461B39A1C7DCCC600D3392C /* BottomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomViewController.h; sourceTree = "<group>"; };
 		3461B39B1C7DCCC600D3392C /* BottomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomViewController.m; sourceTree = "<group>"; };
 		346BFFED1C8823D400D39A32 /* DetailVideoCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVideoCommentModel.h; sourceTree = "<group>"; };
@@ -731,6 +745,15 @@
 				3444F96A1C92B6AC002499E5 /* MBProgressHUD.m */,
 			);
 			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		3444F96F1C92E967002499E5 /* playerImages */ = {
+			isa = PBXGroup;
+			children = (
+				3444F9701C92E9A8002499E5 /* player_back.png */,
+				3444F9711C92E9A8002499E5 /* player_back@2x.png */,
+			);
+			name = playerImages;
 			sourceTree = "<group>";
 		};
 		3461B3991C7DCCA100D3392C /* Bottom */ = {
@@ -1166,6 +1189,8 @@
 			children = (
 				3444F96C1C92DDFB002499E5 /* UIImage+Color.h */,
 				3444F96D1C92DDFB002499E5 /* UIImage+Color.m */,
+				3444F9741C93C59C002499E5 /* UIViewController+Rotate.h */,
+				3444F9751C93C59C002499E5 /* UIViewController+Rotate.m */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -1197,7 +1222,10 @@
 		34E1C5801C5A05E600E4A270 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3444F9201C92AEAA002499E5 /* launchImage.png */,
+				3444F9B21C96A4CF002499E5 /* launch_Image.png */,
+				3444F9B01C9694DA002499E5 /* paly_btn_image.png */,
+				3444F9AE1C968BE5002499E5 /* about_BG.png */,
+				3444F96F1C92E967002499E5 /* playerImages */,
 				34A7BF4A1C8DA1A900A57291 /* sidebarImageView */,
 				34A7BEFD1C8D669E00A57291 /* collectionImages */,
 				3480ED021C87081E002C76AB /* VideoImages */,
@@ -1297,6 +1325,8 @@
 				34B0E2F21C8AB5E100C06478 /* ComicDetailModel.m */,
 				34B0E3041C8AE4C800C06478 /* ComicDetailVideoModel.h */,
 				34B0E3051C8AE4C800C06478 /* ComicDetailVideoModel.m */,
+				3444F9881C945F14002499E5 /* OtherURLPlayerViewController.h */,
+				3444F9891C945F14002499E5 /* OtherURLPlayerViewController.m */,
 			);
 			path = Comic;
 			sourceTree = "<group>";
@@ -1530,7 +1560,6 @@
 				3444F9561C92B0A7002499E5 /* umeng_add_photo@2x.png in Resources */,
 				3444F9551C92B0A7002499E5 /* ToolViewInputVoiceHL@2x.png in Resources */,
 				3480ED121C870E22002C76AB /* video_info_up@2x.png in Resources */,
-				3444F9211C92AEAA002499E5 /* launchImage.png in Resources */,
 				34A7BF521C8DA4C800A57291 /* sidebar_feedback@2x.png in Resources */,
 				34A7BF031C8D66B300A57291 /* collection_action@2x.png in Resources */,
 				34B0E2FE1C8AD51400C06478 /* ComicDetailFirstCollectionViewCell.xib in Resources */,
@@ -1569,7 +1598,9 @@
 				3444F94F1C92B0A7002499E5 /* cancel@2x.png in Resources */,
 				34A7BF5D1C8DB1F000A57291 /* navi_back.png in Resources */,
 				3480ECD31C868B30002C76AB /* VideoUpCollectionViewCell.xib in Resources */,
+				3444F9731C92E9A8002499E5 /* player_back@2x.png in Resources */,
 				3444F9531C92B0A7002499E5 /* ToolViewInputTextHL@2x.png in Resources */,
+				3444F9B31C96A4CF002499E5 /* launch_Image.png in Resources */,
 				34A7BF491C8DA1A300A57291 /* sidebar_clear@2x.png in Resources */,
 				34A7BF5A1C8DA9AC00A57291 /* CollectionTableViewCell.xib in Resources */,
 				34A7BF3E1C8D7E9000A57291 /* collection_did@2x.png in Resources */,
@@ -1587,11 +1618,14 @@
 				3444F95B1C92B0A7002499E5 /* umeng_fb_audio_play_03@2x.png in Resources */,
 				3480ED171C87D710002C76AB /* DetailVideoInfoCollectionReusableView.xib in Resources */,
 				34DA83781C5C6EE600CF3A9D /* ComicCollectionViewCell.xib in Resources */,
+				3444F9721C92E9A8002499E5 /* player_back.png in Resources */,
+				3444F9B11C9694DA002499E5 /* paly_btn_image.png in Resources */,
 				34DA83891C5C71B800CF3A9D /* main_banana.png in Resources */,
 				3444F9511C92B0A7002499E5 /* save@2x.png in Resources */,
 				34A7BEF61C8D401200A57291 /* ArticleSubChannelCollectionViewCell.xib in Resources */,
 				343E18631C83FA2100DEABED /* ChannelSubCollectionViewCell.xib in Resources */,
 				3444F94C1C92B0A7002499E5 /* UMFeedbackLocalizable.strings in Resources */,
+				3444F9AF1C968BE5002499E5 /* about_BG.png in Resources */,
 				34C321DC1C804F2800FB8E5F /* BannerCollectionViewCell.xib in Resources */,
 				34A7BF501C8DA4C800A57291 /* sidebar_about@2x.png in Resources */,
 				343E18841C85223E00DEABED /* section_placeholder@2x.png in Resources */,
@@ -1647,6 +1681,7 @@
 				34A7BEF51C8D401200A57291 /* ArticleSubChannelCollectionViewCell.m in Sources */,
 				34A7BEEA1C8D1F9000A57291 /* ArticleSubChannelCollectionViewController.m in Sources */,
 				34C322441C81E4D900FB8E5F /* UpCollectionViewCell.m in Sources */,
+				3444F9761C93C59C002499E5 /* UIViewController+Rotate.m in Sources */,
 				346BFFEF1C8823D400D39A32 /* DetailVideoCommentModel.m in Sources */,
 				3444F9671C92B48F002499E5 /* SideAboutViewController.m in Sources */,
 				34DA841B1C5C87F000CF3A9D /* MJRefreshFooter.m in Sources */,
@@ -1742,6 +1777,7 @@
 				34DA841E1C5C87F000CF3A9D /* MJRefreshAutoNormalFooter.m in Sources */,
 				3444F9611C92B0A7002499E5 /* UMFullScreenPhotoView.m in Sources */,
 				34DA83E61C5C87E400CF3A9D /* UIImage+MultiFormat.m in Sources */,
+				3444F98A1C945F14002499E5 /* OtherURLPlayerViewController.m in Sources */,
 				34DA83EA1C5C87E400CF3A9D /* UIView+WebCacheOperation.m in Sources */,
 				34DA83DE1C5C87E400CF3A9D /* SDWebImageCompat.m in Sources */,
 				34DA841A1C5C87F000CF3A9D /* MJRefreshComponent.m in Sources */,
@@ -1850,7 +1886,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1887,7 +1923,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1898,6 +1934,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: fu XiaoHui (RGL62LF796)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fu XiaoHui (RGL62LF796)";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DanMuPlayer/Macro/PrefixHeader.pch";
 				INFOPLIST_FILE = DanMuPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1907,8 +1946,9 @@
 					"$(PROJECT_DIR)/DanMuPlayer/Vendors/UMengFeedback_SDK",
 					"$(PROJECT_DIR)/DanMuPlayer/Vendors/UMengFeedback_SDK/UMOpus",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = HSHSH.DanMuPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DanMuPlayer.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1916,6 +1956,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: fu XiaoHui (RGL62LF796)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fu XiaoHui (RGL62LF796)";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DanMuPlayer/Macro/PrefixHeader.pch";
 				INFOPLIST_FILE = DanMuPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1925,8 +1968,9 @@
 					"$(PROJECT_DIR)/DanMuPlayer/Vendors/UMengFeedback_SDK",
 					"$(PROJECT_DIR)/DanMuPlayer/Vendors/UMengFeedback_SDK/UMOpus",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = HSHSH.DanMuPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DanMuPlayer.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

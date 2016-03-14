@@ -92,7 +92,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"点击了侧边栏");
+//    NSLog(@"点击了侧边栏");
     switch (indexPath.row) {
         case 0:
         { // 我的收藏
@@ -116,7 +116,7 @@
             // 清除缓存
             [[SDImageCache sharedImageCache] clearDisk];
             if ([[SDImageCache sharedImageCache] getDiskCount] == 0) {
-                NSLog(@"清除缓存");
+//                NSLog(@"清除缓存");
                 // 清除成功
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"清除缓存成功" preferredStyle:UIAlertControllerStyleAlert];
                 [self presentViewController:alert animated:YES completion:nil];

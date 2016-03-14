@@ -30,7 +30,7 @@ DataHelper *helper = nil;
 @implementation DataHelper
 
 + (void)sharedHelper {
-    dispatch_once_t ontToken;
+    static dispatch_once_t ontToken;
     dispatch_once(&ontToken, ^{
         helper = [[DataHelper alloc]init];
     });
@@ -90,12 +90,12 @@ DataHelper *helper = nil;
             // 发送通知（当其model的值）
             [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil userInfo:dataDic];
         } else if ([responseObject[@"data"] isKindOfClass:[NSString class]]) {
-            NSLog(@"%@",responseObject[@"data"]);
+//            NSLog(@"%@",responseObject[@"data"]);
             block(responseObject);
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败");
+//        NSLog(@"请求失败");
         block(@{@"data":error});
     }];
     
@@ -110,7 +110,7 @@ DataHelper *helper = nil;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"请求成功");
+//        NSLog(@"请求成功");
         NSMutableArray *dataSource = [NSMutableArray arrayWithCapacity:1];
         
         // 若果是数组类，则为主界面，若为字典类，则为子分区
@@ -128,10 +128,13 @@ DataHelper *helper = nil;
             [dataDic setValue:dataSource forKey:@"dataArray"];
             
             block(dataDic);
+        } else {
+            block(responseObject);
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败");
+//        NSLog(@"请求失败");
+        block(@{@"data":error});
     }];
 }
 #pragma mark --传入网址，请求子界面数据
@@ -146,7 +149,7 @@ DataHelper *helper = nil;
     [manager GET:urlStr parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"请求成功");
+//        NSLog(@"请求成功");
 //        NSLog(@"%@",responseObject);
         if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
             NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
@@ -157,12 +160,13 @@ DataHelper *helper = nil;
             NSDictionary *dic = @{@"data":array};
             block(dic);
         } else {
-            NSLog(@"%@",responseObject[@"message"]);
+//            NSLog(@"%@",responseObject[@"message"]);
+            block(responseObject);
         }
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败");
+//        NSLog(@"请求失败");
         block(@{@"data":error});
         
     }];
@@ -177,7 +181,7 @@ DataHelper *helper = nil;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"请求成功");
+//        NSLog(@"请求成功");
         
         // 若果是数组类，则为主界面，若为字典类，则为子分区
         
@@ -189,10 +193,13 @@ DataHelper *helper = nil;
             [dataDic setValue:model forKey:@"data"];
             
             block(dataDic);
+        } else {
+            block(responseObject);
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败");
+//        NSLog(@"请求失败");
+        block(@{@"data":error});
     }];
     
 }
@@ -205,7 +212,7 @@ DataHelper *helper = nil;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"请求成功");
+//        NSLog(@"请求成功");
         
         // 若果是数组类，则为主界面，若为字典类，则为子分区
         
@@ -216,10 +223,13 @@ DataHelper *helper = nil;
             [dataDic setValue:dic forKey:@"data"];
             
             block(dataDic);
+        } else {
+            block(responseObject);
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败");
+//        NSLog(@"请求失败");
+        block(@{@"data":error});
     }];
 }
 
@@ -232,7 +242,7 @@ DataHelper *helper = nil;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"请求成功");
+//        NSLog(@"请求成功");
         
         // 若果是数组类，则为主界面，若为字典类，则为子分区
         
@@ -251,10 +261,13 @@ DataHelper *helper = nil;
             [dataDic setValue:array forKey:@"map"];
             
             block(dataDic);
+        } else {
+            block(responseObject);
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败");
+//        NSLog(@"请求失败");
+        block(@{@"data":error});
     }];
 }
 #pragma mark -- 传入网址，获得视频相关信息
@@ -267,7 +280,7 @@ DataHelper *helper = nil;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"请求成功");
+//        NSLog(@"请求成功");
         
         // 若果是数组类，则为主界面，若为字典类，则为子分区
         
@@ -283,10 +296,13 @@ DataHelper *helper = nil;
             [dataDic setValue:array forKey:@"data"];
             
             block(dataDic);
+        } else {
+            block(responseObject);
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败");
+//        NSLog(@"请求失败");
+        block(@{@"data":error});
     }];
     
 }
@@ -317,7 +333,7 @@ DataHelper *helper = nil;
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败");
+//        NSLog(@"请求失败");
         block(@{@"data":error});
 //        NSLog(@"%@  error = %@",task,error);
     }];

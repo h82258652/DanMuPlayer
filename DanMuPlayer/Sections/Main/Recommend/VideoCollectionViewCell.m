@@ -20,8 +20,8 @@
 // 赋值
 - (void)setValueWithModel:(RecommendCellModel *)model {
     
-    [self.topImageView sd_setImageWithURL:[NSURL URLWithString:model.image]];
-    self.bottomLabel.text = model.title;
+    [self.topImageView sd_setImageWithURL:[NSURL URLWithString:[model valueForKey:@"image"]]];
+    self.bottomLabel.text = [model valueForKey:@"title"];
     
 }
 /** submodel 赋值 */

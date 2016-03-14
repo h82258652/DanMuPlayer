@@ -49,11 +49,11 @@
     NSDictionary *dic = model.visit;
     
     NSInteger number = [dic[@"views"] integerValue];
-    self.playNumLabel.text = number < 10000 ? [NSString stringWithFormat:@"%ld",number] : [NSString stringWithFormat:@"%0.1f万",number * 1.0 / 10000];
+    self.playNumLabel.text = number < 10000 ? [NSString stringWithFormat:@"%ld",(long)number] : [NSString stringWithFormat:@"%0.1f万",number * 1.0 / 10000];
     number = [dic[@"comments"] integerValue];
-    self.commentNumLabel.text = number < 10000 ? [NSString stringWithFormat:@"%ld",number] : [NSString stringWithFormat:@"%0.1f万",number * 1.0 / 10000];
+    self.commentNumLabel.text = number < 10000 ? [NSString stringWithFormat:@"%ld",(long)number] : [NSString stringWithFormat:@"%0.1f万",number * 1.0 / 10000];
     number = [dic[@"goldBanana"] integerValue];
-    self.bananaNumLabel.text = number < 10000 ? [NSString stringWithFormat:@"%ld",number] : [NSString stringWithFormat:@"%0.1f万",number * 1.0 / 10000];
+    self.bananaNumLabel.text = number < 10000 ? [NSString stringWithFormat:@"%ld",(long)number] : [NSString stringWithFormat:@"%0.1f万",number * 1.0 / 10000];
     
     if (self.hiddenInfoView) {
         self.downTapView.hidden = YES;

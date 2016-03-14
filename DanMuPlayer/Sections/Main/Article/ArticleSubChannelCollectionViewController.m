@@ -123,7 +123,7 @@ static NSString * const reuseIdentifier = @"Cell";
              [self.dataSource removeAllObjects];
          }
          [self.dataSource addObjectsFromArray:dic[@"data"]];
-         NSLog(@"拿到了数据");
+//         NSLog(@"拿到了数据");
          [self.collectionView reloadData];
      }];
 }

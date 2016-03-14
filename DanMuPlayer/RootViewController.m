@@ -21,7 +21,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-#warning contentOffset go ONE PAGE **********************
 //    NSLog(@"偏移");
     
     static dispatch_once_t oneToken;
@@ -78,11 +77,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-#warning need change ******************
     if ([segue.identifier isEqualToString:@"recommend_segue"]) {  // 推荐
         
         RecommendCollectionViewController *recommendVC = segue.destinationViewController;
-//        recommendVC.mainURLStr = kRegionsURLStr;
+        recommendVC.mainURLStr = kRegionsURLStr;
 //        NSLog(@"segue");
         
     } else if ([segue.identifier isEqualToString:@"comic_segue"]) {  // 番剧
@@ -94,25 +92,25 @@
     } else if ([segue.identifier isEqualToString:@"entertainment_segue"]) {  // 娱乐
         
         RecommendCollectionViewController *recommendVC = segue.destinationViewController;
-//        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,(long)60];
+        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,(long)60];
 //        NSLog(@"segue");
         
     } else if ([segue.identifier isEqualToString:@"article_segue"]) {  // 文章
         
         RecommendCollectionViewController *recommendVC = segue.destinationViewController;
-//        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,(long)63];
+        recommendVC.mainURLStr = [NSString stringWithFormat:kRegionsWithBelongURLStr,(long)63];
 //        NSLog(@"segue");
         
     } else if ([segue.identifier isEqualToString:@"channel_segue"]) {  // 频道
         
         ChannelCollectionViewController *channelVC = segue.destinationViewController;
-//        channelVC.mainURLStr = kChannelsURLStr;
+        channelVC.mainURLStr = kChannelsURLStr;
 //        NSLog(@"segue");
         
     } else if ([segue.identifier isEqualToString:@"sort_segue"]) {  // 综合排行榜
         
         SortTableViewController *sortVC = segue.destinationViewController;
-//        [sortVC loadDataWithURLStr:[NSString stringWithFormat:kSortMainURLStr,(long)1]];
+        [sortVC loadDataWithURLStr:[NSString stringWithFormat:kSortMainURLStr,(long)1]];
         
     }
 }

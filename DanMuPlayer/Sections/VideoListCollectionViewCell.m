@@ -75,7 +75,7 @@
             if (countOfVideo > (i + 1) * 10) {
                 titleOfBtn = [NSString stringWithFormat:@"%d-%d",i * 10 + 1, i * 10 + 10];
             } else {
-                titleOfBtn = [NSString stringWithFormat:@"%d-%lu",i * 10 + 1, countOfVideo];
+                titleOfBtn = [NSString stringWithFormat:@"%d-%lu",i * 10 + 1, (long)countOfVideo];
             }
             
             height = height * 5;

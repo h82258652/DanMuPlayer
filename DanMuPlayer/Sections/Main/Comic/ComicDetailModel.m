@@ -22,11 +22,14 @@
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     
     if ([key isEqualToString:@"latestVideo"]) {
+//        NSLog(@"%@",value);
+        
         ComicDetailVideoModel *model = [[ComicDetailVideoModel alloc]initWithDic:value];
         self.latestVideoComic = model;
     } else if ([key isEqualToString:@"videos"]) {
         
         for (NSDictionary *dic in value) {
+//            NSLog(@"%@",value);
 //            NSLog(@"%@",value);
             ComicDetailVideoModel *model = [[ComicDetailVideoModel alloc]initWithDic:dic];
             [self.videosArr addObject:model];

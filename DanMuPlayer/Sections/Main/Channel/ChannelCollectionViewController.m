@@ -84,7 +84,7 @@ static NSString * const reuseIdentifier = @"Cell";
     ChannelModel *model = sender.userInfo[@"model"];
     NSInteger index = [sender.userInfo[@"index"] integerValue];
 //    NSLog(@"子频道");
-    NSLog(@"%ld",model.type);
+//    NSLog(@"%ld",model.type);
     if (model.type == 11) {  // 文章子分区
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
         ArticleSubChannelCollectionViewController *subVC = [[ArticleSubChannelCollectionViewController alloc]initWithCollectionViewLayout:layout];
@@ -245,7 +245,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"选中了item %ld",indexPath.item);
+//    NSLog(@"选中了item %ld",indexPath.item);
     
 }
 
