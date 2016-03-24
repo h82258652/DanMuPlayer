@@ -107,7 +107,7 @@
             [self presentViewController:alert animated:YES completion:nil];
             [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(dismissAlert:) userInfo:@{@"alert":alert} repeats:NO];
         } else {
-            
+            [self.dataSoruce removeAllObjects];
             self.dataSoruce = [NSMutableArray arrayWithArray:dic[@"dataArray"]];
             
             [self.collectionView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
@@ -128,7 +128,7 @@
 /** 下拉刷新 */
 - (void)refreshPage {
     
-    [self.dataSoruce removeAllObjects];
+    
     
     [self loadData];
 }
@@ -192,8 +192,8 @@
             return CGSizeMake((kScreenWidth - 5 * 4) / 2, kScreenWidth / 2.5);
             break;
         case 2:  // 文章
-            if (kScreenWidth * 5 / 19 < 90) {
-                return CGSizeMake(kScreenWidth - 20, 90);
+            if (kScreenWidth * 5 / 19 < 100) {
+                return CGSizeMake(kScreenWidth - 20, 100);
             }
             return CGSizeMake(kScreenWidth - 20, kScreenWidth * 5 / 19);
             break;

@@ -1934,8 +1934,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: fu XiaoHui (RGL62LF796)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fu XiaoHui (RGL62LF796)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 1970980284@qq.com (H3X77A8N6Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DanMuPlayer/Macro/PrefixHeader.pch";
 				INFOPLIST_FILE = DanMuPlayer/Info.plist;
@@ -1946,7 +1946,7 @@
 					"$(PROJECT_DIR)/DanMuPlayer/Vendors/UMengFeedback_SDK",
 					"$(PROJECT_DIR)/DanMuPlayer/Vendors/UMengFeedback_SDK/UMOpus",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.DanMuPlayer.app;
+				PRODUCT_BUNDLE_IDENTIFIER = DanMuPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1956,8 +1956,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: fu XiaoHui (RGL62LF796)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fu XiaoHui (RGL62LF796)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 1970980284@qq.com (H3X77A8N6Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DanMuPlayer/Macro/PrefixHeader.pch";
 				INFOPLIST_FILE = DanMuPlayer/Info.plist;
@@ -1968,7 +1968,7 @@
 					"$(PROJECT_DIR)/DanMuPlayer/Vendors/UMengFeedback_SDK",
 					"$(PROJECT_DIR)/DanMuPlayer/Vendors/UMengFeedback_SDK/UMOpus",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.DanMuPlayer.app;
+				PRODUCT_BUNDLE_IDENTIFIER = DanMuPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

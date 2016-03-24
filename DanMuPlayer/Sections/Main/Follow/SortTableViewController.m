@@ -44,6 +44,7 @@
     
     [DataHelper getDataSourceForSubWithURLStr:urlStr andParameters:nil withBlock:^(NSDictionary *dic) {
         
+        
         if ([dic[@"data"] isKindOfClass:[NSString class]] || [dic[@"data"] isKindOfClass:[NSError class]]) {
 //            NSLog(@"%@",dic[@"data"]);
             return ;
@@ -56,6 +57,9 @@
         }
         [self.tableView.mj_header endRefreshing];
         
+        if (self.pageNO == 1) {
+            [self.dataSource removeAllObjects];
+        }
         [self.dataSource addObjectsFromArray:dic[@"data"]];
         [self.tableView reloadData];
     }];
@@ -69,7 +73,6 @@
 }
 /** 下拉刷新 */
 - (void)refreshPage {
-    [self.dataSource removeAllObjects];
     self.pageNO = 1;
     [self loadDataWithURLStr:[NSString stringWithFormat:kSortMainURLStr,(long)self.pageNO]];
 }
